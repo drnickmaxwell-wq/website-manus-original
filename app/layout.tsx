@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Montserrat, Lora } from "next/font/google";
 import "./globals.css";
+import "../styles/tokens/smh-champagne-tokens.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SimpleChatbot } from "@/components/ai/simple-chatbot";
 import { JsonLd, organizationSchema } from "@/components/seo/json-ld";
+import ChatDock from "@/components/chat/ChatDock";
+import ChatOverlay from "@/components/chat/ChatOverlay";
+import { ChatProvider } from "@/contexts/ChatProvider";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -112,7 +116,11 @@ export default function RootLayout({
       >
         <JsonLd data={organizationSchema} />
         <ThemeProvider>
-          {children}
+          <ChatProvider>
+            {children}
+            <ChatDock />
+            <ChatOverlay />
+          </ChatProvider>
           <SimpleChatbot />
         </ThemeProvider>
       </body>
