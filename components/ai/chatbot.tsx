@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, type ChangeEvent } from 'react';
 import { useChat } from 'ai/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -62,7 +62,10 @@ export function Chatbot({
   const { speak, cancel, speaking } = useSpeechSynthesis();
   const { listen, stop, supported: speechSupported } = useSpeechRecognition({
     onResult: (result: string) => {
-      handleInputChange({ target: { value: result } } as any);
+      const syntheticEvent = {
+        target: { value: result },
+      } as unknown as ChangeEvent<HTMLTextAreaElement>;
+      handleInputChange(syntheticEvent);
       setIsListening(false);
     },
     onError: () => {
