@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack && next-sitemap",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "clone:mobile": "node scripts/clone-mobile-assets.mjs"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.24",

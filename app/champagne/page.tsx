@@ -145,6 +145,7 @@ export default function Page() {
             <li>Particles are tasteful (low opacity), not noisy.</li>
             <li>Wave edges are smooth; no jaggies or aliasing.</li>
             <li>Text contrast is readable; aim for WCAG AA.</li>
+            <li>Mobile variants present for particles and glow-dust (under 640px).</li>
           </ul>
         </div>
       </section>
