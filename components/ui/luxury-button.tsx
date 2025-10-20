@@ -5,14 +5,18 @@ import { motion, type HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useBrandColors } from '@/components/providers/theme-provider';
 
-interface LuxuryButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
+type ButtonMotionProps = Omit<HTMLMotionProps<'button'>, 'children' | 'href'> & { href?: undefined };
+type AnchorMotionProps = Omit<HTMLMotionProps<'a'>, 'children'> & { href: string };
+
+type InteractiveMotionProps = ButtonMotionProps | AnchorMotionProps;
+
+interface LuxuryButtonProps extends InteractiveMotionProps {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'coastal';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   glow?: boolean;
   shimmer?: boolean;
   ripple?: boolean;
-  href?: string;
   asChild?: boolean;
 }
 
@@ -41,7 +45,7 @@ export function LuxuryButton({
   className,
   href,
   asChild,
-  ...props
+  ...restProps
 }: LuxuryButtonProps) {
   const colors = useBrandColors();
 
@@ -111,8 +115,8 @@ export function LuxuryButton({
       }, 600);
     }
 
-    if (props.onClick) {
-      props.onClick(e);
+    if ('onClick' in restProps && typeof restProps.onClick === 'function') {
+      restProps.onClick(e);
     }
   };
 
@@ -144,7 +148,7 @@ export function LuxuryButton({
         initial="initial"
         whileHover="hover"
         whileTap="tap"
-        {...(props as any)}
+        {...(restProps as AnchorMotionProps)}
       >
         {buttonContent}
       </motion.a>
@@ -159,7 +163,7 @@ export function LuxuryButton({
       whileHover="hover"
       whileTap="tap"
       onClick={handleClick}
-      {...props}
+      {...(restProps as ButtonMotionProps)}
     >
       {buttonContent}
     </motion.button>

@@ -24,6 +24,22 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LoadingSpinner } from '@/components/effects/loading-animations';
 
+type SpeechRecognitionConstructor = new () => SpeechRecognition;
+
+interface SpeechEnabledWindow extends Window {
+  webkitSpeechRecognition?: SpeechRecognitionConstructor;
+  SpeechRecognition?: SpeechRecognitionConstructor;
+}
+
+const getSpeechRecognitionConstructor = (): SpeechRecognitionConstructor | null => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const speechWindow = window as SpeechEnabledWindow;
+  return speechWindow.webkitSpeechRecognition ?? speechWindow.SpeechRecognition ?? null;
+};
+
 interface ChatMessage {
   id: string;
   role: 'user' | 'assistant';
@@ -201,9 +217,10 @@ export function SimpleChatbot({
   };
 
   const handleVoiceInput = () => {
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
-      const recognition = new SpeechRecognition();
+    const SpeechRecognitionConstructor = getSpeechRecognitionConstructor();
+
+    if (SpeechRecognitionConstructor) {
+      const recognition = new SpeechRecognitionConstructor();
       
       recognition.continuous = false;
       recognition.interimResults = false;
@@ -215,8 +232,8 @@ export function SimpleChatbot({
       } else {
         recognition.start();
         setIsListening(true);
-        
-        recognition.onresult = (event: any) => {
+
+        recognition.onresult = (event: Event & { results: SpeechRecognitionResultList }) => {
           const transcript = event.results[0][0].transcript;
           setInput(transcript);
           setIsListening(false);

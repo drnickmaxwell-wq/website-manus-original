@@ -13,7 +13,7 @@ type JsonLdType =
 
 type Props = {
   type: JsonLdType;
-  data: Record<string, any>;
+  data: Record<string, unknown>;
 };
 
 /** Injects JSON-LD schema into <head>. Ensure data matches schema.org spec. */

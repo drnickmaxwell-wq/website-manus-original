@@ -1,72 +1,67 @@
-/* ==========================================================================
-   SMH Champagne Design Tokens — Canonical (v2.1)
-   Path: /styles/tokens/smh-champagne-tokens.css
-   ========================================================================== */
+/* SMH Champagne Design Tokens (v2.1, attribute-aware) */
+:root {
+  /* brand + base */
+  --smh-primary-magenta: #C2185B;
+  --smh-primary-teal:    #40C4B4;
+  --smh-accent-gold:     #D4AF37;
 
-/* --------------------------- */
-/* 1) Root — Light by default  */
-/* --------------------------- */
-:root{
-  /* Palette */
-  --smh-primary-magenta:#C2185B;
-  --smh-primary-teal:#40C4B4;
-  --smh-accent-gold:#D4AF37;
-  --smh-champagne:#F9E8C3;
-  --smh-sand:#F8F4EE;
+  --smh-champagne: #F9E8C3;
+  --smh-sand:      #F8F4EE;
 
-  /* Surfaces & Text */
-  --smh-bg:#FFFFFF;
-  --smh-text:#1A1A1A;
-  --smh-text-muted:#4C4C4C;
+  /* light defaults */
+  --smh-bg:          #FFFFFF;
+  --smh-text:        #1A1A1A;
+  --smh-text-muted:  #4C4C4C;
 
-  /* Gradient (angle is brand-locked) */
-  --smh-gradient:linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
+  /* gradients + motion */
+  --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
+  --motion-ease: cubic-bezier(0.645,0.045,0.355,1);
+  --motion-hue-shift: 3deg;
+  --motion-ripple-speed: 4s;
+  --motion-hover-scale: 1.03;
 
-  /* Motion */
-  --motion-ease:cubic-bezier(0.645,0.045,0.355,1);
-  --motion-hue-shift:3deg;
-  --motion-ripple-speed:4s;
-  --motion-hover-scale:1.03;
+  /* glow + shadow */
+  --glow-gold:    0 0 12px rgba(212,175,55,.45);
+  --glow-teal:    0 0  8px rgba( 64,196,180,.40);
+  --glow-magenta: 0 0  8px rgba(194, 24, 91,.40);
+  --shadow-elevate-light: 0 4px 12px rgba(0,0,0,.05);
+  --shadow-elevate-dark:  0 4px 16px rgba(0,0,0,.40);
 
-  /* Glows & Shadows */
-  --glow-gold:0 0 12px rgba(212,175,55,.45);
-  --glow-teal:0 0 8px rgba(64,196,180,.40);
-  --glow-magenta:0 0 8px rgba(194,24,91,.40);
-  --shadow-elevate-light:0 4px 12px rgba(0,0,0,.05);
-  /* Provide dark shadow token as a harmless fallback too */
-  --shadow-elevate-dark:0 4px 16px rgba(0,0,0,.40);
+  /* cinematic overlays */
+  --film-grain-opacity: .10;
+  --particles-opacity:  .10;
 
-  /* Typography */
-  --font-heading:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-  --font-body:"Lora",Georgia,Cambria,"Times New Roman",Times,serif;
-  --font-data:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-
-  /* FX Opacity (tuned per theme) */
-  --film-grain-opacity:.10;
-  --particles-opacity:.10;
+  /* typography */
+  --font-heading: "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --font-body:    "Lora",Georgia,Cambria,"Times New Roman",Times,serif;
+  --font-data:    "Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
 }
 
-/* --------------------------- */
-/* 2) Dark Mode (auto)         */
-/* --------------------------- */
-@media (prefers-color-scheme:dark){
-  :root{
-    --smh-bg:#0D0E10;
-    --smh-text:#FFFFFF;
-    --smh-text-muted:#D3D3D3;
+/* Attribute-driven dark mode (JS toggles [data-theme]) */
+:root[data-theme="dark"] {
+  --smh-bg:          #0D0E10;
+  --smh-text:        #FFFFFF;
+  --smh-text-muted:  #D3D3D3;
+  --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
+  --shadow-elevate-dark: 0 4px 16px rgba(0,0,0,.40);
+  --film-grain-opacity: .085;
+  --particles-opacity:  .06;
+}
 
-    /* Slightly cooler/airier gradient in dark for contrast */
-    --smh-gradient:linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
-
-    /* FX weight in dark is a touch lower */
-    --film-grain-opacity:.085;
-    --particles-opacity:.06;
+/* Respect user preference on first load if no attribute has been set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --smh-bg:          #0D0E10;
+    --smh-text:        #FFFFFF;
+    --smh-text-muted:  #D3D3D3;
+    --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
+    --shadow-elevate-dark: 0 4px 16px rgba(0,0,0,.40);
+    --film-grain-opacity: .085;
+    --particles-opacity:  .06;
   }
 }
 
-/* --------------------------- */
-/* 3) Base Typography & Colors */
-/* --------------------------- */
+/* Base usage */
 html{color:var(--smh-text);background:var(--smh-bg);font-family:var(--font-body);
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .smh-heading,h1,h2,h3,h4{font-family:var(--font-heading)}
