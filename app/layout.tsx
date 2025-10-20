@@ -7,6 +7,7 @@ import { SimpleChatbot } from "@/components/ai/simple-chatbot";
 import { JsonLd, organizationSchema } from "@/components/seo/json-ld";
 import ChatDock from "@/components/chat/ChatDock";
 import ChatOverlay from "@/components/chat/ChatOverlay";
+import ThemeChip from "@/components/ThemeChip";
 import { ChatProvider } from "@/contexts/ChatProvider";
 
 const montserrat = Montserrat({
@@ -116,6 +117,9 @@ export default function RootLayout({
       >
         <JsonLd data={organizationSchema} />
         <ThemeProvider>
+          <header className="w-full flex items-center justify-end p-4 gap-2">
+            <ThemeChip />
+          </header>
           <ChatProvider>
             {children}
             <ChatDock />

@@ -108,7 +108,7 @@ export default function Page() {
       <header className="flex items-center justify-between">
         <h1 className="text-2xl sm:text-3xl font-semibold smh-heading">Champagne Audit</h1>
         <div className="flex items-center gap-3">
-          <a className="smh-btn" href="/__champagne-check" title="Open lightweight probe">
+          <a className="smh-btn" href="/champagne-check" title="Open lightweight probe">
             Open Probe
           </a>
           <button className="smh-btn" onClick={() => setDark((d) => !d)}>
