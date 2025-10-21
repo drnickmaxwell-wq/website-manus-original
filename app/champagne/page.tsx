@@ -3,6 +3,13 @@
 import { useEffect, useState } from "react";
 
 type Probe = { path: string; exists: boolean; size?: string };
+type AuditAsset = { path: string; ok: boolean; size: number | null; error?: string };
+type AuditSummary = {
+  ok: boolean;
+  tokens: { tokensExists: boolean; tokensImported: boolean };
+  assets: AuditAsset[];
+  missing: string[];
+};
 
 const ASSETS: string[] = [
   "/textures/film-grain-desktop.webp",
@@ -25,8 +32,10 @@ const ASSETS: string[] = [
 ];
 
 export default function Page() {
-  const [theme, setTheme] = useState<"light"|"dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [probes, setProbes] = useState<Probe[]>([]);
+  const [audit, setAudit] = useState<AuditSummary | null>(null);
+  const [loading, setLoading] = useState(false);
 
   // apply persisted theme or respect OS on first load
   useEffect(() => {
@@ -70,6 +79,21 @@ export default function Page() {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        setLoading(true);
+        const r = await fetch("/api/champagne-audit", { cache: "no-store" });
+        const j: AuditSummary = await r.json();
+        setAudit(j);
+      } catch {
+        // noop
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
   return (
     <main className="min-h-screen p-6 sm:p-10 space-y-8">
       <header className="flex items-center justify-between">
@@ -81,6 +105,36 @@ export default function Page() {
           </button>
         </div>
       </header>
+
+      {/* Audit Summary card */}
+      <section className="p-6 rounded-xl smh-glass mb-6">
+        <h2 className="smh-heading text-2xl mb-2">Audit Summary</h2>
+        {loading && <p className="smh-text-dim">Running checks…</p>}
+        {audit && (
+          <div className="smh-text-dim">
+            <p>
+              <strong>Tokens:</strong> {audit.tokens.tokensExists ? "✓ found" : "✗ missing"}
+            </p>
+            <p>
+              <strong>Layout import:</strong>{" "}
+              {audit.tokens.tokensImported ? "✓ imported" : "✗ not imported"}
+            </p>
+            <p>
+              <strong>Assets:</strong> {audit.assets.filter(a => a.ok).length} ✓ / {audit.assets.length}
+            </p>
+            {audit.missing.length > 0 && (
+              <details className="mt-2">
+                <summary>Missing files ({audit.missing.length})</summary>
+                <ul className="list-disc pl-5">
+                  {audit.missing.map(m => (
+                    <li key={m}>{m}</li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </div>
+        )}
+      </section>
 
       {/* Gradient proof card */}
       <section className="rounded-2xl overflow-hidden smh-gold-border">
@@ -115,9 +169,11 @@ export default function Page() {
         <div className="p-6 rounded-xl smh-glass">
           <h3 className="smh-heading text-xl mb-4">Spot Checks</h3>
           <ul className="list-disc pl-5 smh-text-dim space-y-2">
-            <li>Primary gradient shifts with theme: <strong>{theme}</strong>.</li>
-            <li>Particles and grain are subtle (low opacity), not noisy.</li>
-            <li>Wave divider renders without jaggies.</li>
+            <li>Primary gradient looks correct in light and dark.</li>
+            <li>Particles are tasteful (low opacity), not noisy.</li>
+            <li>Wave edges are smooth; no jaggies or aliasing.</li>
+            <li>Text contrast is readable; aim for WCAG AA.</li>
+            <li>Mobile variants present for particles and glow-dust (under 640px).</li>
           </ul>
         </div>
       </section>
