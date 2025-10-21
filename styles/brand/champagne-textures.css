@@ -1,0 +1,30 @@
+/* Responsive bindings for Champagne textures */
+:root {
+  --smh-film-grain-desktop: url("/textures/film-grain-desktop.webp");
+  --smh-particles-gold:     url("/textures/particles-gold.webp");
+  --smh-particles-teal:     url("/textures/particles-teal.webp");
+  --smh-particles-magenta:  url("/textures/particles-magenta.webp");
+
+  --smh-glow-dust:          url("/overlays/glow-dust.webp");
+  --smh-glow-dust-dark:     url("/overlays/glow-dust-dark.webp");
+}
+
+/* Prefer mobile-optimized textures under 640px width */
+@media (max-width: 640px) {
+  :root {
+    --smh-particles-gold:     url("/textures/particles-gold-mobile.webp");
+    --smh-particles-teal:     url("/textures/particles-teal-mobile.webp");
+    --smh-particles-magenta:  url("/textures/particles-magenta-mobile.webp");
+    --smh-glow-dust-dark:     url("/overlays/glow-dust-mobile-dark.webp");
+  }
+}
+
+/* Utility classes already used in /champagne */
+.smh-film-grain    { background-image: var(--smh-film-grain-desktop); }
+.smh-particles-gold{ background-image: var(--smh-particles-gold); }
+.smh-particles-teal{ background-image: var(--smh-particles-teal); }
+.smh-particles-magenta{ background-image: var(--smh-particles-magenta); }
+
+html[data-theme="dark"] .smh-glow-dust { background-image: var(--smh-glow-dust-dark); }
+html[data-theme="light"] .smh-glow-dust,
+html[data-theme="auto"][data-auto-dark="false"] .smh-glow-dust { background-image: var(--smh-glow-dust); }
