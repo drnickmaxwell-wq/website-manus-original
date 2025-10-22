@@ -1,28 +1,35 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 
-export type FaqItem = { q: string; a: string };
-export default function FaqAccordion({ items }: { items: FaqItem[] }) {
-  const [open, setOpen] = useState<number | null>(0);
+export interface FaqItem { question: string; answer: string; }
+interface FaqAccordionProps { items: FaqItem[]; }
+
+export default function FaqAccordion({ items }: FaqAccordionProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   return (
-    <section className="my-12 rounded-2xl smh-glass p-6 md:p-8">
-      <h3 className="smh-heading text-xl md:text-2xl mb-4">Frequently Asked Questions</h3>
-      <ul className="divide-y divide-white/10">
-        {items.map((it, i) => (
-          <li key={i}>
-            <button
-              className="w-full text-left py-4 focus:outline-none"
-              onClick={() => setOpen(open === i ? null : i)}
-              aria-expanded={open === i}
-            >
-              <span className="font-medium">{it.q}</span>
-            </button>
-            <div className={(open === i ? 'max-h-96' : 'max-h-0') + ' overflow-hidden transition-all'}>
-              <p className="smh-text-dim pb-4">{it.a}</p>
-            </div>
-          </li>
-        ))}
+    <section className="my-12 md:my-16">
+      <h2 className="smh-heading text-2xl md:text-3xl">Frequently asked questions</h2>
+      <ul className="mt-6 divide-y divide-white/10">
+        {items.map((it, i) => {
+          const isOpen = openIndex === i;
+          return (
+            <li key={it.question}>
+              <button
+                type="button"
+                className="w-full text-left py-4 focus:outline-none group"
+                onClick={() => setOpenIndex(isOpen ? null : i)}
+                aria-expanded={isOpen}
+              >
+                <span className="font-medium">{it.question}</span>
+              </button>
+              <div className={isOpen ? "max-h-[32rem] pb-4 smh-text-dim" : "max-h-0 overflow-hidden smh-text-dim"}>
+                <p>{it.answer}</p>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
 }
+
