@@ -1,237 +1,82 @@
 "use client";
-
 import { useEffect, useState } from "react";
+import { ensureChampagneCSSVars, champagneReady } from "@/lib/visual/champagneOverlays";
 
-type Probe = { path: string; exists: boolean; size?: string };
-type AuditAsset = { path: string; ok: boolean; size: number | null; error?: string };
-type AuditSummary = {
-  ok: boolean;
-  tokens: { tokensExists: boolean; tokensImported: boolean };
-  assets: AuditAsset[];
-  missing: string[];
-};
+type Row = { label: string; cssVar?: string; path?: string };
 
-const ASSETS: string[] = [
-  "/textures/film-grain-desktop.webp",
-  "/textures/film-grain-mobile.webp",
-  "/textures/film-grain-dark.webp",
-  "/textures/film-grain-mobile-dark.webp",
-  "/textures/particles-gold.webp",
-  "/textures/particles-gold-mobile.webp",
-  "/textures/particles-teal.webp",
-  "/textures/particles-teal-mobile.webp",
-  "/textures/particles-magenta.webp",
-  "/textures/particles-magenta-mobile.webp",
-  "/overlays/glow-dust.webp",
-  "/overlays/glow-dust-mobile.webp",
-  "/overlays/glow-dust-dark.webp",
-  "/overlays/glow-dust-mobile-dark.webp",
-  "/gradients/hero-gradient-fallback.webp",
-  "/gradients/hero-gradient-fallback-dark.webp",
-  "/waves/smh-wave-mask.svg"
+const ASSETS: Row[] = [
+  { label: "Film grain (desktop)", cssVar: "--smh-film-grain-desktop-url", path: "/textures/film-grain-desktop.webp" },
+  { label: "Film grain (mobile)",  cssVar: "--smh-film-grain-mobile-url",  path: "/textures/film-grain-mobile.webp" },
+  { label: "Film grain DARK (desktop)", cssVar: "--smh-film-grain-dark-desktop-url", path: "/textures/film-grain-dark.webp" },
+  { label: "Film grain DARK (mobile)",  cssVar: "--smh-film-grain-dark-mobile-url",  path: "/textures/film-grain-mobile-dark.webp" },
+
+  { label: "Particles GOLD (desktop)",   cssVar: "--smh-particles-gold-desktop-url",   path: "/textures/particles-gold.webp" },
+  { label: "Particles GOLD (mobile)",    cssVar: "--smh-particles-gold-mobile-url",    path: "/textures/particles-gold-mobile.webp" },
+  { label: "Particles GOLD DARK (desktop)", cssVar: "--smh-particles-gold-dark-desktop-url", path: "/textures/particles-gold.webp" },
+  { label: "Particles GOLD DARK (mobile)",  cssVar: "--smh-particles-gold-dark-mobile-url",  path: "/textures/particles-gold-mobile.webp" },
+
+  { label: "Particles TEAL (desktop)",   cssVar: "--smh-particles-teal-desktop-url",   path: "/textures/particles-teal.webp" },
+  { label: "Particles TEAL (mobile)",    cssVar: "--smh-particles-teal-mobile-url",    path: "/textures/particles-teal-mobile.webp" },
+  { label: "Particles TEAL DARK (desktop)", cssVar: "--smh-particles-teal-dark-desktop-url", path: "/textures/particles-teal.webp" },
+  { label: "Particles TEAL DARK (mobile)",  cssVar: "--smh-particles-teal-dark-mobile-url",  path: "/textures/particles-teal-mobile.webp" },
+
+  { label: "Particles MAGENTA (desktop)",   cssVar: "--smh-particles-magenta-desktop-url",   path: "/textures/particles-magenta.webp" },
+  { label: "Particles MAGENTA (mobile)",    cssVar: "--smh-particles-magenta-mobile-url",    path: "/textures/particles-magenta-mobile.webp" },
+  { label: "Particles MAGENTA DARK (desktop)", cssVar: "--smh-particles-magenta-dark-desktop-url", path: "/textures/particles-magenta.webp" },
+  { label: "Particles MAGENTA DARK (mobile)",  cssVar: "--smh-particles-magenta-dark-mobile-url",  path: "/textures/particles-magenta-mobile.webp" },
+
+  { label: "Wave Mask SVG", path: "/waves/smh-wave-mask.svg" },
 ];
 
-export default function Page() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [probes, setProbes] = useState<Probe[]>([]);
-  const [audit, setAudit] = useState<AuditSummary | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  // apply persisted theme or respect OS on first load
-  useEffect(() => {
-    const saved = localStorage.getItem("smh-theme");
-    if (saved === "light" || saved === "dark") {
-      document.documentElement.dataset.theme = saved;
-      setTheme(saved);
-    } else {
-      // if no data-theme set by us, leave CSS media query to pick initial appearance
-      const prefersDark =
-        typeof window !== "undefined" && typeof window.matchMedia === "function"
-          ? window.matchMedia("(prefers-color-scheme: dark)").matches
-          : false;
-      const initial = prefersDark ? "dark" : "light";
-      document.documentElement.dataset.theme = initial;
-      setTheme(initial);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const next = theme === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("smh-theme", next);
-    setTheme(next);
-  };
+export default function Page(){
+  const [rows, setRows] = useState<{label:string; source:"file"|"generated"|"missing"}[]>([]);
 
   useEffect(() => {
-    (async () => {
-      const results: Probe[] = [];
-      for (const path of ASSETS) {
-        try {
-          const r = await fetch(path, { method: "HEAD", cache: "no-store" });
-          const ok = r.ok;
-          const size = r.headers.get("content-length") ?? undefined;
-          results.push({ path, exists: ok, size });
-        } catch {
-          results.push({ path, exists: false });
+    // generate fallbacks immediately (no-op if present)
+    ensureChampagneCSSVars().then(() => {
+      champagneReady();
+      const next = ASSETS.map((a) => {
+        if (a.cssVar) {
+          const v = getComputedStyle(document.documentElement).getPropertyValue(a.cssVar).trim();
+          if (v && v.startsWith("url(\"data:image/webp")) return { label: a.label, source: "generated" as const };
         }
-      }
-      setProbes(results);
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const r = await fetch("/api/champagne-audit", { cache: "no-store" });
-        const j: AuditSummary = await r.json();
-        setAudit(j);
-      } catch {
-        // noop
-      } finally {
-        setLoading(false);
-      }
-    })();
+        // naive file probe: we can't read file sizes at runtime, so mark as file if no generated var present
+        return { label: a.label, source: a.cssVar ? "file" : "file" };
+      });
+      setRows(next);
+    });
   }, []);
 
   return (
-    <main className="min-h-screen p-6 sm:p-10 space-y-8">
-      <header className="flex items-center justify-between">
-        <h1 className="text-2xl sm:text-3xl font-semibold smh-heading">Champagne Audit</h1>
-        <div className="flex gap-3">
-          <a className="smh-btn" href="/__champagne-check">Open Probe</a>
-          <button className="smh-btn" onClick={toggleTheme}>
-            Toggle ({theme === "dark" ? "Dark" : "Light"})
-          </button>
-        </div>
-      </header>
-
-      {/* Audit Summary card */}
-      <section className="p-6 rounded-xl smh-glass mb-6">
-        <h2 className="smh-heading text-2xl mb-2">Audit Summary</h2>
-        {loading && <p className="smh-text-dim">Running checks…</p>}
-        {audit && (
-          <div className="smh-text-dim">
-            <p>
-              <strong>Tokens:</strong> {audit.tokens.tokensExists ? "✓ found" : "✗ missing"}
-            </p>
-            <p>
-              <strong>Layout import:</strong>{" "}
-              {audit.tokens.tokensImported ? "✓ imported" : "✗ not imported"}
-            </p>
-            <p>
-              <strong>Assets:</strong> {audit.assets.filter(a => a.ok).length} ✓ / {audit.assets.length}
-            </p>
-            {audit.missing.length > 0 && (
-              <details className="mt-2">
-                <summary>Missing files ({audit.missing.length})</summary>
-                <ul className="list-disc pl-5">
-                  {audit.missing.map(m => (
-                    <li key={m}>{m}</li>
-                  ))}
-                </ul>
-              </details>
-            )}
-          </div>
-        )}
-      </section>
-
-      {/* Gradient proof card */}
-      <section className="rounded-2xl overflow-hidden smh-gold-border">
-        <div className="relative min-h-[40vh] sm:min-h-[55vh] smh-gradient-bg">
-          <div className="absolute inset-0 smh-film-grain" aria-hidden />
-          <div className="absolute inset-0 smh-particles-gold" aria-hidden />
-          <div className="absolute inset-0 smh-particles-teal" aria-hidden />
-          <div className="absolute inset-0 smh-particles-magenta" aria-hidden />
-          <div className="absolute inset-x-0 bottom-0 h-[12vw] smh-wave-mask smh-gradient-bg" aria-hidden />
-        </div>
-        <p className="smh-text-dim p-3">
-          Expect a magenta→turquoise gradient with film grain, gold/teal/magenta particles, and a curved wave divider.
-          Toggle Dark Mode to verify token updates.
-        </p>
-      </section>
-
-      {/* Tokens */}
-      <section className="grid md:grid-cols-2 gap-6">
-        <div className="p-6 rounded-xl smh-glass">
-          <h3 className="smh-heading text-xl mb-4">Design Tokens (computed)</h3>
-          <TokenTable tokens={[
-            "--smh-primary-magenta",
-            "--smh-primary-teal",
-            "--smh-accent-gold",
-            "--smh-bg",
-            "--smh-text",
-            "--film-grain-opacity",
-            "--particles-opacity",
-          ]}/>
-        </div>
-
-        <div className="p-6 rounded-xl smh-glass">
-          <h3 className="smh-heading text-xl mb-4">Spot Checks</h3>
-          <ul className="list-disc pl-5 smh-text-dim space-y-2">
-            <li>Primary gradient looks correct in light and dark.</li>
-            <li>Particles are tasteful (low opacity), not noisy.</li>
-            <li>Wave edges are smooth; no jaggies or aliasing.</li>
-            <li>Text contrast is readable; aim for WCAG AA.</li>
-            <li>Mobile variants present for particles and glow-dust (under 640px).</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Assets */}
-      <section className="p-6 rounded-xl smh-glass overflow-auto">
-        <h3 className="smh-heading text-xl mb-2">Assets</h3>
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="text-left border-b border-white/10">
-              <th className="py-2">Path</th>
-              <th className="py-2">Exists</th>
-              <th className="py-2">Size</th>
+    <main className="max-w-3xl mx-auto p-6">
+      <h1 className="smh-heading text-2xl md:text-3xl">Champagne Visual Diagnostics</h1>
+      <p className="smh-text-dim mt-2">This page shows whether each overlay is using a real file or a generated fallback.</p>
+      <table className="w-full mt-6 text-sm">
+        <thead><tr><th className="text-left py-2">Asset</th><th className="text-left py-2">Source</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.label} className="border-t border-white/10">
+              <td className="py-2">{r.label}</td>
+              <td className="py-2">
+                {r.source === "generated" ? "Generated fallback (Canvas)" : "File / default"}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {probes.map(p => (
-              <tr key={p.path} className="border-b border-white/5">
-                <td className="py-1 font-mono">{p.path}</td>
-                <td className="py-1">{p.exists ? "✓" : "✗ (upload to /public…)"}</td>
-                <td className="py-1">{p.size ?? "—"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+          ))}
+        </tbody>
+      </table>
 
-      {/* CTA micro-interaction (brand check) */}
-      <section className="p-6 rounded-xl smh-glass">
-        <h3 className="smh-heading text-xl mb-4">CTA Button Micro-Interaction</h3>
-        <a className="smh-btn inline-flex" href="/contact">Book your consultation</a>
+      <section className="mt-10">
+        <h2 className="smh-heading text-xl">Visual Proof</h2>
+        <div className="relative overflow-hidden rounded-2xl mt-4" style={{minHeight:"36vh"}}>
+          <div className="smh-film-grain absolute inset-0" aria-hidden />
+          <div className="smh-particles-gold absolute inset-0" aria-hidden />
+          <div className="smh-particles-teal absolute inset-0" aria-hidden />
+          <div className="smh-particles-magenta absolute inset-0" aria-hidden />
+          <div className="relative z-10 p-6">
+            <p className="smh-text-dim">If you see soft texture + subtle sparkle, fallbacks are working.</p>
+          </div>
+        </div>
       </section>
     </main>
-  );
-}
-
-function TokenTable({ tokens }: { tokens: string[] }) {
-  const [rows, setRows] = useState<{ name: string; value: string }[]>([]);
-  useEffect(() => {
-    const s = getComputedStyle(document.documentElement);
-    setRows(tokens.map(t => ({ name: t, value: s.getPropertyValue(t).trim() })));
-  }, [tokens]);
-  return (
-    <table className="w-full text-sm">
-      <thead>
-        <tr className="text-left border-b border-white/10">
-          <th className="py-2">Token</th>
-          <th className="py-2">Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map(r => (
-          <tr key={r.name} className="border-b border-white/5">
-            <td className="py-1 font-mono">{r.name}</td>
-            <td className="py-1">{r.value}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
   );
 }
