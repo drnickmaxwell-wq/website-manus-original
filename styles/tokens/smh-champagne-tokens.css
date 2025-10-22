@@ -174,3 +174,67 @@ html{color:var(--smh-text);background:var(--smh-bg);font-family:var(--font-body)
   .smh-gradient-bg{animation:none}
   [class*="smh-particles-"]{animation:none}
 }
+
+/* === Champagne runtime fallback bindings (non-destructive) === */
+.smh-film-grain{
+  pointer-events:none;
+  background-image:
+    var(--smh-film-grain-desktop-url, url("/textures/film-grain-desktop.webp"));
+  background-size:cover;
+  opacity:var(--film-grain-opacity);
+  mix-blend-mode:overlay;
+}
+@media (max-width:640px){
+  .smh-film-grain{
+    background-image:
+      var(--smh-film-grain-mobile-url, url("/textures/film-grain-mobile.webp"));
+  }
+}
+@media (prefers-color-scheme: dark){
+  .smh-film-grain{
+    background-image:
+      var(--smh-film-grain-dark-desktop-url, url("/textures/film-grain-dark.webp"));
+  }
+}
+@media (prefers-color-scheme: dark) and (max-width:640px){
+  .smh-film-grain{
+    background-image:
+      var(--smh-film-grain-dark-mobile-url, url("/textures/film-grain-mobile-dark.webp"));
+  }
+}
+
+.smh-particles-gold{
+  pointer-events:none; background-size:cover; mix-blend-mode:screen; opacity:var(--particles-opacity);
+  background-image:
+    var(--smh-particles-gold-desktop-url, url("/textures/particles-gold.webp"));
+}
+@media (max-width:640px){ .smh-particles-gold{ background-image: var(--smh-particles-gold-mobile-url, url("/textures/particles-gold-mobile.webp")); } }
+@media (prefers-color-scheme: dark){ .smh-particles-gold{ background-image: var(--smh-particles-gold-dark-desktop-url, url("/textures/particles-gold.webp")); } }
+@media (prefers-color-scheme: dark) and (max-width:640px){ .smh-particles-gold{ background-image: var(--smh-particles-gold-dark-mobile-url, url("/textures/particles-gold-mobile.webp")); } }
+
+.smh-particles-teal{
+  pointer-events:none; background-size:cover; mix-blend-mode:screen; opacity:var(--particles-opacity);
+  background-image:
+    var(--smh-particles-teal-desktop-url, url("/textures/particles-teal.webp"));
+}
+@media (max-width:640px){ .smh-particles-teal{ background-image: var(--smh-particles-teal-mobile-url, url("/textures/particles-teal-mobile.webp")); } }
+@media (prefers-color-scheme: dark){ .smh-particles-teal{ background-image: var(--smh-particles-teal-dark-desktop-url, url("/textures/particles-teal.webp")); } }
+@media (prefers-color-scheme: dark) and (max-width:640px){ .smh-particles-teal{ background-image: var(--smh-particles-teal-dark-mobile-url, url("/textures/particles-teal-mobile.webp")); } }
+
+.smh-particles-magenta{
+  pointer-events:none; background-size:cover; mix-blend-mode:screen; opacity:var(--particles-opacity);
+  background-image:
+    var(--smh-particles-magenta-desktop-url, url("/textures/particles-magenta.webp"));
+}
+@media (max-width:640px){ .smh-particles-magenta{ background-image: var(--smh-particles-magenta-mobile-url, url("/textures/particles-magenta-mobile.webp")); } }
+@media (prefers-color-scheme: dark){ .smh-particles-magenta{ background-image: var(--smh-particles-magenta-dark-desktop-url, url("/textures/particles-magenta.webp")); } }
+@media (prefers-color-scheme: dark) and (max-width:640px){ .smh-particles-magenta{ background-image: var(--smh-particles-magenta-dark-mobile-url, url("/textures/particles-magenta-mobile.webp")); } }
+
+.smh-wave-mask{
+  -webkit-mask-image:url("/waves/smh-wave-mask.svg");
+          mask-image:url("/waves/smh-wave-mask.svg");
+  -webkit-mask-size:cover; mask-size:cover;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:top center; mask-position:top center;
+}
+

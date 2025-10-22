@@ -9,6 +9,11 @@ import ChatDock from "@/components/chat/ChatDock";
 import ChatOverlay from "@/components/chat/ChatOverlay";
 import { ChatProvider } from "@/contexts/ChatProvider";
 
+// Runtime champagne overlay fallbacks (client-side safe import)
+if (typeof window !== "undefined") {
+  import("@/lib/visual/champagneOverlays").then((m) => m.ensureChampagneCSSVars());
+}
+
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
