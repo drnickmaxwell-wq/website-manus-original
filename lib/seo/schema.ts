@@ -5,8 +5,8 @@ export function treatmentSchemaJSONLD(opts: {
   sameAs?: string[];
 }) {
   const json = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalProcedure',
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
     name: opts.name,
     description: opts.description,
     url: opts.url,
@@ -17,13 +17,14 @@ export function treatmentSchemaJSONLD(opts: {
 
 export function faqSchemaJSONLD(items: { q: string; a: string }[]) {
   const json = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: items.map(i => ({
-      '@type': 'Question',
-      name: i.q,
-      acceptedAnswer: { '@type': 'Answer', text: i.a }
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a }
     }))
   };
   return JSON.stringify(json);
 }
+

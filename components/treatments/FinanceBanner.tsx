@@ -1,16 +1,17 @@
-'use client';
+"use client";
 export default function FinanceBanner() {
   return (
-    <section className="relative my-10 rounded-2xl overflow-hidden smh-gold-border">
-      <div className="smh-gradient-bg py-8 px-6 md:px-10">
+    <section className="relative my-10 rounded-2xl smh-glass">
+      <div className="p-6 md:p-8">
         <h3 className="smh-heading text-xl md:text-2xl">0% Finance Available</h3>
-        <p className="max-w-3xl mt-2 opacity-90">
-          Spread the cost of your treatment with flexible monthly plans.
+        <p className="smh-text-dim mt-2 max-w-2xl">
+          Spread the cost of your treatment with flexible monthly plans, including interest-free options (subject to status).
         </p>
         <div className="mt-4">
-          <a href="/contact" className="smh-btn">Check Eligibility</a>
+          <a href="/fees" className="smh-btn">Check Eligibility</a>
         </div>
       </div>
     </section>
   );
 }
+
