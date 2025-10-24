@@ -1,58 +1,16 @@
-/* BEGIN GENERATED */
-import TreatmentLayout from "@/components/treatments/TreatmentLayout";
-import ViewerShell from "@/components/treatments/ViewerShell";
-import FinanceBanner from "@/components/treatments/FinanceBanner";
-import FaqAccordion, { FaqItem } from "@/components/treatments/FaqAccordion";
-import { treatmentSchemaJSONLD, faqSchemaJSONLD } from "@/lib/seo/schema";
+import TreatmentLayout from '@/components/treatments/TreatmentLayout';
+import ViewerShell from '@/components/treatments/ViewerShell';
 
-export const metadata = {
-  title: "3D Scanning & Printing | St Mary’s House Dental Care",
-  description: "Premium 3D Scanning & Printing in Shoreham-by-Sea delivering accurate digital impressions and rapid custom appliances."
-};
-
-const FAQ: FaqItem[] = [
-  { question: "Does it hurt?", answer: "Most patients report minimal discomfort. We use gentle, modern techniques." },
-  { question: "How long does it take?", answer: "Typical appointments take around 45 minutes; we’ll tailor to your case." },
-  { question: "Is finance available?", answer: "Yes—0% and flexible plans are available, subject to status." },
-  { question: "Is it right for me?", answer: "We’ll assess your goals and health to advise the safest, most aesthetic plan." },
-  { question: "Aftercare?", answer: "We provide a personalised plan to keep your results looking their best." }
-];
+export const metadata = { title: '3D Scanning and Printing' };
 
 export default function Page(){
-  const url = typeof window === "undefined" ? "" : window.location.href;
-
   return (
     <TreatmentLayout
-      eyebrow="St Mary’s House Dental"
-      title="3D Scanning & Printing"
-      subtitle="Advanced care with precision, comfort and a natural aesthetic.">
-      {/* JSON-LD */}
-      <script type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: treatmentSchemaJSONLD({
-          name: "3D Scanning & Printing",
-          description: "Premium 3D Scanning & Printing in Shoreham-by-Sea delivering accurate digital impressions and rapid custom appliances.",
-          url: url
-        })}} />
-      <script type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqSchemaJSONLD(FAQ.map(f => ({ q: f.question, a: f.answer }))) }} />
-
-      {/* Intro copy */}
-      <section className="prose prose-invert max-w-3xl my-10 smh-text">
-        <p>Our 3D scanning and printing suite captures precise digital impressions and fabricates appliances without messy moulds.</p>
-        <p className="smh-text-dim mt-3">We streamline treatment timelines by modelling restorations virtually and printing guides or prototypes in-house for consistent, comfortable results.</p>
-      </section>
-
-      {/* 3D viewer slot */}
-      <ViewerShell title="Explore in 3D">
-        {/* Mount your R3F canvas here later */}
-      </ViewerShell>
-
-      {/* Finance */}
-      <FinanceBanner />
-
-      {/* FAQ */}
-      <FaqAccordion items={FAQ} />
+      title="3D Scanning and Printing"
+      subtitle="From scan to smile—see how our digital lab streamlines care."
+    >
+      <p className="smh-text-dim">High-resolution imaging and additive manufacturing create precise treatment models.</p>
+      <ViewerShell />
     </TreatmentLayout>
   );
 }
-/* END GENERATED */

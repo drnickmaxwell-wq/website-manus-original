@@ -1,18 +1,16 @@
-"use client";
-import React, { ReactNode } from "react";
-type Props = { title?: string; children?: ReactNode; };
-export default function ViewerShell({ title="Interactive 3D Viewer", children }: Props) {
+'use client';
+import React from 'react';
+
+export default function ViewerShell({ title = 'Explore in 3D' }:{ title?: string }){
   return (
-    <section id="viewer" className="my-10 md:my-16 rounded-2xl smh-glass">
-      <header className="flex flex-col gap-2 p-4 md:p-6 border-b border-[color:color-mix(in_oklab,var(--smh-text) 12%,transparent)]">
+    <section id="viewer" className="relative my-10 rounded-2xl smh-glass overflow-hidden">
+      <header className="p-6 border-b border-white/10">
         <h2 className="smh-heading text-xl md:text-2xl">{title}</h2>
-        <span className="text-xs uppercase tracking-[0.35em] smh-text-dim">Rotate · Zoom · Explore</span>
+        <p className="smh-text-dim text-sm mt-1">Rotate · Zoom · Explore — best on modern devices.</p>
       </header>
-      <div className="relative aspect-video rounded-xl overflow-hidden m-4 md:m-6">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,.06),transparent_60%)]" />
-        {children ?? <p className="absolute inset-0 grid place-items-center opacity-80">3D viewer coming soon</p>}
+      <div className="aspect-video grid place-items-center">
+        <p className="opacity-70">3D viewer placeholder — we’ll mount an R3F Canvas later.</p>
       </div>
-      <p className="px-4 pb-6 smh-text-dim text-sm">Optimised for modern devices.</p>
     </section>
   );
 }
