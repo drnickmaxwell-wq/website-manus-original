@@ -80,28 +80,50 @@ html{color:var(--smh-text);background:var(--smh-bg);font-family:var(--font-body)
   animation:smhHueDrift 15s var(--motion-ease) infinite alternate;
 }
 
+.smh-hero-gradient{
+  background-image:var(--smh-gradient);
+  background-size:cover;
+  background-position:center;
+}
+
 /* Gold accent border + glow */
 .smh-gold-border{
   border:1px solid color-mix(in oklab,var(--smh-accent-gold) 70%,transparent);
   box-shadow:var(--glow-gold);
 }
 
-/* Film grain overlay — swaps to mobile & dark variants where available */
-.smh-film-grain{
-  pointer-events:none;
-  background-image:url("/textures/film-grain-desktop.webp");
-  background-size:cover; background-position:center;
-  opacity:var(--film-grain-opacity);
-  mix-blend-mode:overlay;
-}
 
-/* Particle overlays (static) */
+/* Cinematic overlays backed by real assets when present */
+.smh-film-grain,
 .smh-particles-gold,
 .smh-particles-teal,
-.smh-particles-magenta{pointer-events:none;background-size:cover;background-position:center;opacity:var(--particles-opacity)}
-.smh-particles-gold{background-image:url("/textures/particles-gold.webp")}
-.smh-particles-teal{background-image:url("/textures/particles-teal.webp")}
-.smh-particles-magenta{background-image:url("/textures/particles-magenta.webp")}
+.smh-particles-magenta,
+.smh-glow-dust{
+  pointer-events:none;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+
+.smh-film-grain{
+  background-image:var(--smh-film-grain-desktop-url, url("/textures/film-grain-desktop.webp"));
+}
+
+.smh-particles-gold{
+  background-image:var(--smh-particles-gold-desktop-url, url("/textures/particles-gold.webp"));
+}
+
+.smh-particles-teal{
+  background-image:var(--smh-particles-teal-desktop-url, url("/textures/particles-teal.webp"));
+}
+
+.smh-particles-magenta{
+  background-image:var(--smh-particles-magenta-desktop-url, url("/textures/particles-magenta.webp"));
+}
+
+.smh-glow-dust{
+  background-image:var(--smh-glow-dust-desktop-url, url("/overlays/glow-dust.webp"));
+}
 
 /* Wave mask helper */
 .smh-wave-mask{
@@ -148,20 +170,58 @@ html{color:var(--smh-text);background:var(--smh-bg);font-family:var(--font-body)
 /* 5) Responsive Asset Swaps   */
 /* --------------------------- */
 
-/* Use mobile grain where present */
-@media (max-width:767px){
-  .smh-film-grain{background-image:url("/textures/film-grain-mobile.webp")}
-  .smh-particles-gold{background-image:url("/textures/particles-gold-mobile.webp")}
-  .smh-particles-teal{background-image:url("/textures/particles-teal-mobile.webp")}
-  .smh-particles-magenta{background-image:url("/textures/particles-magenta-mobile.webp")}
+@media (max-width:768px){
+  .smh-film-grain{
+    background-image:var(--smh-film-grain-mobile-url, url("/textures/film-grain-mobile.webp"));
+  }
+  .smh-particles-gold{
+    background-image:var(--smh-particles-gold-mobile-url, url("/textures/particles-gold-mobile.webp"));
+  }
+  .smh-particles-teal{
+    background-image:var(--smh-particles-teal-mobile-url, url("/textures/particles-teal-mobile.webp"));
+  }
+  .smh-particles-magenta{
+    background-image:var(--smh-particles-magenta-mobile-url, url("/textures/particles-magenta-mobile.webp"));
+  }
+  .smh-glow-dust{
+    background-image:var(--smh-glow-dust-mobile-url, url("/overlays/glow-dust-mobile.webp"));
+  }
 }
 
-/* Prefer dark grain in dark mode if provided */
 @media (prefers-color-scheme:dark){
-  .smh-film-grain{background-image:url("/textures/film-grain-dark.webp")}
+  .smh-film-grain{
+    background-image:var(--smh-film-grain-dark-desktop-url, url("/textures/film-grain-dark.webp"));
+  }
+  .smh-particles-gold{
+    background-image:var(--smh-particles-gold-dark-desktop-url, url("/textures/particles-gold-dark.webp"));
+  }
+  .smh-particles-teal{
+    background-image:var(--smh-particles-teal-dark-desktop-url, url("/textures/particles-teal-dark.webp"));
+  }
+  .smh-particles-magenta{
+    background-image:var(--smh-particles-magenta-dark-desktop-url, url("/textures/particles-magenta-dark.webp"));
+  }
+  .smh-glow-dust{
+    background-image:var(--smh-glow-dust-dark-desktop-url, url("/overlays/glow-dust-dark.webp"));
+  }
 }
-@media (prefers-color-scheme:dark) and (max-width:767px){
-  .smh-film-grain{background-image:url("/textures/film-grain-mobile-dark.webp")}
+
+@media (prefers-color-scheme:dark) and (max-width:768px){
+  .smh-film-grain{
+    background-image:var(--smh-film-grain-dark-mobile-url, url("/textures/film-grain-mobile-dark.webp"));
+  }
+  .smh-particles-gold{
+    background-image:var(--smh-particles-gold-dark-mobile-url, url("/textures/particles-gold-mobile-dark.webp"));
+  }
+  .smh-particles-teal{
+    background-image:var(--smh-particles-teal-dark-mobile-url, url("/textures/particles-teal-mobile-dark.webp"));
+  }
+  .smh-particles-magenta{
+    background-image:var(--smh-particles-magenta-dark-mobile-url, url("/textures/particles-magenta-mobile-dark.webp"));
+  }
+  .smh-glow-dust{
+    background-image:var(--smh-glow-dust-dark-mobile-url, url("/overlays/glow-dust-mobile-dark.webp"));
+  }
 }
 
 /* --------------------------- */
@@ -174,61 +234,6 @@ html{color:var(--smh-text);background:var(--smh-bg);font-family:var(--font-body)
   .smh-gradient-bg{animation:none}
   [class*="smh-particles-"]{animation:none}
 }
-
-/* === Champagne runtime fallback bindings (non-destructive) === */
-.smh-film-grain{
-  pointer-events:none;
-  background-image:
-    var(--smh-film-grain-desktop-url, url("/textures/film-grain-desktop.webp"));
-  background-size:cover;
-  opacity:var(--film-grain-opacity);
-  mix-blend-mode:overlay;
-}
-@media (max-width:640px){
-  .smh-film-grain{
-    background-image:
-      var(--smh-film-grain-mobile-url, url("/textures/film-grain-mobile.webp"));
-  }
-}
-@media (prefers-color-scheme: dark){
-  .smh-film-grain{
-    background-image:
-      var(--smh-film-grain-dark-desktop-url, url("/textures/film-grain-dark.webp"));
-  }
-}
-@media (prefers-color-scheme: dark) and (max-width:640px){
-  .smh-film-grain{
-    background-image:
-      var(--smh-film-grain-dark-mobile-url, url("/textures/film-grain-mobile-dark.webp"));
-  }
-}
-
-.smh-particles-gold{
-  pointer-events:none; background-size:cover; mix-blend-mode:screen; opacity:var(--particles-opacity);
-  background-image:
-    var(--smh-particles-gold-desktop-url, url("/textures/particles-gold.webp"));
-}
-@media (max-width:640px){ .smh-particles-gold{ background-image: var(--smh-particles-gold-mobile-url, url("/textures/particles-gold-mobile.webp")); } }
-@media (prefers-color-scheme: dark){ .smh-particles-gold{ background-image: var(--smh-particles-gold-dark-desktop-url, url("/textures/particles-gold.webp")); } }
-@media (prefers-color-scheme: dark) and (max-width:640px){ .smh-particles-gold{ background-image: var(--smh-particles-gold-dark-mobile-url, url("/textures/particles-gold-mobile.webp")); } }
-
-.smh-particles-teal{
-  pointer-events:none; background-size:cover; mix-blend-mode:screen; opacity:var(--particles-opacity);
-  background-image:
-    var(--smh-particles-teal-desktop-url, url("/textures/particles-teal.webp"));
-}
-@media (max-width:640px){ .smh-particles-teal{ background-image: var(--smh-particles-teal-mobile-url, url("/textures/particles-teal-mobile.webp")); } }
-@media (prefers-color-scheme: dark){ .smh-particles-teal{ background-image: var(--smh-particles-teal-dark-desktop-url, url("/textures/particles-teal.webp")); } }
-@media (prefers-color-scheme: dark) and (max-width:640px){ .smh-particles-teal{ background-image: var(--smh-particles-teal-dark-mobile-url, url("/textures/particles-teal-mobile.webp")); } }
-
-.smh-particles-magenta{
-  pointer-events:none; background-size:cover; mix-blend-mode:screen; opacity:var(--particles-opacity);
-  background-image:
-    var(--smh-particles-magenta-desktop-url, url("/textures/particles-magenta.webp"));
-}
-@media (max-width:640px){ .smh-particles-magenta{ background-image: var(--smh-particles-magenta-mobile-url, url("/textures/particles-magenta-mobile.webp")); } }
-@media (prefers-color-scheme: dark){ .smh-particles-magenta{ background-image: var(--smh-particles-magenta-dark-desktop-url, url("/textures/particles-magenta.webp")); } }
-@media (prefers-color-scheme: dark) and (max-width:640px){ .smh-particles-magenta{ background-image: var(--smh-particles-magenta-dark-mobile-url, url("/textures/particles-magenta-mobile.webp")); } }
 
 .smh-wave-mask{
   -webkit-mask-image:url("/waves/smh-wave-mask.svg");

@@ -11,6 +11,20 @@ type Variant = "light" | "dark";
 type Kind = "grain" | "gold" | "teal" | "magenta";
 
 const VERSION = "v2025.10.22"; // bump to regenerate
+const MIN_ASSET_SIZE = 1024; // mirror server-side probe threshold
+
+async function assetHasRealFile(pathname: string) {
+  try {
+    const res = await fetch(pathname, { method: "HEAD", cache: "no-store" });
+    if (!res.ok) return false;
+    const len = res.headers.get("content-length");
+    if (!len) return false;
+    const size = Number.parseInt(len, 10);
+    return !Number.isNaN(size) && size >= MIN_ASSET_SIZE;
+  } catch {
+    return false;
+  }
+}
 
 function key(kind: Kind, variant: Variant, mobile: boolean) {
   return `SMH_CHAMPAGNE_${VERSION}_${kind}_${variant}_${mobile ? "m" : "d"}`;
@@ -115,32 +129,45 @@ async function generate(kind: Kind, variant: Variant, mobile: boolean) {
   return dataURL;
 }
 
+type AssetConfig = {
+  kind: Kind;
+  variant: Variant;
+  mobile: boolean;
+  cssVar: string;
+  path: string;
+};
+
+const ASSET_CONFIG: AssetConfig[] = [
+  { kind: "grain", variant: "light", mobile: false, cssVar: "--smh-film-grain-desktop-url", path: "/textures/film-grain-desktop.webp" },
+  { kind: "grain", variant: "light", mobile: true, cssVar: "--smh-film-grain-mobile-url", path: "/textures/film-grain-mobile.webp" },
+  { kind: "grain", variant: "dark", mobile: false, cssVar: "--smh-film-grain-dark-desktop-url", path: "/textures/film-grain-dark.webp" },
+  { kind: "grain", variant: "dark", mobile: true, cssVar: "--smh-film-grain-dark-mobile-url", path: "/textures/film-grain-mobile-dark.webp" },
+
+  { kind: "gold", variant: "light", mobile: false, cssVar: "--smh-particles-gold-desktop-url", path: "/textures/particles-gold.webp" },
+  { kind: "gold", variant: "light", mobile: true, cssVar: "--smh-particles-gold-mobile-url", path: "/textures/particles-gold-mobile.webp" },
+  { kind: "gold", variant: "dark", mobile: false, cssVar: "--smh-particles-gold-dark-desktop-url", path: "/textures/particles-gold-dark.webp" },
+  { kind: "gold", variant: "dark", mobile: true, cssVar: "--smh-particles-gold-dark-mobile-url", path: "/textures/particles-gold-mobile-dark.webp" },
+
+  { kind: "teal", variant: "light", mobile: false, cssVar: "--smh-particles-teal-desktop-url", path: "/textures/particles-teal.webp" },
+  { kind: "teal", variant: "light", mobile: true, cssVar: "--smh-particles-teal-mobile-url", path: "/textures/particles-teal-mobile.webp" },
+  { kind: "teal", variant: "dark", mobile: false, cssVar: "--smh-particles-teal-dark-desktop-url", path: "/textures/particles-teal-dark.webp" },
+  { kind: "teal", variant: "dark", mobile: true, cssVar: "--smh-particles-teal-dark-mobile-url", path: "/textures/particles-teal-mobile-dark.webp" },
+
+  { kind: "magenta", variant: "light", mobile: false, cssVar: "--smh-particles-magenta-desktop-url", path: "/textures/particles-magenta.webp" },
+  { kind: "magenta", variant: "light", mobile: true, cssVar: "--smh-particles-magenta-mobile-url", path: "/textures/particles-magenta-mobile.webp" },
+  { kind: "magenta", variant: "dark", mobile: false, cssVar: "--smh-particles-magenta-dark-desktop-url", path: "/textures/particles-magenta-dark.webp" },
+  { kind: "magenta", variant: "dark", mobile: true, cssVar: "--smh-particles-magenta-dark-mobile-url", path: "/textures/particles-magenta-mobile-dark.webp" },
+];
+
 export async function ensureChampagneCSSVars() {
   if (typeof window === "undefined") return; // server safety
   const root = document.documentElement;
-  const pairs: Array<[Kind, Variant, boolean, string]> = [
-    ["grain","light",false,"--smh-film-grain-desktop-url"],
-    ["grain","light",true ,"--smh-film-grain-mobile-url"],
-    ["grain","dark" ,false,"--smh-film-grain-dark-desktop-url"],
-    ["grain","dark" ,true ,"--smh-film-grain-dark-mobile-url"],
-
-    ["gold","light",false,"--smh-particles-gold-desktop-url"],
-    ["gold","light",true ,"--smh-particles-gold-mobile-url"],
-    ["gold","dark" ,false,"--smh-particles-gold-dark-desktop-url"],
-    ["gold","dark" ,true ,"--smh-particles-gold-dark-mobile-url"],
-
-    ["teal","light",false,"--smh-particles-teal-desktop-url"],
-    ["teal","light",true ,"--smh-particles-teal-mobile-url"],
-    ["teal","dark" ,false,"--smh-particles-teal-dark-desktop-url"],
-    ["teal","dark" ,true ,"--smh-particles-teal-dark-mobile-url"],
-
-    ["magenta","light",false,"--smh-particles-magenta-desktop-url"],
-    ["magenta","light",true ,"--smh-particles-magenta-mobile-url"],
-    ["magenta","dark" ,false,"--smh-particles-magenta-dark-desktop-url"],
-    ["magenta","dark" ,true ,"--smh-particles-magenta-dark-mobile-url"],
-  ];
-
-  for (const [kind, variant, mobile, cssVar] of pairs) {
+  for (const asset of ASSET_CONFIG) {
+    const { kind, variant, mobile, cssVar, path } = asset;
+    if (await assetHasRealFile(path)) {
+      root.style.removeProperty(cssVar);
+      continue;
+    }
     const k = key(kind, variant, mobile);
     let url = localStorage.getItem(k);
     if (!url) {

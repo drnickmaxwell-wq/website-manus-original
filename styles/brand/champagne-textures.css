@@ -1,30 +1,27 @@
 /* Responsive bindings for Champagne textures */
 :root {
-  --smh-film-grain-desktop: url("/textures/film-grain-desktop.webp");
-  --smh-particles-gold:     url("/textures/particles-gold.webp");
-  --smh-particles-teal:     url("/textures/particles-teal.webp");
-  --smh-particles-magenta:  url("/textures/particles-magenta.webp");
+  --smh-film-grain-desktop-url: url("/textures/film-grain-desktop.webp");
+  --smh-film-grain-mobile-url: url("/textures/film-grain-mobile.webp");
+  --smh-film-grain-dark-desktop-url: url("/textures/film-grain-dark.webp");
+  --smh-film-grain-dark-mobile-url: url("/textures/film-grain-mobile-dark.webp");
 
-  --smh-glow-dust:          url("/overlays/glow-dust.webp");
-  --smh-glow-dust-dark:     url("/overlays/glow-dust-dark.webp");
+  --smh-particles-gold-desktop-url: url("/textures/particles-gold.webp");
+  --smh-particles-gold-mobile-url: url("/textures/particles-gold-mobile.webp");
+  --smh-particles-gold-dark-desktop-url: url("/textures/particles-gold-dark.webp");
+  --smh-particles-gold-dark-mobile-url: url("/textures/particles-gold-mobile-dark.webp");
+
+  --smh-particles-teal-desktop-url: url("/textures/particles-teal.webp");
+  --smh-particles-teal-mobile-url: url("/textures/particles-teal-mobile.webp");
+  --smh-particles-teal-dark-desktop-url: url("/textures/particles-teal-dark.webp");
+  --smh-particles-teal-dark-mobile-url: url("/textures/particles-teal-mobile-dark.webp");
+
+  --smh-particles-magenta-desktop-url: url("/textures/particles-magenta.webp");
+  --smh-particles-magenta-mobile-url: url("/textures/particles-magenta-mobile.webp");
+  --smh-particles-magenta-dark-desktop-url: url("/textures/particles-magenta-dark.webp");
+  --smh-particles-magenta-dark-mobile-url: url("/textures/particles-magenta-mobile-dark.webp");
+
+  --smh-glow-dust-desktop-url: url("/overlays/glow-dust.webp");
+  --smh-glow-dust-mobile-url: url("/overlays/glow-dust-mobile.webp");
+  --smh-glow-dust-dark-desktop-url: url("/overlays/glow-dust-dark.webp");
+  --smh-glow-dust-dark-mobile-url: url("/overlays/glow-dust-mobile-dark.webp");
 }
-
-/* Prefer mobile-optimized textures under 640px width */
-@media (max-width: 640px) {
-  :root {
-    --smh-particles-gold:     url("/textures/particles-gold-mobile.webp");
-    --smh-particles-teal:     url("/textures/particles-teal-mobile.webp");
-    --smh-particles-magenta:  url("/textures/particles-magenta-mobile.webp");
-    --smh-glow-dust-dark:     url("/overlays/glow-dust-mobile-dark.webp");
-  }
-}
-
-/* Utility classes already used in /champagne */
-.smh-film-grain    { background-image: var(--smh-film-grain-desktop); }
-.smh-particles-gold{ background-image: var(--smh-particles-gold); }
-.smh-particles-teal{ background-image: var(--smh-particles-teal); }
-.smh-particles-magenta{ background-image: var(--smh-particles-magenta); }
-
-html[data-theme="dark"] .smh-glow-dust { background-image: var(--smh-glow-dust-dark); }
-html[data-theme="light"] .smh-glow-dust,
-html[data-theme="auto"][data-auto-dark="false"] .smh-glow-dust { background-image: var(--smh-glow-dust); }

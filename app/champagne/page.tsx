@@ -2,49 +2,70 @@
 import { useEffect, useState } from "react";
 import { ensureChampagneCSSVars, champagneReady } from "@/lib/visual/champagneOverlays";
 
-type Row = { label: string; cssVar?: string; path?: string };
+type AssetDefinition = { label: string; path: string };
 
-const ASSETS: Row[] = [
-  { label: "Film grain (desktop)", cssVar: "--smh-film-grain-desktop-url", path: "/textures/film-grain-desktop.webp" },
-  { label: "Film grain (mobile)",  cssVar: "--smh-film-grain-mobile-url",  path: "/textures/film-grain-mobile.webp" },
-  { label: "Film grain DARK (desktop)", cssVar: "--smh-film-grain-dark-desktop-url", path: "/textures/film-grain-dark.webp" },
-  { label: "Film grain DARK (mobile)",  cssVar: "--smh-film-grain-dark-mobile-url",  path: "/textures/film-grain-mobile-dark.webp" },
+type AuditRow = { path: string; source: "file" | "fallback" };
 
-  { label: "Particles GOLD (desktop)",   cssVar: "--smh-particles-gold-desktop-url",   path: "/textures/particles-gold.webp" },
-  { label: "Particles GOLD (mobile)",    cssVar: "--smh-particles-gold-mobile-url",    path: "/textures/particles-gold-mobile.webp" },
-  { label: "Particles GOLD DARK (desktop)", cssVar: "--smh-particles-gold-dark-desktop-url", path: "/textures/particles-gold.webp" },
-  { label: "Particles GOLD DARK (mobile)",  cssVar: "--smh-particles-gold-dark-mobile-url",  path: "/textures/particles-gold-mobile.webp" },
+const ASSETS: AssetDefinition[] = [
+  { label: "Film grain (desktop)", path: "/textures/film-grain-desktop.webp" },
+  { label: "Film grain (mobile)", path: "/textures/film-grain-mobile.webp" },
+  { label: "Film grain DARK (desktop)", path: "/textures/film-grain-dark.webp" },
+  { label: "Film grain DARK (mobile)", path: "/textures/film-grain-mobile-dark.webp" },
 
-  { label: "Particles TEAL (desktop)",   cssVar: "--smh-particles-teal-desktop-url",   path: "/textures/particles-teal.webp" },
-  { label: "Particles TEAL (mobile)",    cssVar: "--smh-particles-teal-mobile-url",    path: "/textures/particles-teal-mobile.webp" },
-  { label: "Particles TEAL DARK (desktop)", cssVar: "--smh-particles-teal-dark-desktop-url", path: "/textures/particles-teal.webp" },
-  { label: "Particles TEAL DARK (mobile)",  cssVar: "--smh-particles-teal-dark-mobile-url",  path: "/textures/particles-teal-mobile.webp" },
+  { label: "Particles GOLD (desktop)", path: "/textures/particles-gold.webp" },
+  { label: "Particles GOLD (mobile)", path: "/textures/particles-gold-mobile.webp" },
+  { label: "Particles GOLD DARK (desktop)", path: "/textures/particles-gold-dark.webp" },
+  { label: "Particles GOLD DARK (mobile)", path: "/textures/particles-gold-mobile-dark.webp" },
 
-  { label: "Particles MAGENTA (desktop)",   cssVar: "--smh-particles-magenta-desktop-url",   path: "/textures/particles-magenta.webp" },
-  { label: "Particles MAGENTA (mobile)",    cssVar: "--smh-particles-magenta-mobile-url",    path: "/textures/particles-magenta-mobile.webp" },
-  { label: "Particles MAGENTA DARK (desktop)", cssVar: "--smh-particles-magenta-dark-desktop-url", path: "/textures/particles-magenta.webp" },
-  { label: "Particles MAGENTA DARK (mobile)",  cssVar: "--smh-particles-magenta-dark-mobile-url",  path: "/textures/particles-magenta-mobile.webp" },
+  { label: "Particles TEAL (desktop)", path: "/textures/particles-teal.webp" },
+  { label: "Particles TEAL (mobile)", path: "/textures/particles-teal-mobile.webp" },
+  { label: "Particles TEAL DARK (desktop)", path: "/textures/particles-teal-dark.webp" },
+  { label: "Particles TEAL DARK (mobile)", path: "/textures/particles-teal-mobile-dark.webp" },
+
+  { label: "Particles MAGENTA (desktop)", path: "/textures/particles-magenta.webp" },
+  { label: "Particles MAGENTA (mobile)", path: "/textures/particles-magenta-mobile.webp" },
+  { label: "Particles MAGENTA DARK (desktop)", path: "/textures/particles-magenta-dark.webp" },
+  { label: "Particles MAGENTA DARK (mobile)", path: "/textures/particles-magenta-mobile-dark.webp" },
+
+  { label: "Glow dust (desktop)", path: "/overlays/glow-dust.webp" },
+  { label: "Glow dust (mobile)", path: "/overlays/glow-dust-mobile.webp" },
+  { label: "Glow dust DARK (desktop)", path: "/overlays/glow-dust-dark.webp" },
+  { label: "Glow dust DARK (mobile)", path: "/overlays/glow-dust-mobile-dark.webp" },
 
   { label: "Wave Mask SVG", path: "/waves/smh-wave-mask.svg" },
 ];
 
-export default function Page(){
-  const [rows, setRows] = useState<{label:string; source:"file"|"generated"|"missing"}[]>([]);
+export default function Page() {
+  const [rows, setRows] = useState<Array<{ label: string; source: AuditRow["source"] }>>([]);
 
   useEffect(() => {
-    // generate fallbacks immediately (no-op if present)
-    ensureChampagneCSSVars().then(() => {
+    let cancelled = false;
+
+    async function hydrate() {
+      await ensureChampagneCSSVars();
       champagneReady();
-      const next = ASSETS.map((a) => {
-        if (a.cssVar) {
-          const v = getComputedStyle(document.documentElement).getPropertyValue(a.cssVar).trim();
-          if (v && v.startsWith("url(\"data:image/webp")) return { label: a.label, source: "generated" as const };
+
+      try {
+        const res = await fetch("/api/champagne-audit", { cache: "no-store" });
+        if (!res.ok) throw new Error(`Audit failed: ${res.status}`);
+        const data: { assets?: AuditRow[] } = await res.json();
+        const map = new Map((data.assets ?? []).map((asset) => [asset.path, asset.source]));
+        const mapped = ASSETS.map((asset) => ({
+          label: asset.label,
+          source: map.get(asset.path) ?? "fallback",
+        }));
+        if (!cancelled) setRows(mapped);
+      } catch {
+        if (!cancelled) {
+          setRows(ASSETS.map((asset) => ({ label: asset.label, source: "fallback" as const })));
         }
-        // naive file probe: we can't read file sizes at runtime, so mark as file if no generated var present
-        return { label: a.label, source: a.cssVar ? "file" : "file" };
-      });
-      setRows(next);
-    });
+      }
+    }
+
+    hydrate();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
@@ -58,20 +79,34 @@ export default function Page(){
             <tr key={r.label} className="border-t border-white/10">
               <td className="py-2">{r.label}</td>
               <td className="py-2">
-                {r.source === "generated" ? "Generated fallback (Canvas)" : "File / default"}
+                {r.source === "file" ? (
+                  <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                    File / default
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-200">
+                    Canvas fallback (runtime)
+                  </span>
+                )}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
+      <p className="mt-3 text-xs text-white/60">
+        Missing variants will display the Canvas fallback until real uploads are available.
+      </p>
+
       <section className="mt-10">
         <h2 className="smh-heading text-xl">Visual Proof</h2>
-        <div className="relative overflow-hidden rounded-2xl mt-4" style={{minHeight:"36vh"}}>
-          <div className="smh-film-grain absolute inset-0" aria-hidden />
-          <div className="smh-particles-gold absolute inset-0" aria-hidden />
-          <div className="smh-particles-teal absolute inset-0" aria-hidden />
-          <div className="smh-particles-magenta absolute inset-0" aria-hidden />
+        <div className="relative mt-4 overflow-hidden rounded-2xl" style={{ minHeight: "36vh" }}>
+          <div className="smh-hero-gradient smh-wave-mask h-full" aria-hidden />
+          <div className="smh-film-grain pointer-events-none absolute inset-0 mix-blend-overlay" aria-hidden />
+          <div className="smh-particles-gold pointer-events-none absolute inset-0 mix-blend-screen" aria-hidden />
+          <div className="smh-particles-teal pointer-events-none absolute inset-0 mix-blend-screen" aria-hidden />
+          <div className="smh-particles-magenta pointer-events-none absolute inset-0 mix-blend-screen" aria-hidden />
+          <div className="smh-glow-dust pointer-events-none absolute inset-0 mix-blend-screen opacity-40" aria-hidden />
           <div className="relative z-10 p-6">
             <p className="smh-text-dim">If you see soft texture + subtle sparkle, fallbacks are working.</p>
           </div>
