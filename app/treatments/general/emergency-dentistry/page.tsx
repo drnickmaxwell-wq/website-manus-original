@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Emergency Dentistry"
-      subtitle="Immediate care to relieve pain and stabilise your smile."
+      subtitle="Rapid relief with same-day diagnostics and care."
     >
-      <p className="smh-text-dim">Rapid diagnostics, gentle relief and priority follow-up when you need us most.</p>
+      <p className="smh-text-dim">Urgent assessments, digital imaging, and calming support when you need it most.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

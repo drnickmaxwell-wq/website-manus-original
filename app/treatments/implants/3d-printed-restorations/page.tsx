@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="3D Printed Restorations"
-      subtitle="Digitally fabricated implant crowns for seamless integration."
+      subtitle="Digitally crafted implant restorations with a seamless fit."
     >
-      <p className="smh-text-dim">In-house milling and printing provide precise fits and refined finishes.</p>
+      <p className="smh-text-dim">In-house printing speeds delivery while keeping aesthetics in our control.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

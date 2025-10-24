@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Tooth-Coloured Fillings"
-      subtitle="Natural-looking repairs blended seamlessly with your enamel."
+      subtitle="Seamless repairs matched to your natural shade and shape."
     >
-      <p className="smh-text-dim">Durable composites restore structure while preserving healthy tooth tissue.</p>
+      <p className="smh-text-dim">We sculpt composite restorations that blend invisibly with your smile.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

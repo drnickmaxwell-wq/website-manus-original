@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="The Wand Painless Numbing"
-      subtitle="Computer-assisted anaesthesia for a gentler numbing experience."
+      subtitle="Computer-controlled anaesthesia for a calmer experience."
     >
-      <p className="smh-text-dim">Controlled delivery calms sensitivity and keeps treatment comfortable.</p>
+      <p className="smh-text-dim">Gentle delivery keeps you comfortable before, during, and after treatment.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

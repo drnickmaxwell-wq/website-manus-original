@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="3D Implants Overview"
-      subtitle="An introduction to our fully digital implant experience."
+      subtitle="See how digital planning elevates every stage of implant care."
     >
-      <p className="smh-text-dim">We plan, guide and restore implants with precision-led technology at every step.</p>
+      <p className="smh-text-dim">From scans to final smile, technology keeps treatment predictable and personal.</p>
       <ViewerShell />
     </TreatmentLayout>
   );
