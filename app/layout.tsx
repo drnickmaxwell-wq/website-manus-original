@@ -3,6 +3,7 @@ import { Montserrat, Lora } from "next/font/google";
 import "./globals.css";
 import "../styles/tokens/smh-champagne-tokens.css";
 import "@/styles/champagne-effects.css";
+import "@/styles/champagne/overlays.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SimpleChatbot } from "@/components/ai/simple-chatbot";
 import { JsonLd, organizationSchema } from "@/components/seo/json-ld";
