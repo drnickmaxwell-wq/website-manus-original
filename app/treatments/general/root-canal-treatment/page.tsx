@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Root Canal Treatment"
-      subtitle="Precision endodontics to relieve pain and protect your tooth."
+      subtitle="Microscopic precision to save teeth comfortably and predictably."
     >
-      <p className="smh-text-dim">Microscope-assisted workflows cleanse, shape and seal comfortably.</p>
+      <p className="smh-text-dim">Digital imaging guides every step so we can protect your natural tooth.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

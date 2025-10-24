@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Soft Tissue Laser"
-      subtitle="Gentle laser therapy for precise, comfortable soft-tissue care."
+      subtitle="Precise, low-discomfort sculpting for healthier gums."
     >
-      <p className="smh-text-dim">Laser energy shapes gums, reduces bacteria and speeds recovery with minimal trauma.</p>
+      <p className="smh-text-dim">Laser therapy reshapes tissues gently while promoting fast healing.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

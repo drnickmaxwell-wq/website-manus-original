@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Sedation Dentistry"
-      subtitle="Relaxed dentistry with carefully monitored calming techniques."
+      subtitle="Relaxed appointments with carefully monitored sedation options."
     >
-      <p className="smh-text-dim">We personalise sedation levels so anxious patients feel at ease throughout care.</p>
+      <p className="smh-text-dim">Tailored techniques keep you calm while we focus on gentle, precise care.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

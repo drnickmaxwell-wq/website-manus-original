@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Fixed Braces"
-      subtitle="Precise tooth movement with discreet, custom-fitted appliances."
+      subtitle="Precise control for reliable alignment and bite correction."
     >
-      <p className="smh-text-dim">Contemporary brackets and wires guide confident, well-aligned smiles.</p>
+      <p className="smh-text-dim">We plan tooth movement digitally for efficient adjustments at every visit.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

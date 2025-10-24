@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="3D Restorative Dentistry"
-      subtitle="Comprehensive digital workflows for restorative excellence."
+      subtitle="Digital workflows for precise, minimally invasive restorations."
     >
-      <p className="smh-text-dim">Scanning, planning and fabrication unite for highly tailored smile transformations.</p>
+      <p className="smh-text-dim">We capture, plan, and deliver treatment with accuracy from start to finish.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

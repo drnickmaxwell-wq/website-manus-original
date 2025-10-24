@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Spark Aligners"
-      subtitle="Clear aligner therapy engineered for comfort and speed."
+      subtitle="Nearly invisible aligners custom-made for clarity and comfort."
     >
-      <p className="smh-text-dim">We map tooth movement digitally to deliver virtually invisible corrections.</p>
+      <p className="smh-text-dim">Track progress digitally and swap trays with guidance at each review.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

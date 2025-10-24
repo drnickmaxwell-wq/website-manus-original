@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Same-Day Implants"
-      subtitle="Streamlined placement with digital planning and onsite lab support."
+      subtitle="Immediate smiles supported by meticulous digital planning."
     >
-      <p className="smh-text-dim">Immediate loading protocols deliver a functional smile without delay.</p>
+      <p className="smh-text-dim">We combine guided surgery and provisional restorations in a single visit.</p>
       <ViewerShell />
     </TreatmentLayout>
   );

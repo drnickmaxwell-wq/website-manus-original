@@ -7,9 +7,9 @@ export default function Page(){
   return (
     <TreatmentLayout
       title="Crowns and Bridges"
-      subtitle="Digitally crafted restorations that blend strength with beauty."
+      subtitle="Digital design and handcrafted finishes for lasting restorations."
     >
-      <p className="smh-text-dim">High-definition scans guide resilient ceramics for seamless results.</p>
+      <p className="smh-text-dim">We blend strength and artistry to restore function and aesthetics together.</p>
       <ViewerShell />
     </TreatmentLayout>
   );
