@@ -1,0 +1,16 @@
+/* Champagne FX Layer Utilities */
+.smh-gradient-base {
+  background-image: var(--smh-gradient);
+  mask-image: url('/waves/smh-wave-mask.svg');
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.smh-gold-border {
+  border: 1px solid rgba(212,175,55,0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(212,175,55,0.15);
+}
+
+/* Particle & Grain utilities already defined by token opacity vars */
