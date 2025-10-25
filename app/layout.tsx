@@ -2,15 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/tokens/smh-champagne-tokens.css";
 import "@/styles/champagne-effects.css";
-import "@fontsource/inter/300.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-import "@fontsource/playfair-display/400.css";
-import "@fontsource/playfair-display/500.css";
-import "@fontsource/playfair-display/600.css";
-import "@fontsource/playfair-display/700.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SimpleChatbot } from "@/components/ai/simple-chatbot";
 import { JsonLd, organizationSchema } from "@/components/seo/json-ld";
@@ -125,3 +116,4 @@ export default function RootLayout({
     </html>
   );
 }
+
