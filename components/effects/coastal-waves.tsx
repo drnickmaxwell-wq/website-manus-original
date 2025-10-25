@@ -150,7 +150,7 @@ export function CoastalWaves({
               transition={{
                 duration: 4 + i,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
                 delay: i * 0.5,
               }}
             />

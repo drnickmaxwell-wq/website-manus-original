@@ -69,7 +69,7 @@ export function ScrollAnimation({
       transition={{
         duration,
         delay,
-        ease: 'easeOut'
+        ease: [0, 0, 0.58, 1] as [number, number, number, number],
       }}
     >
       {children}
@@ -153,15 +153,26 @@ export function StaggeredAnimation({
   const itemVariants = {
     fadeUp: {
       hidden: { opacity: 0, y: 30 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: [0, 0, 0.58, 1] as [number, number, number, number] },
+      }
     },
     fadeIn: {
       hidden: { opacity: 0 },
-      visible: { opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
+      visible: {
+        opacity: 1,
+        transition: { duration: 0.6, ease: [0, 0, 0.58, 1] as [number, number, number, number] },
+      }
     },
     scale: {
       hidden: { opacity: 0, scale: 0.8 },
-      visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } }
+      visible: {
+        opacity: 1,
+        scale: 1,
+        transition: { duration: 0.6, ease: [0, 0, 0.58, 1] as [number, number, number, number] },
+      }
     }
   };
 
@@ -248,7 +259,7 @@ export function FloatingElement({
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: 'easeInOut'
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number]
       }
     },
     horizontal: {
@@ -256,7 +267,7 @@ export function FloatingElement({
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: 'easeInOut'
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number]
       }
     },
     circular: {
@@ -265,7 +276,7 @@ export function FloatingElement({
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: 'easeInOut'
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number]
       }
     }
   };
@@ -305,13 +316,13 @@ export function MorphingShape({
         rotate: [0, 180, 360],
         borderRadius: ['50%', '30%', '50%'],
       }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: 'easeInOut'
-      }}
-    />
-  );
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: [0.42, 0, 0.58, 1] as [number, number, number, number]
+    }}
+  />
+);
 }
 
 // Preset animation components

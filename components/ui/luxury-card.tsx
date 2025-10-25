@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, type HTMLMotionProps } from 'framer-motion';
+import { motion, type HTMLMotionProps, type Variants } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface LuxuryCardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
@@ -41,8 +41,8 @@ export function LuxuryCard({
     className
   );
 
-  const cardMotionVariants = {
-    initial: { 
+  const cardMotionVariants: Variants = {
+    initial: {
       scale: 1,
       rotateX: 0,
       rotateY: 0,

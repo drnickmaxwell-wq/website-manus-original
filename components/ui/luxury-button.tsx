@@ -1,12 +1,14 @@
 import * as React from "react";
 
 type Variant = "primary" | "outline" | "solid" | "ghost";
-type Size = "sm" | "md" | "lg";
+type Size = "sm" | "md" | "lg" | "xl";
 
 export interface LuxuryButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
+  glow?: boolean;
+  shimmer?: boolean;
   /**
    * LuxuryButton renders a native <button>; composition via `asChild` is not supported.
    * This prop is intentionally typed as never to surface a TypeScript error if passed.
@@ -20,6 +22,8 @@ const LuxuryButton = React.forwardRef<HTMLButtonElement, LuxuryButtonProps>(
       variant = "primary",
       size = "md",
       className = "",
+      glow = false,
+      shimmer = false,
       disabled,
       type,
       ...props
@@ -43,9 +47,17 @@ const LuxuryButton = React.forwardRef<HTMLButtonElement, LuxuryButtonProps>(
       sm: "h-9 text-sm",
       md: "h-11 text-base",
       lg: "h-12 text-lg",
+      xl: "h-14 text-xl",
     };
 
-    const cls = [base, variants[variant], sizes[size], className]
+    const cls = [
+      base,
+      variants[variant],
+      sizes[size],
+      glow ? "glow-soft" : "",
+      shimmer ? "shimmer" : "",
+      className,
+    ]
       .filter(Boolean)
       .join(" ");
 

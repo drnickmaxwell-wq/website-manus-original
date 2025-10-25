@@ -81,13 +81,13 @@ export function ExactPixelPerfectTreatmentCards() {
               scale: [1, 1.2, 1],
               opacity: [0.1, 0.3, 0.1],
             }}
-            transition={{
-              duration: Math.random() * 15 + 10,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          />
-        ))}
+          transition={{
+            duration: Math.random() * 15 + 10,
+            repeat: Infinity,
+            ease: [0, 0, 1, 1] as [number, number, number, number],
+          }}
+        />
+      ))}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

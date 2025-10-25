@@ -119,28 +119,28 @@ export function CTASection() {
             </p>
 
             <div className="mb-12 flex flex-col justify-center gap-4 sm:flex-row">
-              <LuxuryButton
-                variant="primary"
-                size="xl"
-                glow
-                shimmer
-                className="group px-12 text-lg"
-                asChild
-              >
-                <Link href="/booking">
+              <Link href="/booking" className="inline-flex">
+                <LuxuryButton
+                  variant="primary"
+                  size="xl"
+                  glow
+                  shimmer
+                  className="group px-12 text-lg"
+                >
                   Book Free Consultation
                   <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </LuxuryButton>
+                </LuxuryButton>
+              </Link>
 
-              <LuxuryButton
-                variant="outline"
-                size="xl"
-                className="border-brand-turquoise px-12 text-lg text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
-                asChild
-              >
-                <Link href="/digital-twin">Try AI Smile Quiz</Link>
-              </LuxuryButton>
+              <Link href="/digital-twin" className="inline-flex">
+                <LuxuryButton
+                  variant="outline"
+                  size="xl"
+                  className="border-brand-turquoise px-12 text-lg text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                >
+                  Try AI Smile Quiz
+                </LuxuryButton>
+              </Link>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-brand-muted">
@@ -167,14 +167,13 @@ export function CTASection() {
               const Icon = method.icon;
               return (
                 <motion.div key={method.title} variants={itemVariants}>
-                  <LuxuryCard
-                    variant="elevated"
-                    hover
-                    glow
-                    className="group relative h-full overflow-hidden smh-gold-border"
-                    asChild
-                  >
-                    <Link href={method.href}>
+                  <Link href={method.href} className="block h-full">
+                    <LuxuryCard
+                      variant="elevated"
+                      hover
+                      glow
+                      className="group relative h-full overflow-hidden smh-gold-border"
+                    >
                       <div className="absolute inset-0 -z-[1] smh-glass" />
 
                       <div className="absolute top-4 right-4 z-20">
@@ -203,8 +202,8 @@ export function CTASection() {
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </LuxuryButton>
                       </LuxuryCardContent>
-                    </Link>
-                  </LuxuryCard>
+                    </LuxuryCard>
+                  </Link>
                 </motion.div>
               );
             })}
@@ -242,14 +241,15 @@ export function CTASection() {
                   Don't wait – we provide 24/7 emergency dental care for urgent situations.
                 </p>
 
-                <LuxuryButton
-                  variant="primary"
-                  size="lg"
-                  className="px-8"
-                  asChild
-                >
-                  <Link href="tel:01273453109">Call Emergency Line: 01273 453109</Link>
-                </LuxuryButton>
+                <Link href="tel:01273453109" className="inline-flex">
+                  <LuxuryButton
+                    variant="primary"
+                    size="lg"
+                    className="px-8"
+                  >
+                    Call Emergency Line: 01273 453109
+                  </LuxuryButton>
+                </Link>
               </LuxuryCardContent>
             </LuxuryCard>
           </motion.div>

@@ -178,7 +178,7 @@ export function ExactAdvancedWaveBackground() {
           transition={{
             duration: Math.random() * 20 + 10,
             repeat: Infinity,
-            ease: 'linear',
+            ease: [0, 0, 1, 1] as [number, number, number, number],
           }}
         />
       ))}
