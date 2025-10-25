@@ -7,6 +7,11 @@ export interface LuxuryButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
+  /**
+   * LuxuryButton renders a native <button>; composition via `asChild` is not supported.
+   * This prop is intentionally typed as never to surface a TypeScript error if passed.
+   */
+  asChild?: never;
 }
 
 const LuxuryButton = React.forwardRef<HTMLButtonElement, LuxuryButtonProps>(
