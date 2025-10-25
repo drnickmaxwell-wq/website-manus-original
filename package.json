@@ -7,6 +7,7 @@
     "build": "next build --turbopack && next-sitemap",
     "start": "next start",
     "lint": "eslint",
+    "format": "prettier -w \"**/*.{ts,tsx,js,jsx,css,md}\"",
     "clone:mobile": "node scripts/clone-mobile-assets.mjs",
     "gen:champagne": "ts-node --transpile-only scripts/generate-champagne-assets.ts",
     "audit:champagne": "node scripts/verify-champagne-assets.cjs",

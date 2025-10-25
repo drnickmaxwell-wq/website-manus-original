@@ -26,8 +26,8 @@ const config: Config = {
         "smh-dark": "var(--shadow-elevate-dark)",
       },
       fontFamily: {
-        heading: "var(--font-heading)",
-        body: "var(--font-body)",
+        heading: ["var(--font-heading)", "Playfair Display", "Times New Roman", "serif"],
+        body: ["var(--font-body)", "Inter", "system-ui", "sans-serif"],
         data: "var(--font-data)",
       },
     },

@@ -2,16 +2,16 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { 
-  Calendar, 
-  Phone, 
-  MapPin, 
-  Clock, 
+import { motion, useReducedMotion } from 'framer-motion';
+import {
+  Calendar,
+  Phone,
+  MapPin,
+  Clock,
   ArrowRight,
   Sparkles,
   Heart,
-  Shield
+  Shield,
 } from 'lucide-react';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
@@ -24,7 +24,7 @@ const contactMethods = [
     action: 'Call 01273 453109',
     href: 'tel:01273453109',
     color: 'from-brand-magenta to-brand-magenta-light',
-    badge: '24/7 Emergency'
+    badge: '24/7 Emergency',
   },
   {
     icon: Calendar,
@@ -33,7 +33,7 @@ const contactMethods = [
     action: 'Book Consultation',
     href: '/booking',
     color: 'from-brand-turquoise to-brand-turquoise-light',
-    badge: 'Same Day Available'
+    badge: 'Same Day Available',
   },
   {
     icon: MapPin,
@@ -42,74 +42,70 @@ const contactMethods = [
     action: 'Get Directions',
     href: '/contact',
     color: 'from-brand-gold to-brand-gold-light',
-    badge: 'Coastal Location'
-  }
+    badge: 'Coastal Location',
+  },
 ];
 
 const guarantees = [
   {
     icon: Shield,
     title: 'Quality Guarantee',
-    description: 'All treatments backed by our quality promise'
+    description: 'All treatments backed by our quality promise',
   },
   {
     icon: Heart,
     title: 'Comfort Promise',
-    description: 'Anxiety-free dentistry with sedation options'
+    description: 'Anxiety-free dentistry with sedation options',
   },
   {
     icon: Sparkles,
     title: 'Latest Technology',
-    description: '3D imaging, AI diagnostics, and digital twins'
-  }
+    description: '3D imaging, AI diagnostics, and digital twins',
+  },
 ];
 
+const easeInOutCubic: [number, number, number, number] = [0.65, 0.05, 0.36, 1];
+
 export function CTASection() {
+  const shouldReduceMotion = useReducedMotion();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        staggerChildren: shouldReduceMotion ? 0 : 0.12,
+        delayChildren: shouldReduceMotion ? 0 : 0.15,
+        ease: easeInOutCubic,
+      },
+    },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
-    }
+      transition: { duration: 0.6, ease: easeInOutCubic },
+    },
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-brand-background relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-turquoise/5 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-gradient-to-tr from-brand-magenta/5 to-transparent" />
-        
-        {/* Floating Particles */}
-        <div className="absolute top-20 left-20 w-2 h-2 bg-brand-gold/30 rounded-full animate-float" />
-        <div className="absolute top-40 right-32 w-3 h-3 bg-brand-turquoise/40 rounded-full animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-brand-magenta/30 rounded-full animate-float" style={{ animationDelay: '2s' }} />
-      </div>
+    <section className="relative overflow-hidden py-20 smh-gradient-bg smh-wave-mask text-brand-text">
+      <div aria-hidden className="absolute inset-0 z-0 smh-particles-gold opacity-60" />
+      <div aria-hidden className="absolute inset-0 z-10 smh-film-grain" />
 
-      <div className="container-luxury relative z-10">
+      <div className="container-luxury relative z-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
-          {/* Main CTA Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-magenta/10 to-brand-turquoise/10 rounded-full px-6 py-2 mb-6">
-              <Calendar className="w-4 h-4 text-brand-magenta" />
-              <span className="text-brand-text font-medium">Ready to Start?</span>
+          <motion.div variants={itemVariants} className="mb-16 text-center">
+            <div className="smh-glass smh-gold-border mb-6 inline-flex items-center gap-2 rounded-full px-6 py-2">
+              <Calendar className="h-4 w-4 text-brand-magenta" />
+              <span className="font-medium">Ready to Start?</span>
             </div>
 
             <h2 className="text-content-headline font-bold text-brand-text mb-6">
@@ -119,61 +115,57 @@ export function CTASection() {
               </span>
             </h2>
 
-            <p className="text-xl text-brand-muted max-w-3xl mx-auto leading-relaxed mb-8">
-              Experience the future of dentistry with our AI-powered 3D treatments, 
-              luxury coastal setting, and award-winning patient care. Book your 
-              consultation today and discover why we're "Going the Extra Smile."
+            <p className="text-content-body mx-auto mb-8 max-w-3xl text-brand-muted">
+              Experience the future of dentistry with our AI-powered 3D treatments, luxury coastal setting, and award-winning
+              patient care. Book your consultation today and discover why we're "Going the Extra Smile."
             </p>
 
-            {/* Primary CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="mb-12 flex flex-col justify-center gap-4 sm:flex-row">
               <LuxuryButton
                 variant="primary"
                 size="xl"
                 glow
                 shimmer
-                className="group text-lg px-12"
+                className="group px-12 text-lg"
                 asChild
               >
                 <Link href="/booking">
                   Book Free Consultation
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
                 </Link>
               </LuxuryButton>
-              
+
               <LuxuryButton
                 variant="outline"
                 size="xl"
-                className="border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white text-lg px-12"
+                className="border-brand-turquoise px-12 text-lg text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
                 asChild
               >
                 <Link href="/digital-twin">Try AI Smile Quiz</Link>
               </LuxuryButton>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-brand-muted">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-brand-muted">
               <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-brand-turquoise" />
+                <Shield className="h-4 w-4 text-brand-turquoise" />
                 <span>CQC Outstanding Rating</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-brand-turquoise" />
+                <Clock className="h-4 w-4 text-brand-turquoise" />
                 <span>Same-Day Appointments</span>
               </div>
               <div className="flex items-center gap-2">
-                <Heart className="w-4 h-4 text-brand-turquoise" />
+                <Heart className="h-4 w-4 text-brand-turquoise" />
                 <span>98% Patient Satisfaction</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Methods Grid */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+            className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3"
           >
-            {contactMethods.map((method, index) => {
+            {contactMethods.map((method) => {
               const Icon = method.icon;
               return (
                 <motion.div key={method.title} variants={itemVariants}>
@@ -181,46 +173,38 @@ export function CTASection() {
                     variant="elevated"
                     hover
                     glow
-                    className="h-full relative overflow-hidden group cursor-pointer"
+                    className="group relative h-full overflow-hidden smh-gold-border"
                     asChild
                   >
                     <Link href={method.href}>
-                      {/* Badge */}
+                      <div className="absolute inset-0 -z-[1] smh-glass" />
+
                       <div className="absolute top-4 right-4 z-20">
-                        <span className="bg-gradient-to-r from-brand-gold to-brand-gold-light text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        <span className="smh-glass smh-gold-border rounded-full px-3 py-1 text-xs font-semibold text-brand-text">
                           {method.badge}
                         </span>
                       </div>
 
-                      {/* Gradient Background */}
-                      <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${method.color}`} />
+                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${method.color}`} />
 
-                      <LuxuryCardContent className="py-8 text-center">
-                        <div className="flex justify-center mb-6">
-                          <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${method.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                            <Icon className="w-8 h-8 text-white" />
+                      <LuxuryCardContent className="relative py-8 text-center">
+                        <div className="mb-6 flex justify-center">
+                          <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r ${method.color} transition-transform duration-300 group-hover:scale-110`}>
+                            <Icon className="h-8 w-8 text-white" />
                           </div>
                         </div>
 
-                        <h3 className="text-xl font-semibold text-brand-text mb-3">
-                          {method.title}
-                        </h3>
-                        
-                        <p className="text-brand-muted mb-6 leading-relaxed">
-                          {method.description}
-                        </p>
+                        <h3 className="mb-3 text-xl font-semibold text-brand-text">{method.title}</h3>
+                        <p className="mb-6 text-brand-muted">{method.description}</p>
 
                         <LuxuryButton
                           variant="outline"
-                          className="w-full group border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                          className="group w-full border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
                         >
                           {method.action}
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </LuxuryButton>
                       </LuxuryCardContent>
-
-                      {/* Hover Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-brand-turquoise/5 to-brand-magenta/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     </Link>
                   </LuxuryCard>
                 </motion.div>
@@ -228,87 +212,51 @@ export function CTASection() {
             })}
           </motion.div>
 
-          {/* Guarantees Section */}
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h3 className="text-2xl font-semibold text-brand-text mb-8">
-              Our Promise to You
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {guarantees.map((guarantee, index) => {
+          <motion.div variants={itemVariants} className="mx-auto mb-12 max-w-4xl text-center">
+            <h3 className="mb-8 text-2xl font-semibold text-brand-text">Our Promise to You</h3>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {guarantees.map((guarantee) => {
                 const Icon = guarantee.icon;
                 return (
-                  <motion.div
-                    key={guarantee.title}
-                    variants={itemVariants}
-                    className="flex items-center gap-4 p-4 bg-white/50 rounded-lg backdrop-blur-sm"
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-r from-brand-turquoise/20 to-brand-magenta/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-brand-turquoise" />
+                  <div key={guarantee.title} className="smh-glass smh-gold-border rounded-3xl p-6 text-left">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-brand-magenta to-brand-turquoise">
+                      <Icon className="h-6 w-6 text-white" />
                     </div>
-                    <div className="text-left">
-                      <div className="font-semibold text-brand-text mb-1">
-                        {guarantee.title}
-                      </div>
-                      <div className="text-sm text-brand-muted">
-                        {guarantee.description}
-                      </div>
-                    </div>
-                  </motion.div>
+                    <h4 className="mb-2 text-lg font-semibold text-brand-text">{guarantee.title}</h4>
+                    <p className="text-sm text-brand-muted">{guarantee.description}</p>
+                  </div>
                 );
               })}
             </div>
           </motion.div>
 
-          {/* Emergency Contact */}
           <motion.div variants={itemVariants}>
-            <LuxuryCard
-              variant="gradient"
-              glow
-              className="max-w-2xl mx-auto text-center"
-            >
-              <LuxuryCardContent className="py-8">
-                <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
-                    <Phone className="w-6 h-6 text-white" />
+            <LuxuryCard variant="gradient" glow className="mx-auto max-w-2xl text-center smh-gold-border">
+              <LuxuryCardContent className="py-8 smh-glass">
+                <div className="mb-4 flex justify-center">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-brand-magenta to-brand-turquoise">
+                    <Phone className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                
-                <h3 className="text-xl font-semibold text-brand-text mb-2">
-                  Dental Emergency?
-                </h3>
-                
-                <p className="text-brand-muted mb-4">
-                  Don't wait - we provide 24/7 emergency dental care for urgent situations.
+
+                <h3 className="mb-2 text-xl font-semibold text-brand-text">Dental Emergency?</h3>
+                <p className="mb-4 text-brand-muted">
+                  Don't wait – we provide 24/7 emergency dental care for urgent situations.
                 </p>
-                
+
                 <LuxuryButton
                   variant="primary"
                   size="lg"
-                  className="bg-red-500 hover:bg-red-600 text-white"
+                  className="px-8"
                   asChild
                 >
-                  <Link href="tel:01273453109">
-                    Call Emergency Line: 01273 453109
-                  </Link>
+                  <Link href="tel:01273453109">Call Emergency Line: 01273 453109</Link>
                 </LuxuryButton>
               </LuxuryCardContent>
             </LuxuryCard>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="w-full h-16 fill-brand-background"
-        >
-          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" />
-        </svg>
-      </div>
     </section>
   );
 }
-
