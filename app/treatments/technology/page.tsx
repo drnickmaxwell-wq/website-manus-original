@@ -1,4 +1,6 @@
 import BrandHeroGradient from "@/components/brand/BrandHeroGradient";
+import IridescentHeading from "@/components/brand/IridescentHeading";
+import WaveHero from "@/components/brand/WaveHero";
 import TechCard from "@/components/brand/TechCard";
 import WaveDivider from "@/components/brand/WaveDivider";
 import GroupSubnav from "@/components/treatments/GroupSubnav";
@@ -47,25 +49,19 @@ const equipmentGallery = [
 export default function Page() {
   return (
     <main className="relative text-[color:var(--smh-text)]">
-      <BrandHeroGradient
-        className="py-20 md:py-28"
-        backgroundImageSrc="/waves/hero-waves-alone.webp"
-        particles={["gold", "teal"]}
-        filmGrain
-      >
-        <div className="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
+      <WaveHero className="py-20 md:py-28">
+        <div className="container mx-auto max-w-6xl px-6">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(240px,1fr)] lg:items-start">
             <div>
               <p className="smh-text uppercase tracking-[0.4em] text-xs text-white/70">
                 Champagne Digital Dentistry
               </p>
-              <h1 className="smh-heading mt-3 text-4xl font-semibold md:text-5xl">
-                Technology for a Softer, Smarter Smile Journey
-              </h1>
+              <IridescentHeading className="mb-4 text-4xl md:text-6xl">Technology in Harmony</IridescentHeading>
               <p className="smh-text mt-4 max-w-2xl text-base md:text-lg">
                 Every appointment is guided by a fully digital workflow that blends artful
                 craftsmanship with the precision of leading-edge scanners, printers and lasers.
               </p>
+              <p className="smh-text-dim mt-3 max-w-xl">Where precision meets artistry</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href="/contact" className="smh-btn">
                   Book consultation
@@ -87,7 +83,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </BrandHeroGradient>
+      </WaveHero>
 
       <section id="workflow" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
         <div className="mx-auto max-w-3xl text-center">

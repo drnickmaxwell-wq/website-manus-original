@@ -1,0 +1,55 @@
+/* Champagne Iridescence & Wave Drift — Phase-1A */
+@layer utilities {
+  :root {
+    /* gradient baseline */
+    --smh-grad-magenta: #C2185B;
+    --smh-grad-teal:    #40C4B4;
+    --smh-grad-gold:    #D4AF37;
+    --smh-gradient: linear-gradient(135deg, var(--smh-grad-magenta) 0%, var(--smh-grad-teal) 60%, var(--smh-grad-gold) 100%);
+  }
+
+  /* Spectral text mask (7 stops) */
+  .smh-iridescent {
+    background-image: linear-gradient(
+      135deg,
+      #C2185B 0%,
+      #E91E63 15%,
+      #9C27B0 30%,
+      #40C4B4 50%,
+      #4DD0C0 65%,
+      #D4AF37 85%,
+      #FFD700 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: iridescent-shimmer 60s ease-in-out infinite;
+  }
+
+  /* Wave drift (back/mid/front) */
+  .smh-wave-layer { position:absolute; inset:0; mask-image:url('/waves/smh-wave-mask.svg'); -webkit-mask-image:url('/waves/smh-wave-mask.svg'); mask-size:cover; -webkit-mask-size:cover; pointer-events:none; }
+  .smh-wave-back   { opacity:.06; animation: wave-drift-slow 30s linear   infinite; transform: scale(1.2) rotate(-1.5deg); }
+  .smh-wave-mid    { opacity:.10; animation: wave-drift-mid  20s linear   infinite reverse; transform: scale(1)   rotate(0deg); }
+  .smh-wave-front  { opacity:.14; animation: wave-drift-fast 16s linear   infinite; transform: scale(.92) rotate(1deg); }
+
+  /* Film grain / particles hooks (already exist in project) just ensure z-order helpers */
+  .smh-hero-underlay { position:absolute; inset:0; z-index:0; }
+  .smh-hero-content  { position:relative; z-index:10; }
+
+  /* Keyframes */
+  @keyframes iridescent-shimmer {
+    0%   { background-position: 0% 50%; filter: hue-rotate(0deg);   opacity:.4; }
+    50%  { background-position: 100% 50%; filter: hue-rotate(3deg); opacity:1;  }
+    100% { background-position: 0% 50%; filter: hue-rotate(0deg);   opacity:.4; }
+  }
+  @keyframes wave-drift-slow { from { transform: scale(1.2) rotate(-1.5deg); } to { transform: scale(1.2) rotate(-1.5deg); } }
+  @keyframes wave-drift-mid  { from { transform: scale(1)   rotate(0deg);    } to { transform: scale(1)   rotate(0deg);    } }
+  @keyframes wave-drift-fast { from { transform: scale(.92) rotate(1deg);    } to { transform: scale(.92) rotate(1deg);    } }
+
+  /* Reduced motion: freeze shimmer + drift */
+  @media (prefers-reduced-motion: reduce) {
+    .smh-iridescent { animation: none; }
+    .smh-wave-back, .smh-wave-mid, .smh-wave-front { animation: none; }
+  }
+}
