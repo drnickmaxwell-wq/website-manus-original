@@ -16,6 +16,7 @@ import {
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
 import BrandHeroGradient from '@/components/brand/BrandHeroGradient';
+import useCursorVars from '@/components/brand/useCursorVars';
 
 const contactMethods = [
   {
@@ -67,8 +68,13 @@ const guarantees = [
 
 const easeInOutCubic: [number, number, number, number] = [0.65, 0.05, 0.36, 1];
 
-export function CTASection() {
+type CTASectionProps = {
+  champagneHover?: boolean;
+};
+
+export function CTASection({ champagneHover = false }: CTASectionProps = {}) {
   const shouldReduceMotion = useReducedMotion();
+  const onMove = useCursorVars();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -125,7 +131,10 @@ export function CTASection() {
                   size="xl"
                   glow
                   shimmer
-                  className="group px-12 text-lg"
+                  className={["group px-12 text-lg", champagneHover ? "cta-champagne" : ""]
+                    .filter(Boolean)
+                    .join(" ")}
+                  onMouseMove={champagneHover ? onMove : undefined}
                 >
                   Book Free Consultation
                   <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
@@ -136,7 +145,13 @@ export function CTASection() {
                 <LuxuryButton
                   variant="outline"
                   size="xl"
-                  className="border-brand-turquoise px-12 text-lg text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                  className={[
+                    "border-brand-turquoise px-12 text-lg text-brand-turquoise hover:bg-brand-turquoise hover:text-white",
+                    champagneHover ? "cta-champagne" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  onMouseMove={champagneHover ? onMove : undefined}
                 >
                   Try AI Smile Quiz
                 </LuxuryButton>

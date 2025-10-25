@@ -24,7 +24,7 @@ export default function Home() {
       <AboutSection />
       <TestimonialsSection />
       <WaveDivider />
-      <CTASection />
+      <CTASection champagneHover />
     </LayoutWrapper>
   );
 }
