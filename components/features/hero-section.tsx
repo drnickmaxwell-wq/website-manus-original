@@ -1,17 +1,17 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import {
   motion,
   useReducedMotion,
   useScroll,
   useTransform,
 } from 'framer-motion';
-import { Play, ArrowRight, Sparkles, Award, Users, Clock } from 'lucide-react';
+import { ArrowRight, Sparkles, Award, Users, Clock } from 'lucide-react';
 import { CoastalWaves } from '@/components/effects/coastal-waves';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
+import BrandHeroGradient from '@/components/brand/BrandHeroGradient';
 
 const heroStats = [
   { icon: Users, value: '2,500+', label: 'Happy Patients' },
@@ -23,21 +23,10 @@ const heroStats = [
 const easeInOutCubic: [number, number, number, number] = [0.65, 0.05, 0.36, 1];
 
 export function HeroSection() {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
   const { scrollY } = useScroll();
   const shouldReduceMotion = useReducedMotion();
   const y = useTransform(scrollY, [0, 240], [0, shouldReduceMotion ? 0 : -6]);
   const opacity = useTransform(scrollY, [0, 200], [1, shouldReduceMotion ? 1 : 0.7]);
-
-  useEffect(() => {
-    // Simulate video loading
-    const timer = setTimeout(() => {
-      setIsVideoLoaded(true);
-    }, 1000);
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,36 +50,12 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative isolate flex min-h-screen items-center justify-center overflow-hidden smh-gradient-bg smh-wave-mask text-smh-text">
-      {/* Background fallback image/video */}
-      <div className="absolute inset-0 -z-[1] overflow-hidden">
-        {showVideo && isVideoLoaded ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover opacity-30"
-            poster="/images/hero-poster.jpg"
-          >
-            <source src="/videos/dental-hero.mp4" type="video/mp4" />
-          </video>
-        ) : (
-          <Image
-            src="/logos/waves-bg-2560.jpg"
-            alt="Coastal background"
-            fill
-            className="object-cover opacity-35"
-            priority
-          />
-        )}
-      </div>
-
-      {/* Champagne stack: particles under grain */}
-      <div aria-hidden className="absolute inset-0 z-0 smh-particles-magenta opacity-60" />
-      <div aria-hidden className="absolute inset-0 z-0 smh-particles-teal opacity-60" />
-      <div aria-hidden className="absolute inset-0 z-10 smh-film-grain" />
-
+    <BrandHeroGradient
+      className="flex min-h-screen items-center justify-center py-20 md:py-28 text-smh-text"
+      backgroundImageSrc="/waves/smh-wave-hero-desktop.webp"
+      particles={["gold", "teal"]}
+      filmGrain
+    >
       {/* Main Content */}
       <motion.div
         className="relative z-20 container-luxury text-center text-balance"
@@ -155,16 +120,6 @@ export function HeroSection() {
             >
               Book Your Consultation
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </LuxuryButton>
-
-            <LuxuryButton
-              variant="outline"
-              size="lg"
-              className="group"
-              onClick={() => setShowVideo(true)}
-            >
-              <Play className="w-5 h-5 transition-transform group-hover:scale-110" />
-              Watch Our Story
             </LuxuryButton>
           </motion.div>
 
@@ -254,7 +209,7 @@ export function HeroSection() {
         variant="hero"
         animated={!shouldReduceMotion}
       />
-    </section>
+    </BrandHeroGradient>
   );
 }
 

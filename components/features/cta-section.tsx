@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
+import BrandHeroGradient from '@/components/brand/BrandHeroGradient';
 
 const contactMethods = [
   {
@@ -91,11 +92,8 @@ export function CTASection() {
   };
 
   return (
-    <section className="relative overflow-hidden py-20 smh-gradient-bg smh-wave-mask text-brand-text">
-      <div aria-hidden className="absolute inset-0 z-0 smh-particles-gold opacity-60" />
-      <div aria-hidden className="absolute inset-0 z-10 smh-film-grain" />
-
-      <div className="container-luxury relative z-20">
+    <BrandHeroGradient className="py-16 text-brand-text" particles={["gold"]} filmGrain>
+      <div className="container-luxury">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -257,6 +255,6 @@ export function CTASection() {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </BrandHeroGradient>
   );
 }
