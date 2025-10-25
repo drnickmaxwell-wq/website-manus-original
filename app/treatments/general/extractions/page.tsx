@@ -2,7 +2,8 @@
 import TreatmentLayout from "@/components/treatments/TreatmentLayout";
 import ViewerShell from "@/components/treatments/ViewerShell";
 import FinanceBanner from "@/components/treatments/FinanceBanner";
-import FaqAccordion, { FaqItem } from "@/components/treatments/FaqAccordion";
+import FaqAccordion from "@/components/treatments/FaqAccordion";
+import { normalizeFaqs } from "@/components/utils/faq-normalize";
 import { treatmentSchemaJSONLD, faqSchemaJSONLD } from "@/lib/seo/schema";
 
 export const metadata = {
@@ -10,7 +11,7 @@ export const metadata = {
   description: "Premium Extractions in Shoreham-by-Sea delivering gentle removal with modern anaesthesia and attentive aftercare for comfort."
 };
 
-const FAQ: FaqItem[] = [
+const faqs = [
   { question: "Does it hurt?", answer: "Most patients report minimal discomfort. We use gentle, modern techniques." },
   { question: "How long does it take?", answer: "Typical appointments take around 45 minutes; we’ll tailor to your case." },
   { question: "Is finance available?", answer: "Yes—0% and flexible plans are available, subject to status." },
@@ -20,6 +21,7 @@ const FAQ: FaqItem[] = [
 
 export default function Page(){
   const url = typeof window === "undefined" ? "" : window.location.href;
+  const faqsNorm = normalizeFaqs(faqs);
 
   return (
     <TreatmentLayout
@@ -34,7 +36,7 @@ export default function Page(){
           url: url
         })}} />
       <script type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqSchemaJSONLD(FAQ.map(f => ({ q: f.question, a: f.answer }))) }} />
+        dangerouslySetInnerHTML={{ __html: faqSchemaJSONLD(faqsNorm.map(f => ({ q: f.question, a: f.answer }))) }} />
 
       {/* Intro copy */}
       <section className="prose prose-invert max-w-3xl my-10 smh-text">
@@ -51,7 +53,7 @@ export default function Page(){
       <FinanceBanner />
 
       {/* FAQ */}
-      <FaqAccordion items={FAQ} />
+      <FaqAccordion items={faqsNorm} />
     </TreatmentLayout>
   );
 }
