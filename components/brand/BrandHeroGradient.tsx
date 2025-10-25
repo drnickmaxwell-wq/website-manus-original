@@ -1,4 +1,5 @@
 import React from "react";
+import type { JSX as ReactJSX } from "react";
 
 type Props = {
   className?: string;
@@ -9,7 +10,7 @@ type Props = {
   particles?: Array<"gold"|"teal"|"magenta">;
   /** Film grain layer on/off */
   filmGrain?: boolean;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof ReactJSX.IntrinsicElements;
 };
 
 export default function BrandHeroGradient({
