@@ -24,10 +24,11 @@ export function CoastalWaves({
       transition: {
         duration: 8,
         repeat: Infinity,
-        ease: "easeInOut"
+        // use a valid easing tuple instead of string
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number]
       }
     }
-  };
+  } satisfies Record<string, import('framer-motion').Variant>;
 
   const getWaveColors = () => {
     switch (variant) {
