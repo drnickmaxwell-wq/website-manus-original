@@ -1,50 +1,134 @@
 @layer components {
+  @keyframes champagneShimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 120% 50%;
+    }
+    100% {
+      background-position: 240% 50%;
+    }
+  }
+
   .cta-champagne {
-    --cta-bg: color-mix(in_oklab, white 85%, transparent);
-    --cta-glow: rgba(244, 220, 174, 0.55); /* soft champagne */
-    --cta-keyline: rgba(249, 232, 195, 0.85);
-    --cta-sheen: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
+    --cta-bg: color-mix(in_oklab, #fffdf7 70%, rgba(255, 255, 255, 0));
+    --cta-border: rgba(251, 233, 198, 0.85);
+    --cta-ripple: rgba(255, 243, 214, 0.85);
+    --cta-shadow: rgba(176, 123, 53, 0.35);
+    --cta-ripple-size: 180px;
     position: relative;
-    display: inline-flex; align-items:center; justify-content:center;
-    min-height: 44px; padding: .75rem 1.25rem; border-radius: 9999px;
-    border: 1px solid var(--cta-keyline);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--cta-border);
     background: var(--cta-bg);
     box-shadow:
-      0 0 0 0 rgba(0,0,0,0),
-      0 8px 30px -12px rgba(0,0,0,.2);
-    transition: box-shadow .25s ease, transform .25s ease, outline-color .25s ease;
+      0 0 0 1px rgba(255, 255, 255, 0.4) inset,
+      0 12px 24px -12px var(--cta-shadow);
+    transition:
+      box-shadow 0.35s ease,
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      outline-color 0.35s ease;
     outline: 0 solid transparent;
+    overflow: hidden;
+    isolation: isolate;
     -webkit-tap-highlight-color: transparent;
+    will-change: transform, box-shadow;
   }
-  .cta-champagne::before {
-    content:"";
-    position:absolute; inset:-2px;
-    border-radius: inherit;
-    background: radial-gradient(120px 120px at var(--mx,50%) var(--my,50%), var(--cta-glow), transparent 60%);
-    opacity:.0; transition: opacity .25s ease;
-    pointer-events:none;
-  }
-  .cta-champagne::after {
-    content:"";
-    position:absolute; inset:0; border-radius: inherit;
-    background: var(--cta-sheen);
-    mix-blend-mode: overlay; opacity:.0;
-    transition: opacity .25s ease;
-    pointer-events:none;
-  }
-  .cta-champagne:hover, .cta-champagne:focus-visible {
-    box-shadow:
-      0 0 0 2px var(--cta-keyline),
-      0 10px 40px -10px var(--cta-glow);
-    transform: translateY(-1px);
-  }
-  .cta-champagne:hover::before,
-  .cta-champagne:hover::after,
-  .cta-champagne:focus-visible::before,
-  .cta-champagne:focus-visible::after { opacity:.9; }
 
-  /* Reduced motion = keep the glow, skip lift */
+  .cta-champagne > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-champagne::before {
+    content: "";
+    position: absolute;
+    top: var(--my, 50%);
+    left: var(--mx, 50%);
+    width: var(--cta-ripple-size);
+    height: var(--cta-ripple-size);
+    border-radius: 9999px;
+    transform: translate(-50%, -50%) scale(0.45);
+    background: radial-gradient(circle at center, var(--cta-ripple) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cta-champagne::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 244, 210, 0.15) 0%,
+      rgba(255, 255, 255, 0.55) 45%,
+      rgba(255, 229, 173, 0.15) 100%
+    );
+    background-size: 220% 220%;
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .cta-champagne:hover,
+  .cta-champagne:focus-visible {
+    border-color: rgba(255, 239, 206, 0.95);
+    box-shadow:
+      0 0 0 1px rgba(255, 239, 206, 0.9),
+      0 18px 44px -18px rgba(176, 123, 53, 0.55);
+    transform: translateY(-2px);
+  }
+
+  .cta-champagne:hover::before,
+  .cta-champagne:focus-visible::before {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .cta-champagne:hover::after,
+  .cta-champagne:focus-visible::after {
+    opacity: 1;
+    animation: champagneShimmer 2.75s linear infinite;
+  }
+
+  .cta-champagne:active {
+    transform: translateY(0);
+    box-shadow:
+      0 0 0 1px rgba(255, 239, 206, 0.9),
+      0 8px 22px -14px rgba(176, 123, 53, 0.6);
+  }
+
+  .cta-champagne:focus-visible {
+    outline: 2px solid rgba(255, 244, 210, 0.75);
+    outline-offset: 3px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .cta-champagne { transition: box-shadow .25s ease; transform:none !important; }
+    .cta-champagne {
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+      transform: none !important;
+    }
+
+    .cta-champagne::before {
+      opacity: 0 !important;
+      transform: translate(-50%, -50%) scale(0.001) !important;
+    }
+
+    .cta-champagne::after {
+      animation: none !important;
+    }
   }
 }
