@@ -1,187 +1,61 @@
-'use client';
+import * as React from "react";
 
-import React from 'react';
-import { motion, type HTMLMotionProps } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { useBrandColors } from '@/components/providers/theme-provider';
+type Variant = "primary" | "outline" | "solid" | "ghost";
+type Size = "sm" | "md" | "lg";
 
-type ButtonMotionProps = Omit<HTMLMotionProps<'button'>, 'children' | 'href'> & { href?: undefined };
-type AnchorMotionProps = Omit<HTMLMotionProps<'a'>, 'children'> & { href: string };
-
-type InteractiveMotionProps = ButtonMotionProps | AnchorMotionProps;
-
-interface LuxuryButtonProps extends InteractiveMotionProps {
-  children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'coastal';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  glow?: boolean;
-  shimmer?: boolean;
-  ripple?: boolean;
-  asChild?: boolean;
-  className?: string;
+export interface LuxuryButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: Variant;
+  size?: Size;
 }
 
-const buttonVariants = {
-  primary: 'bg-gradient-to-r from-brand-magenta to-brand-turquoise text-white hover:shadow-lg',
-  secondary: 'bg-brand-turquoise text-white hover:bg-brand-turquoise-dark',
-  outline: 'border-2 border-brand-magenta text-brand-magenta hover:bg-brand-magenta hover:text-white',
-  ghost: 'text-brand-magenta hover:bg-brand-magenta/10',
-  coastal: 'bg-gradient-to-r from-brand-turquoise to-brand-gold text-white hover:shadow-xl',
-};
-
-const sizeVariants = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-base',
-  lg: 'px-8 py-4 text-lg',
-  xl: 'px-10 py-5 text-xl',
-};
-
-export function LuxuryButton({
-  children,
-  variant = 'primary',
-  size = 'md',
-  glow = false,
-  shimmer = false,
-  ripple = true,
-  className,
-  href,
-  asChild,
-  ...restProps
-}: LuxuryButtonProps) {
-  const colors = useBrandColors();
-
-  const baseClasses = cn(
-    'relative overflow-hidden rounded-lg font-semibold transition-all duration-300 transform',
-    'focus:outline-none focus:ring-2 focus:ring-brand-magenta focus:ring-offset-2',
-    'disabled:opacity-50 disabled:cursor-not-allowed',
-    'active:scale-95',
-    buttonVariants[variant],
-    sizeVariants[size],
+const LuxuryButton = React.forwardRef<HTMLButtonElement, LuxuryButtonProps>(
+  (
     {
-      'glow-magenta': glow && variant === 'primary',
-      'glow-turquoise': glow && variant === 'secondary',
-      'shimmer': shimmer,
+      variant = "primary",
+      size = "md",
+      className = "",
+      disabled,
+      type,
+      ...props
     },
-    className
-  );
+    ref
+  ) => {
+    const base =
+      "inline-flex items-center justify-center rounded-2xl transition will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+    const variants: Record<Variant, string> = {
+      primary:
+        // Champagne-friendly: glass + gold keyline
+        "smh-glass smh-gold-border px-6 py-3",
+      outline:
+        "bg-transparent border smh-gold-border px-6 py-3",
+      solid:
+        "bg-white/10 text-white px-6 py-3",
+      ghost:
+        "bg-transparent px-6 py-3",
+    };
+    const sizes: Record<Size, string> = {
+      sm: "h-9 text-sm",
+      md: "h-11 text-base",
+      lg: "h-12 text-lg",
+    };
 
-  const buttonVariantsMotion = {
-    initial: { scale: 1 },
-    hover: { 
-      scale: 1.05,
-      y: -2,
-      transition: { type: 'spring', stiffness: 300, damping: 20 }
-    },
-    tap: { 
-      scale: 0.95,
-      transition: { type: 'spring', stiffness: 300, damping: 20 }
-    }
-  };
+    const cls = [base, variants[variant], sizes[size], className]
+      .filter(Boolean)
+      .join(" ");
 
-  const rippleVariants = {
-    initial: { scale: 0, opacity: 0.5 },
-    animate: { 
-      scale: 4, 
-      opacity: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
-    }
-  };
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (ripple) {
-      const button = e.currentTarget;
-      const rect = button.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = e.clientX - rect.left - size / 2;
-      const y = e.clientY - rect.top - size / 2;
-      
-      const rippleElement = document.createElement('span');
-      rippleElement.style.cssText = `
-        position: absolute;
-        left: ${x}px;
-        top: ${y}px;
-        width: ${size}px;
-        height: ${size}px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple 0.6s ease-out;
-        pointer-events: none;
-      `;
-      
-      button.appendChild(rippleElement);
-      
-      setTimeout(() => {
-        rippleElement.remove();
-      }, 600);
-    }
-
-    if ('onClick' in restProps && typeof restProps.onClick === 'function') {
-      restProps.onClick(e);
-    }
-  };
-
-  const buttonContent = (
-    <>
-      {/* Shimmer Effect */}
-      {shimmer && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer" />
-      )}
-      
-      {/* Button Content */}
-      <span className="relative z-10 flex items-center justify-center gap-2">
-        {children}
-      </span>
-      
-      {/* Coastal Wave Effect */}
-      {variant === 'coastal' && (
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-wave" />
-      )}
-    </>
-  );
-
-  if (href && !asChild) {
     return (
-      <motion.a
-        href={href}
-        className={baseClasses}
-        variants={buttonVariantsMotion}
-        initial="initial"
-        whileHover="hover"
-        whileTap="tap"
-        {...(restProps as AnchorMotionProps)}
-      >
-        {buttonContent}
-      </motion.a>
+      <button
+        ref={ref}
+        className={cls}
+        disabled={disabled}
+        type={type ?? "button"}
+        {...props}
+      />
     );
   }
+);
 
-  return (
-    <motion.button
-      className={baseClasses}
-      variants={buttonVariantsMotion}
-      initial="initial"
-      whileHover="hover"
-      whileTap="tap"
-      onClick={handleClick}
-      {...(restProps as ButtonMotionProps)}
-    >
-      {buttonContent}
-    </motion.button>
-  );
-}
-
-// Add ripple animation to global CSS
-if (typeof document !== 'undefined') {
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes ripple {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-}
-
+LuxuryButton.displayName = "LuxuryButton";
+export { LuxuryButton };
+export default LuxuryButton;
