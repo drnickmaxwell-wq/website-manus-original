@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { ArrowRight, Sparkles, Award, Users, Clock } from 'lucide-react';
 import { LayoutWrapper } from '@/components/layout/layout-wrapper';
@@ -10,6 +12,7 @@ import { AboutSection } from '@/components/features/about-section';
 import { TestimonialsSection } from '@/components/features/testimonials-section';
 import WaveDivider from '@/components/brand/WaveDivider';
 import { CTASection } from '@/components/features/cta-section';
+import useCursorVars from '@/components/brand/useCursorVars';
 
 const heroStats = [
   { icon: Users, value: '2,500+', label: 'Happy Patients' },
@@ -19,6 +22,8 @@ const heroStats = [
 ];
 
 export default function Home() {
+  const onMove = useCursorVars();
+
   return (
     <LayoutWrapper>
       <WaveHero className="py-20 md:py-28" particles={["gold", "teal"]} filmGrain>
@@ -36,7 +41,14 @@ export default function Home() {
               same-day veneers, experience coastal tranquility paired with cutting-edge care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <LuxuryButton variant="primary" size="lg" glow shimmer className="group">
+              <LuxuryButton
+                variant="primary"
+                size="lg"
+                glow
+                shimmer
+                className="group cta-champagne"
+                onMouseMove={onMove}
+              >
                 Book Your Consultation
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </LuxuryButton>
@@ -63,7 +75,7 @@ export default function Home() {
       <AboutSection />
       <TestimonialsSection />
       <WaveDivider />
-      <CTASection champagneHover />
+      <CTASection />
     </LayoutWrapper>
   );
 }
