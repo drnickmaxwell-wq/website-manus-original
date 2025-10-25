@@ -21,8 +21,10 @@ export default function BrandHeroGradient({
   filmGrain = true,
   as: Tag = "section",
 }: Props) {
+  const AnyTag: any = Tag;
+
   return (
-    <Tag
+    <AnyTag
       className={[
         "relative overflow-hidden smh-gradient-bg smh-wave-mask",
         className,
@@ -61,7 +63,7 @@ export default function BrandHeroGradient({
 
       {/* Content */}
       <div className="relative isolate">{children}</div>
-    </Tag>
+    </AnyTag>
   );
 }
 
