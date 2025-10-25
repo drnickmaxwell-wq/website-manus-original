@@ -112,13 +112,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             <LuxuryButton
               variant="outline"
               size="sm"
-              className="w-full justify-start"
-              asChild
+              className="w-full justify-start flex items-center gap-2"
             >
-              <span className="w-full justify-start flex items-center gap-2">
-                <LogOut className="w-4 h-4 mr-2" />
-                Sign Out
-              </span>
+              <LogOut className="w-4 h-4 mr-2" />
+              <span>Sign Out</span>
             </LuxuryButton>
           </div>
         </div>
