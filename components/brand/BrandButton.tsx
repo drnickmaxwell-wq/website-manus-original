@@ -18,8 +18,9 @@ export default function BrandButton({ as = "button", href, className = "", child
   const classes = ["smh-btn", className].filter(Boolean).join(" ");
 
   if (as === "a" && href) {
+    const { href: _ignoredHref, ...anchorRest } = (rest as AnchorProps) ?? {};
     return (
-      <a href={href} className={classes} {...(rest as AnchorProps)}>
+      <a href={href} className={classes} {...anchorRest}>
         {children}
       </a>
     );
