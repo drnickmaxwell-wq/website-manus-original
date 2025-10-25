@@ -2,31 +2,21 @@ import TreatmentLayout from '@/components/treatments/TreatmentLayout';
 import ViewerShell from '@/components/treatments/ViewerShell';
 import FinanceBanner from '@/components/treatments/FinanceBanner';
 import FaqAccordion from '@/components/treatments/FaqAccordion';
+import { normalizeFaqs } from '@/components/utils/faq-normalize';
 import { treatmentSchemaJSONLD, faqSchemaJSONLD } from '@/lib/seo/schema';
 
 export const metadata = { title: 'Veneers — St Mary’s House Dental' };
 
 export default function Page() {
-  /* FAQ data: resilient to {q,a} or {question,answer} keys */
-  type AnyFAQ = { q?: string; a?: string; question?: string; answer?: string };
-
-  const faqs: AnyFAQ[] = [
+  const faqs = [
     { q: 'Are veneers painful?', a: 'Treatment is typically comfortable with local anaesthesia and careful technique.' },
     { q: 'How long do veneers last?', a: '10–15 years on average with good oral hygiene and reviews; longer with optimal care.' },
     { q: 'Can I whiten veneers?', a: 'Porcelain does not whiten; whitening is done before shade-matching new veneers.' },
     { q: 'What do they cost?', a: 'Pricing depends on case complexity and number of teeth; we provide finance options.' },
   ];
 
-  /** Normalises any FAQ shape to { question, answer } */
-  function normalizeFaq(item: AnyFAQ) {
-    return {
-      question: item.q ?? item.question ?? '',
-      answer: item.a ?? item.answer ?? '',
-    };
-  }
-
-  const normalizedFaqs = faqs.map(normalizeFaq);
-  const faqSchemaItems = normalizedFaqs.map((item) => ({ q: item.question, a: item.answer }));
+  const faqsNorm = normalizeFaqs(faqs);
+  const faqSchemaItems = faqsNorm.map((item) => ({ q: item.question, a: item.answer }));
 
   const description =
     'Hand-finished ceramic veneers designed with 3D planning for a natural, luminous smile. Minimal preparation, maximum elegance.';
@@ -78,7 +68,7 @@ export default function Page() {
 
         <FinanceBanner />
 
-        <FaqAccordion items={normalizedFaqs} />
+        <FaqAccordion items={faqsNorm} />
 
         <section className="my-12 text-center">
           <a href="/contact" className="smh-btn">Start Your Smile Plan</a>
