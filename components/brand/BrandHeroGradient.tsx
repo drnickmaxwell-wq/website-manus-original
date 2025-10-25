@@ -3,44 +3,64 @@ import React from "react";
 type Props = {
   className?: string;
   children?: React.ReactNode;
-  /** Optional: overlay film grain and particles */
-  withFilmGrain?: boolean;
-  withParticles?: boolean;
+  /** Optional background image under the mask (safe to omit) */
+  backgroundImageSrc?: string;
+  /** Toggle subtle particle overlays */
+  particles?: Array<"gold"|"teal"|"magenta">;
+  /** Film grain layer on/off */
+  filmGrain?: boolean;
+  as?: keyof JSX.IntrinsicElements;
 };
 
 export default function BrandHeroGradient({
   className = "",
   children,
-  withFilmGrain = true,
-  withParticles = true,
+  backgroundImageSrc,
+  particles = ["gold","teal"],
+  filmGrain = true,
+  as: Tag = "section",
 }: Props) {
   return (
-    <section
+    <Tag
       className={[
         "relative overflow-hidden smh-gradient-bg smh-wave-mask",
-        "min-h-[52vh] flex items-center",
         className,
       ].join(" ")}
-      aria-label="Hero"
+      aria-label="Champagne gradient hero"
     >
-      {/* Film grain & particles (optional) */}
-      {withFilmGrain && (
+      {/* Optional masked background image */}
+      {backgroundImageSrc ? (
         <div
-          aria-hidden
-          className="absolute inset-0 smh-film-grain pointer-events-none"
+          aria-hidden="true"
+          className="absolute inset-0 -z-10"
+          style={{
+            backgroundImage: `url("${backgroundImageSrc}")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.8
+          }}
         />
+      ) : null}
+
+      {/* Particle overlays (subtle) */}
+      {particles?.includes("gold") && (
+        <div aria-hidden="true" className="smh-particles-gold absolute inset-0 pointer-events-none mix-blend-soft-light" />
       )}
-      {withParticles && (
-        <>
-          <div aria-hidden className="absolute inset-0 smh-particles-gold" />
-          <div aria-hidden className="absolute inset-0 smh-particles-teal" />
-          <div aria-hidden className="absolute inset-0 smh-particles-magenta" />
-        </>
+      {particles?.includes("teal") && (
+        <div aria-hidden="true" className="smh-particles-teal absolute inset-0 pointer-events-none mix-blend-soft-light" />
       )}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-16 text-left">
-        {children}
-      </div>
-    </section>
+      {particles?.includes("magenta") && (
+        <div aria-hidden="true" className="smh-particles-magenta absolute inset-0 pointer-events-none mix-blend-soft-light" />
+      )}
+
+      {/* Film grain overlay */}
+      {filmGrain && (
+        <div aria-hidden="true" className="smh-film-grain absolute inset-0 pointer-events-none" />
+      )}
+
+      {/* Content */}
+      <div className="relative isolate">{children}</div>
+    </Tag>
   );
 }
 

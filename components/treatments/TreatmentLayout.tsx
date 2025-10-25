@@ -1,7 +1,6 @@
 'use client';
 import React, { ReactNode } from 'react';
 import '@/styles/champagne/overlays.css';
-import clsx from 'clsx';
 
 type Props = {
   title: string;
@@ -14,9 +13,7 @@ export default function TreatmentLayout({ title, subtitle, eyebrow = "St Mary's 
   return (
     <main className="relative">
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-[var(--smh-bg)]">
-        {/* base gradient shaped by wave mask */}
-        <div className={clsx('smh-gradient-bg smh-wave-mask min-h-[42vh] md:min-h-[52vh] rounded-3xl')} />
+      <section className="relative min-h-[42vh] overflow-hidden rounded-3xl border border-white/10 smh-gradient-bg smh-wave-mask md:min-h-[52vh]">
         {/* overlays */}
         <div className="absolute inset-0 smh-film-grain rounded-3xl" />
         <div className="absolute inset-0 smh-particles-magenta rounded-3xl" />
