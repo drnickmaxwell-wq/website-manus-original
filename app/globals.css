@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "../styles/brand/champagne-textures.css";
 @import "../styles/champagne/overlays.css";
+@import "../styles/champagne/cta-hover.css";
 
 @custom-variant dark (&:is(.dark *));
 
