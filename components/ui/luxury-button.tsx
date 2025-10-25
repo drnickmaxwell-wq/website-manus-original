@@ -18,6 +18,7 @@ interface LuxuryButtonProps extends InteractiveMotionProps {
   shimmer?: boolean;
   ripple?: boolean;
   asChild?: boolean;
+  className?: string;
 }
 
 const buttonVariants = {
