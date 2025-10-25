@@ -136,9 +136,9 @@ export function SkeletonLoader({
     transition: {
       duration: 1.5,
       repeat: Infinity,
-      ease: 'linear'
+      ease: [0.42, 0, 0.58, 1] as [number, number, number, number]
     }
-  };
+  } satisfies import('framer-motion').TargetAndTransition;
 
   if (variant === 'text') {
     return (
