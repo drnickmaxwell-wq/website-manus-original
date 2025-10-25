@@ -3,9 +3,10 @@
   /* brand + base */
   --smh-primary-magenta: #C2185B;
   --smh-primary-teal:    #40C4B4;
-  --smh-accent-gold:     #D4AF37;
+  --smh-accent-gold:     var(--smh-gold);
 
   --smh-champagne: #F9E8C3;
+  --smh-gold:      #F9E8C3;
   --smh-sand:      #F8F4EE;
 
   /* light defaults */
@@ -32,9 +33,9 @@
   --particles-opacity:  .10;
 
   /* typography */
-  --font-heading: "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-  --font-body:    "Lora",Georgia,Cambria,"Times New Roman",Times,serif;
-  --font-data:    "Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --font-heading: "Playfair Display", "Times New Roman", Times, serif;
+  --font-body:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-data:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 /* Attribute-driven dark mode (JS toggles [data-theme]) */

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat, Lora } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import "../styles/tokens/smh-champagne-tokens.css";
 import "@/styles/champagne-effects.css";
-import "@/styles/champagne/overlays.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SimpleChatbot } from "@/components/ai/simple-chatbot";
 import { JsonLd, organizationSchema } from "@/components/seo/json-ld";
@@ -16,17 +15,17 @@ if (typeof window !== "undefined") {
   import("@/lib/visual/champagneOverlays").then((m) => m.ensureChampagneCSSVars());
 }
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const headingFont = Playfair_Display({
+  variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const lora = Lora({
-  variable: "--font-lora",
+const bodyFont = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -119,7 +118,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${montserrat.variable} ${lora.variable} antialiased min-h-screen bg-background text-foreground`}
+        className={`${headingFont.variable} ${bodyFont.variable} antialiased min-h-screen bg-background text-foreground`}
       >
         <JsonLd data={organizationSchema} />
         <ThemeProvider>

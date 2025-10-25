@@ -1,5 +1,5 @@
 /* Champagne overlays + helpers (safe to overwrite) */
-:root{
+:root {
   --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
   --smh-gradient-dark: linear-gradient(135deg,#9b2fa1 0%,#0aa5a9 100%);
   --film-grain-opacity: .10;
@@ -8,77 +8,147 @@
   --particles-opacity-dark: .06;
 }
 
-.smh-gradient-bg{
+.smh-gradient-bg {
   background-image: var(--smh-gradient);
+  background-size: 200% 200%;
+  animation: smhHueDrift 18s var(--motion-ease, cubic-bezier(0.645,0.045,0.355,1)) alternate infinite;
 }
-.dark .smh-gradient-bg{
+
+@media (prefers-reduced-motion: reduce) {
+  .smh-gradient-bg {
+    animation: none;
+  }
+}
+
+.dark .smh-gradient-bg {
   background-image: var(--smh-gradient-dark);
 }
 
-.smh-wave-mask{
-  /* Use the uploaded SVG as a clipping mask */
-  -webkit-mask-image: url("/waves/smh-wave-mask.svg");
-  mask-image: url("/waves/smh-wave-mask.svg");
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-size: cover; mask-size: cover;
-  -webkit-mask-position: top left; mask-position: top left;
+.smh-gold-border {
+  border: 1px solid color-mix(in oklab, var(--smh-gold) 85%, transparent);
+  box-shadow: var(--glow-gold);
 }
 
-/* film grain layer */
-.smh-film-grain{
-  background-image: image-set(
-    url("/textures/film-grain-desktop.webp") 1x
-  );
+.smh-glass {
+  background: color-mix(in srgb, rgba(255,255,255,0.82) 70%, transparent);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid color-mix(in oklab, var(--smh-gold) 35%, transparent);
+}
+
+.dark .smh-glass {
+  background: color-mix(in srgb, rgba(24,24,28,0.85) 70%, transparent);
+}
+
+.smh-wave-mask {
+  -webkit-mask-image: url("/waves/smh-wave-mask.svg");
+  mask-image: url("/waves/smh-wave-mask.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: top center;
+  mask-position: top center;
+}
+
+.smh-film-grain {
+  background-image: image-set(url("/textures/film-grain-desktop.webp") 1x);
   background-size: cover;
   mix-blend-mode: overlay;
   opacity: var(--film-grain-opacity);
   pointer-events: none;
 }
-@media (max-width: 768px){
-  .smh-film-grain{
-    background-image: image-set(
-      url("/textures/film-grain-mobile.webp") 1x
-    );
+
+@media (max-width: 768px) {
+  .smh-film-grain {
+    background-image: image-set(url("/textures/film-grain-mobile.webp") 1x);
   }
 }
-.dark .smh-film-grain{
+
+.dark .smh-film-grain {
   background-image: image-set(url("/textures/film-grain-dark.webp") 1x);
   opacity: var(--film-grain-opacity-dark);
 }
-@media (max-width: 768px){
-  .dark .smh-film-grain{
+
+@media (max-width: 768px) {
+  .dark .smh-film-grain {
     background-image: image-set(url("/textures/film-grain-mobile-dark.webp") 1x);
   }
 }
 
-/* particles (stacked per brand colour) */
-.smh-particles-gold   { background-image: url("/textures/particles-gold.webp"); }
-.smh-particles-teal   { background-image: url("/textures/particles-teal.webp"); }
-.smh-particles-magenta{ background-image: url("/textures/particles-magenta.webp"); }
-.smh-particles-gold, .smh-particles-teal, .smh-particles-magenta{
-  background-size: cover; mix-blend-mode: screen;
-  opacity: var(--particles-opacity); pointer-events: none;
-}
-@media (max-width: 768px){
-  .smh-particles-gold   { background-image: url("/textures/particles-gold-mobile.webp"); }
-  .smh-particles-teal   { background-image: url("/textures/particles-teal-mobile.webp"); }
-  .smh-particles-magenta{ background-image: url("/textures/particles-magenta-mobile.webp"); }
-}
-.dark .smh-particles-gold   { background-image: url("/textures/particles-gold-dark.webp"); }
-.dark .smh-particles-teal   { background-image: url("/textures/particles-teal-dark.webp"); }
-.dark .smh-particles-magenta{ background-image: url("/textures/particles-magenta-dark.webp"); }
-@media (max-width: 768px){
-  .dark .smh-particles-gold   { background-image: url("/textures/particles-gold-mobile-dark.webp"); }
-  .dark .smh-particles-teal   { background-image: url("/textures/particles-teal-mobile-dark.webp"); }
-  .dark .smh-particles-magenta{ background-image: url("/textures/particles-magenta-mobile-dark.webp"); }
+.smh-particles-gold {
+  background-image: url("/textures/particles-gold.webp");
 }
 
-/* soft glow overlay (optional if you upload the overlay later) */
-.smh-glow{
-  background-image: url("/overlays/glow-dust.webp");
-  background-size: cover; mix-blend-mode: screen; opacity:.28; pointer-events:none;
+.smh-particles-teal {
+  background-image: url("/textures/particles-teal.webp");
 }
-.dark .smh-glow{ background-image: url("/overlays/glow-dust-dark.webp"); }
+
+.smh-particles-magenta {
+  background-image: url("/textures/particles-magenta.webp");
+}
+
+.smh-particles-gold,
+.smh-particles-teal,
+.smh-particles-magenta {
+  background-size: cover;
+  mix-blend-mode: screen;
+  opacity: var(--particles-opacity);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .smh-particles-gold {
+    background-image: url("/textures/particles-gold-mobile.webp");
+  }
+
+  .smh-particles-teal {
+    background-image: url("/textures/particles-teal-mobile.webp");
+  }
+
+  .smh-particles-magenta {
+    background-image: url("/textures/particles-magenta-mobile.webp");
+  }
+}
+
+.dark .smh-particles-gold {
+  background-image: url("/textures/particles-gold-dark.webp");
+}
+
+.dark .smh-particles-teal {
+  background-image: url("/textures/particles-teal-dark.webp");
+}
+
+.dark .smh-particles-magenta {
+  background-image: url("/textures/particles-magenta-dark.webp");
+}
+
+@media (max-width: 768px) {
+  .dark .smh-particles-gold {
+    background-image: url("/textures/particles-gold-mobile-dark.webp");
+  }
+
+  .dark .smh-particles-teal {
+    background-image: url("/textures/particles-teal-mobile-dark.webp");
+  }
+
+  .dark .smh-particles-magenta {
+    background-image: url("/textures/particles-magenta-mobile-dark.webp");
+  }
+}
+
+.smh-glow {
+  background-image: url("/overlays/glow-dust.webp");
+  background-size: cover;
+  mix-blend-mode: screen;
+  opacity: .28;
+  pointer-events: none;
+}
+
+.dark .smh-glow {
+  background-image: url("/overlays/glow-dust-dark.webp");
+}
+
 @media (max-width:768px){
   .smh-glow{ background-image:url("/overlays/glow-dust-mobile.webp"); }
   .dark .smh-glow{ background-image:url("/overlays/glow-dust-mobile-dark.webp"); }
