@@ -1,17 +1,15 @@
-import Image from 'next/image';
+import React from "react";
 
-export default function WaveDivider({ invert = false }: { invert?: boolean }) {
-  const svg = '/waves/smh-wave-mask.svg';
+export default function WaveDivider() {
   return (
-    <div className={`relative w-full ${invert ? 'rotate-180' : ''}`} aria-hidden="true">
-      <Image
-        src={svg}
+    <section aria-hidden className="py-6 md:py-10">
+      <img
+        src="/waves/wave-divider.webp"
         alt=""
-        width={1920}
-        height={300}
-        className="h-auto w-full opacity-80"
-        priority={false}
+        className="mx-auto w-full max-w-6xl opacity-90"
+        loading="lazy"
+        decoding="async"
       />
-    </div>
+    </section>
   );
 }
