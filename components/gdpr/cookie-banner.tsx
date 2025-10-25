@@ -1,8 +1,14 @@
 
 'use client'
 import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/buttons';
-import type { CookieConsentProps } from '@/types/design';
+import { Button } from '@/components/ui/button';
+type CookieConsentProps = {
+  onAccept?: () => void;
+  onDecline?: () => void;
+  onCustomize?: () => void;
+  position?: 'top' | 'bottom';
+  theme?: 'light' | 'dark';
+};
 
 type CookiePreferences = {
   necessary: boolean;
@@ -103,7 +109,7 @@ export function CookieBanner({
               <Button variant="ghost" size="sm" onClick={declineAll}>
                 Decline All
               </Button>
-              <Button variant="primary" size="sm" onClick={acceptAll}>
+              <Button variant="default" size="sm" onClick={acceptAll}>
                 Accept All
               </Button>
             </div>
@@ -150,7 +156,7 @@ export function CookieBanner({
               <Button variant="outline" size="sm" onClick={savePrefs}>
                 Save Preferences
               </Button>
-              <Button variant="primary" size="sm" onClick={acceptAll}>
+              <Button variant="default" size="sm" onClick={acceptAll}>
                 Accept All
               </Button>
             </div>

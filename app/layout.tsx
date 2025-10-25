@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import "../styles/tokens/smh-champagne-tokens.css";
 import "@/styles/champagne-effects.css";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/playfair-display/400.css";
+import "@fontsource/playfair-display/500.css";
+import "@fontsource/playfair-display/600.css";
+import "@fontsource/playfair-display/700.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SimpleChatbot } from "@/components/ai/simple-chatbot";
 import { JsonLd, organizationSchema } from "@/components/seo/json-ld";
@@ -14,20 +22,6 @@ import { ChatProvider } from "@/contexts/ChatProvider";
 if (typeof window !== "undefined") {
   import("@/lib/visual/champagneOverlays").then((m) => m.ensureChampagneCSSVars());
 }
-
-const headingFont = Playfair_Display({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const bodyFont = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title:
@@ -117,9 +111,7 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/videos/hero/hero-poster.jpg" />
       </head>
 
-      <body
-        className={`${headingFont.variable} ${bodyFont.variable} antialiased min-h-screen bg-background text-foreground`}
-      >
+      <body className="antialiased min-h-screen bg-background text-foreground">
         <JsonLd data={organizationSchema} />
         <ThemeProvider>
           <ChatProvider>

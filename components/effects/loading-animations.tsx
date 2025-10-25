@@ -53,7 +53,7 @@ export function LoadingSpinner({
         transition={{
           duration: 1,
           repeat: Infinity,
-          ease: 'easeInOut'
+          ease: [0.42, 0, 0.58, 1] as [number, number, number, number]
         }}
       />
     );
@@ -85,7 +85,11 @@ export function LoadingSpinner({
     <motion.div
       className={`${className}`}
       animate={{ rotate: 360 }}
-      transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+      transition={{
+        duration: 2,
+        repeat: Infinity,
+        ease: [0, 0, 1, 1] as [number, number, number, number],
+      }}
     >
       <svg
         width={size === 'sm' ? 16 : size === 'md' ? 32 : 48}
@@ -301,7 +305,10 @@ export function ProgressBar({
             strokeDasharray={circumference}
             initial={{ strokeDashoffset: circumference }}
             animate={{ strokeDashoffset }}
-            transition={{ duration: 1, ease: 'easeOut' }}
+            transition={{
+              duration: 1,
+              ease: [0, 0, 0.58, 1] as [number, number, number, number],
+            }}
           />
           <defs>
             <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -328,7 +335,10 @@ export function ProgressBar({
           className="h-full bg-gradient-to-r from-brand-magenta to-brand-turquoise relative"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
-          transition={{ duration: 1, ease: 'easeOut' }}
+          transition={{
+            duration: 1,
+            ease: [0, 0, 0.58, 1] as [number, number, number, number],
+          }}
         >
           <motion.div
             className="absolute inset-0 bg-white opacity-30"
@@ -338,7 +348,7 @@ export function ProgressBar({
             transition={{
               duration: 1.5,
               repeat: Infinity,
-              ease: 'linear'
+              ease: [0, 0, 1, 1] as [number, number, number, number],
             }}
             style={{
               background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)'
@@ -363,7 +373,10 @@ export function ProgressBar({
         className="h-full bg-gradient-to-r from-brand-magenta to-brand-turquoise"
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
-        transition={{ duration: 1, ease: 'easeOut' }}
+        transition={{
+          duration: 1,
+          ease: [0, 0, 0.58, 1] as [number, number, number, number],
+        }}
       />
       {showPercentage && (
         <div className="absolute top-full left-0 mt-1">

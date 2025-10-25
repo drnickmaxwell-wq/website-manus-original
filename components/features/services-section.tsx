@@ -96,10 +96,13 @@ export function ServicesSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
+      transition: {
+        duration: 0.6,
+        ease: [0, 0, 0.58, 1] as [number, number, number, number],
+      }
     }
   };
 
@@ -209,16 +212,15 @@ export function ServicesSection() {
                     </ul>
 
                     {/* CTA Button */}
-                    <LuxuryButton
-                      variant="outline"
-                      className="w-full group border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
-                      asChild
-                    >
-                      <Link href={service.href}>
+                    <Link href={service.href} className="inline-flex w-full">
+                      <LuxuryButton
+                        variant="outline"
+                        className="w-full group border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                      >
                         Learn More
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </LuxuryButton>
+                      </LuxuryButton>
+                    </Link>
                   </LuxuryCardContent>
 
                   {/* Hover Effect Overlay */}
@@ -256,14 +258,15 @@ export function ServicesSection() {
                 </LuxuryButton>
               </MicroInteraction>
               <MicroInteraction variant="hover-lift">
-                <LuxuryButton
-                  variant="outline"
-                  size="lg"
-                  className="border-brand-magenta text-brand-magenta hover:bg-brand-magenta hover:text-white"
-                  asChild
-                >
-                  <Link href="/digital-twin">Try AI Smile Quiz</Link>
-                </LuxuryButton>
+                <Link href="/digital-twin" className="inline-flex">
+                  <LuxuryButton
+                    variant="outline"
+                    size="lg"
+                    className="border-brand-magenta text-brand-magenta hover:bg-brand-magenta hover:text-white"
+                  >
+                    Try AI Smile Quiz
+                  </LuxuryButton>
+                </Link>
               </MicroInteraction>
             </div>
           </div>

@@ -100,7 +100,7 @@ export function ExactGradientBackground() {
             duration: particle.duration,
             repeat: Infinity,
             delay: particle.delay,
-            ease: 'easeInOut',
+            ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
           }}
         />
       ))}

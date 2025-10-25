@@ -22,7 +22,11 @@ export default function BrandGradient({ className = '' }: Props) {
         className="absolute inset-0 mix-blend-screen"
         initial={{ rotate: 0 }}
         animate={{ rotate: 360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+        transition={{
+          duration: 40,
+          repeat: Infinity,
+          ease: [0, 0, 1, 1] as [number, number, number, number],
+        }}
         style={{
           background:
             'conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.18), rgba(255,255,255,0) 25%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0) 75%, rgba(255,255,255,0.18))',

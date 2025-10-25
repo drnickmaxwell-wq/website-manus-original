@@ -76,19 +76,25 @@ export function AboutSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
+      transition: {
+        duration: 0.6,
+        ease: [0, 0, 0.58, 1] as [number, number, number, number],
+      }
     }
   };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { duration: 0.8, ease: 'easeOut' }
+      transition: {
+        duration: 0.8,
+        ease: [0, 0, 0.58, 1] as [number, number, number, number],
+      }
     }
   };
 
@@ -136,27 +142,27 @@ export function AboutSection() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <LuxuryButton
-                  variant="primary"
-                  size="lg"
-                  glow
-                  className="group"
-                  asChild
-                >
-                  <Link href="/about">
+                <Link href="/about" className="inline-flex">
+                  <LuxuryButton
+                    variant="primary"
+                    size="lg"
+                    glow
+                    className="group"
+                  >
                     Discover Our Story
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </LuxuryButton>
-                
-                <LuxuryButton
-                  variant="outline"
-                  size="lg"
-                  className="border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
-                  asChild
-                >
-                  <Link href="/team">Meet Our Team</Link>
-                </LuxuryButton>
+                  </LuxuryButton>
+                </Link>
+
+                <Link href="/team" className="inline-flex">
+                  <LuxuryButton
+                    variant="outline"
+                    size="lg"
+                    className="border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                  >
+                    Meet Our Team
+                  </LuxuryButton>
+                </Link>
               </div>
             </motion.div>
 
@@ -295,14 +301,15 @@ export function AboutSection() {
                   <Clock className="w-5 h-5" />
                   Book Consultation
                 </LuxuryButton>
-                <LuxuryButton
-                  variant="ghost"
-                  size="lg"
-                  className="text-white hover:bg-white/10"
-                  asChild
-                >
-                  <Link href="/contact">Get Directions</Link>
-                </LuxuryButton>
+                <Link href="/contact" className="inline-flex">
+                  <LuxuryButton
+                    variant="ghost"
+                    size="lg"
+                    className="text-white hover:bg-white/10"
+                  >
+                    Get Directions
+                  </LuxuryButton>
+                </Link>
               </div>
             </div>
           </motion.div>
