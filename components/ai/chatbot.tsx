@@ -190,7 +190,7 @@ export function Chatbot({
           <>
             {/* Messages */}
             <div className="flex-1 p-4 h-96 overflow-y-auto space-y-4">
-              {messages.map((message) => {
+              {messages.map((message: any) => {
                 const emotions = message.role === 'user' ? detectEmotion(message.content) : [];
                 const emotionIcon = getEmotionIcon(emotions);
                 
