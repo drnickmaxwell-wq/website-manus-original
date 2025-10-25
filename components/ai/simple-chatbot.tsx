@@ -24,21 +24,10 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LoadingSpinner } from '@/components/effects/loading-animations';
 
-type SpeechRecognitionConstructor = new () => SpeechRecognition;
-
-interface SpeechEnabledWindow extends Window {
-  webkitSpeechRecognition?: SpeechRecognitionConstructor;
-  SpeechRecognition?: SpeechRecognitionConstructor;
-}
-
-const getSpeechRecognitionConstructor = (): SpeechRecognitionConstructor | null => {
-  if (typeof window === 'undefined') {
-    return null;
-  }
-
-  const speechWindow = window as SpeechEnabledWindow;
-  return speechWindow.webkitSpeechRecognition ?? speechWindow.SpeechRecognition ?? null;
-};
+const SpeechRecognitionCtor: SpeechRecognitionConstructor | undefined =
+  typeof window !== 'undefined'
+    ? window.SpeechRecognition ?? window.webkitSpeechRecognition
+    : undefined;
 
 interface ChatMessage {
   id: string;
@@ -217,10 +206,9 @@ export function SimpleChatbot({
   };
 
   const handleVoiceInput = () => {
-    const SpeechRecognitionConstructor = getSpeechRecognitionConstructor();
+    const recognition = SpeechRecognitionCtor ? new SpeechRecognitionCtor() : undefined;
 
-    if (SpeechRecognitionConstructor) {
-      const recognition = new SpeechRecognitionConstructor();
+    if (recognition) {
       
       recognition.continuous = false;
       recognition.interimResults = false;
