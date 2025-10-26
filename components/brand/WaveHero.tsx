@@ -28,15 +28,15 @@ export default function WaveHero({
       {/* Underplate gradient is in .smh-gradient-bg */}
 
       {/* Wave SVG underlay */}
-      <div aria-hidden className="absolute inset-0 -z-10 opacity-85 bg-[url('/waves/smh-wave-mask.svg')] bg-cover bg-center" />
+      <div aria-hidden className="absolute inset-0 -z-10 opacity-20 bg-[url('/waves/smh-wave-mask.svg')] bg-cover bg-center" />
 
       {/* Particles & Grain */}
       {showParticles && (<>
-        <div aria-hidden className="smh-particles-gold absolute inset-0 pointer-events-none mix-blend-soft-light" />
-        <div aria-hidden className="smh-particles-teal absolute inset-0 pointer-events-none mix-blend-soft-light" />
-        <div aria-hidden className="smh-particles-magenta absolute inset-0 pointer-events-none mix-blend-soft-light" />
+        <div aria-hidden className="smh-particles-gold absolute inset-0 pointer-events-none mix-blend-soft-light" style={{ opacity: .18 }} />
+        <div aria-hidden className="smh-particles-teal absolute inset-0 pointer-events-none mix-blend-soft-light" style={{ opacity: .18 }} />
+        <div aria-hidden className="smh-particles-magenta absolute inset-0 pointer-events-none mix-blend-soft-light" style={{ opacity: .18 }} />
       </>)}
-      {showGrain && (<div aria-hidden className="smh-film-grain absolute inset-0 pointer-events-none" />)}
+      {showGrain && (<div aria-hidden className="smh-film-grain absolute inset-0 pointer-events-none" style={{ opacity: .20 }} />)}
 
       {/* Content */}
       <div className="relative container mx-auto px-6 py-20 md:py-28 text-white">
