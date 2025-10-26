@@ -54,20 +54,36 @@ export default function WaveHero({
       }} />
 
       {/* Wave mask underlay using shipped SVG */}
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[url('/waves/smh-wave-mask.svg')] bg-cover bg-center opacity-80" />
+      <div aria-hidden className="absolute inset-0 -z-10 opacity-20 bg-[url('/waves/smh-wave-mask.svg')] bg-cover bg-center" />
 
       {/* Particle overlays (soft) */}
       {showParticles && (
         <>
-          <div aria-hidden className="smh-particles-gold absolute inset-0 mix-blend-soft-light pointer-events-none" />
-          <div aria-hidden className="smh-particles-teal absolute inset-0 mix-blend-soft-light pointer-events-none" />
-          <div aria-hidden className="smh-particles-magenta absolute inset-0 mix-blend-soft-light pointer-events-none" />
+          <div
+            aria-hidden
+            className="smh-particles-gold absolute inset-0 pointer-events-none mix-blend-soft-light"
+            style={{ opacity: 0.18 }}
+          />
+          <div
+            aria-hidden
+            className="smh-particles-teal absolute inset-0 pointer-events-none mix-blend-soft-light"
+            style={{ opacity: 0.18 }}
+          />
+          <div
+            aria-hidden
+            className="smh-particles-magenta absolute inset-0 pointer-events-none mix-blend-soft-light"
+            style={{ opacity: 0.18 }}
+          />
         </>
       )}
 
       {/* Film grain */}
       {showGrain && (
-        <div aria-hidden className="smh-film-grain absolute inset-0 pointer-events-none" />
+        <div
+          aria-hidden
+          className="smh-film-grain absolute inset-0 pointer-events-none"
+          style={{ opacity: 0.2 }}
+        />
       )}
 
       {/* Content */}
