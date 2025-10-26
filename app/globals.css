@@ -4,6 +4,10 @@
 @import "../styles/champagne/overlays.css";
 @import "../styles/champagne/cta-hover.css";
 
+html{font-family:var(--smh-font-body);}
+.smh-heading{font-family:var(--smh-font-heading);}
+.smh-text-dim{color:var(--smh-text-dim);}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
