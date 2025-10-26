@@ -1,67 +1,17 @@
 :root {
-  /* Core brand colors */
   --smh-primary-magenta: #C2185B;
   --smh-primary-teal: #40C4B4;
   --smh-accent-gold: #D4AF37;
-
-  /* Light mode neutrals */
   --smh-bg: #FFFFFF;
-  --smh-surface: var(--smh-bg);
-  --surface-0: #F8F4EE;
   --smh-text: #1A1A1A;
   --smh-text-muted: #4C4C4C;
-  --smh-text-dim: var(--smh-text-muted);
-  --smh-gold: var(--smh-accent-gold);
-  --smh-gold-600: color-mix(in oklab, var(--smh-accent-gold) 75%, #A67C2A);
-  --smh-surface-2: color-mix(in oklab, var(--smh-bg) 85%, var(--surface-0) 15%);
-
-  /* Signature gradient (135° magenta → teal) */
-  --smh-gradient: linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%);
+  --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --smh-primary-magenta: #C2185B;
-    --smh-primary-teal: #40C4B4;
-    --smh-accent-gold: #D4AF37;
     --smh-bg: #0D0E10;
-    --smh-surface: var(--smh-bg);
     --smh-text: #FFFFFF;
     --smh-text-muted: #D3D3D3;
-    --smh-text-dim: var(--smh-text-muted);
-    --smh-gradient: linear-gradient(135deg, #EE66D1 0%, #00D6DB 100%);
-    --smh-gold: var(--smh-accent-gold);
-    --smh-gold-600: color-mix(in oklab, var(--smh-accent-gold) 65%, #FFE9B0);
-    --smh-surface-2: color-mix(in oklab, var(--smh-bg) 65%, #1F2024);
-  }
-}
-
-/* helpers used by layout */
-.smh-gradient-bg { background-image: var(--smh-gradient); }
-.smh-film-grain { background-image: url("/textures/film-grain-desktop.webp"); opacity: .22; }
-@media (max-width: 768px) {
-  .smh-film-grain { background-image: url("/textures/film-grain-mobile.webp"); }
-}
-.smh-particles-gold { background-image: url("/textures/particles-gold.webp"); opacity: .16; }
-.smh-particles-teal { background-image: url("/textures/particles-teal.webp"); opacity: .14; }
-.smh-particles-magenta { background-image: url("/textures/particles-magenta.webp"); opacity: .12; }
-.smh-wave-mask {
-  position: relative;
-}
-
-:root {
-  /* Brand aliases retained for legacy usage */
-  --brand-magenta: var(--smh-primary-magenta);
-  --brand-teal: var(--smh-primary-teal);
-  --brand-gold: var(--smh-accent-gold);
-
-  /* Signature champagne gradient */
-  --champagne-gradient: var(--smh-gradient);
-  --focus-gold: var(--smh-accent-gold);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --champagne-gradient: var(--smh-gradient);
+    --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
   }
 }
