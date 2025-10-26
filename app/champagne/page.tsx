@@ -117,6 +117,11 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <div className="mt-6 p-3 rounded border smh-gold-border">
+        <div className="text-sm opacity-80">Active brand gradient</div>
+        <div className="mt-2 h-10 rounded smh-gradient-bg" />
+      </div>
     </main>
   );
 }
