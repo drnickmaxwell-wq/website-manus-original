@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
-import BrandHeroGradient from '@/components/brand/BrandHeroGradient';
 
 const achievements = [
   {
@@ -99,14 +98,19 @@ export function AboutSection() {
   };
 
   return (
-    <BrandHeroGradient className="py-20 md:py-28" particles={["gold"]} filmGrain={false}>
-      <div className="container-luxury">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+    <section className="relative py-16">
+      <div className="container mx-auto px-4">
+        <div
+          className="rounded-2xl p-8 shadow-[var(--smh-shadow-champagne)]"
+          style={{ background: "var(--smh-surface)" }}
         >
+          <motion.div
+            className="container-luxury"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
           {/* Section Header */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <motion.div variants={itemVariants}>
@@ -309,9 +313,10 @@ export function AboutSection() {
               </div>
             </div>
           </motion.div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-    </BrandHeroGradient>
+    </section>
   );
 }
 

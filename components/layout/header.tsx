@@ -50,10 +50,7 @@ export function Header() {
   const [mobileOpenSubGroup, setMobileOpenSubGroup] = useState<string | null>(null);
   const pathname = usePathname();
 
-  const isActive = (href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname === href;
-  };
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname === href);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
@@ -112,7 +109,7 @@ export function Header() {
       </motion.div>
 
       <header
-        className={`sticky top-0 relative z-[60] pointer-events-auto transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}
+        className={`relative z-[60] pointer-events-auto sticky top-0 transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}
         style={{ backgroundColor: isScrolled ? 'rgba(247, 247, 249, 0.95)' : 'transparent', backdropFilter: isScrolled ? 'blur(20px)' : 'none', boxShadow: isScrolled ? '0 4px 20px rgba(194, 24, 91, 0.1)' : 'none' }}
       >
         <div className="container-luxury">
