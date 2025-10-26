@@ -1,28 +1,33 @@
 :root{
-  --smh-primary-magenta: #D94BC6;
-  --smh-primary-teal: #00C2C7;
-  --smh-accent-gold: #F9E8C3;
-  --smh-bg: #ffffff;
+  /* Canonical Champagne palette */
+  --smh-primary-magenta: #C2185B;       /* brand magenta */
+  --smh-primary-teal:    #40C4B4;       /* brand turquoise/teal */
+  --smh-accent-gold:     #D4AF37;       /* rich gold accent */
+
+  /* Signature gradient (135°) used everywhere */
+  --smh-gradient: linear-gradient(135deg, var(--smh-primary-magenta) 0%, var(--smh-primary-teal) 65%, var(--smh-accent-gold) 100%);
+
+  /* Neutrals for text & surfaces */
+  --smh-bg: #0E1525;              /* deep ink */
+  --smh-surface: #111827;
+  --smh-text: #ffffff;
+  --smh-text-dim: color-mix(in oklab, var(--smh-text) 82%, transparent);
+
   --smh-bg-elev: color-mix(in oklab, var(--smh-bg) 85%, #0a0c0f);
-  --smh-text:#0f1215;
-  --smh-text-dim: color-mix(in oklab, var(--smh-text) 70%, transparent);
   --smh-text-muted: color-mix(in oklab, var(--smh-text) 65%, transparent);
-  --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
   --smh-gold:#F9E8C3;
   --smh-gold-600:#EAD9B3;
-  --smh-surface: color-mix(in_oklab, white 86%, transparent);
   --smh-surface-2: color-mix(in_oklab, white 72%, transparent);
 }
 
 @media (prefers-color-scheme: dark){
   :root{
     --smh-primary-magenta: #EE66D1;
-    --smh-primary-teal: #00D6DB;
-    --smh-accent-gold: #F9E8C3;
+    --smh-primary-teal:    #00D6DB;
+    --smh-gradient: linear-gradient(135deg, #EE66D1 0%, #00D6DB 100%);
     --smh-bg: #0e1113;
     --smh-bg-elev: color-mix(in oklab, var(--smh-bg) 75%, #ffffff);
     --smh-text-muted: color-mix(in oklab, var(--smh-text) 65%, transparent);
-    --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
     --smh-text:#e7eaee;
     --smh-text-dim: color-mix(in oklab, var(--smh-text) 65%, transparent);
     --smh-surface: color-mix(in_oklab,#0B1020 65%, transparent);
@@ -31,12 +36,16 @@
 }
 
 /* helpers used by layout */
-.smh-gradient-bg{ background: var(--smh-gradient); }
+.smh-gradient-bg{ background: var(--smh-gradient) !important; }
 .smh-film-grain{ background-image:url("/textures/film-grain-desktop.webp"); opacity:.22; }
 @media (max-width:768px){ .smh-film-grain{ background-image:url("/textures/film-grain-mobile.webp"); } }
 .smh-particles-gold{ background-image:url("/textures/particles-gold.webp"); opacity:.16; }
 .smh-particles-teal{ background-image:url("/textures/particles-teal.webp"); opacity:.14; }
 .smh-particles-magenta{ background-image:url("/textures/particles-magenta.webp"); opacity:.12; }
+.smh-wave-mask{
+  /* keep existing mask/clip if present; otherwise give a sane default */
+  position: relative;
+}
 :root{
   /* Core brand (Champagne) */
   --brand-magenta: #C2185B;
@@ -44,15 +53,15 @@
   --brand-gold:    #D4AF37;
 
   /* Global text/surfaces (tune if you have house neutrals) */
-  --smh-bg: #0f172a;
+  --smh-bg: #0E1525;
   --smh-text: #ffffff;
-  --smh-text-dim: color-mix(in oklab,var(--smh-text) 80%, transparent);
+  --smh-text-dim: color-mix(in oklab,var(--smh-text) 82%, transparent);
 
   /* Signature gradient at 135° per brand lock */
-  --champagne-gradient: linear-gradient(135deg,var(--brand-magenta) 0%, var(--brand-teal) 60%, var(--brand-gold) 100%);
+  --champagne-gradient: linear-gradient(135deg,var(--brand-magenta) 0%, var(--brand-teal) 65%, var(--brand-gold) 100%);
 
   /* Focus ring */
-  --focus-gold: var(--brand-gold);
+  --focus-gold: var(--smh-accent-gold);
 }
 @media (prefers-color-scheme: dark){
   :root{

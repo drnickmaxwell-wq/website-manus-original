@@ -15,7 +15,7 @@ const config = {
           gold: "var(--smh-accent-gold)",
           bg: "var(--smh-bg)",
           text: "var(--smh-text)",
-          "text-dim": "var(--smh-text-dim)",
+          dim: "var(--smh-text-dim)",
         },
       },
       boxShadow: {
