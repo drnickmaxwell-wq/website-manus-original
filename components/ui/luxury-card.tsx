@@ -17,8 +17,8 @@ const cardVariants = {
   default: 'bg-white border border-gray-100 shadow-sm',
   elevated: 'bg-white shadow-lg border border-gray-50',
   glass: 'bg-white/80 backdrop-blur-md border border-white/20 shadow-xl',
-  coastal: 'bg-gradient-to-br from-white to-brand-background border border-brand-turquoise/20 shadow-lg',
-  gradient: 'bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] border border-brand-turquoise/20 shadow-lg',
+  coastal: 'border border-[color:color-mix(in_oklab,var(--smh-primary-teal)_20%,var(--smh-bg))] shadow-lg',
+  gradient: 'border border-[color:color-mix(in_oklab,var(--smh-primary-teal)_25%,var(--smh-bg))] shadow-lg text-white',
 };
 
 export function LuxuryCard({
@@ -29,6 +29,7 @@ export function LuxuryCard({
   shimmer = false,
   tilt = false,
   className,
+  style,
   ...props
 }: LuxuryCardProps) {
   const baseClasses = cn(
@@ -40,6 +41,14 @@ export function LuxuryCard({
     },
     className
   );
+
+  const variantStyle =
+    variant === 'gradient'
+      ? { background: 'var(--smh-gradient)' }
+      : variant === 'coastal'
+        ? { background: 'color-mix(in oklab, var(--smh-bg) 70%, var(--surface-0) 30%)' }
+        : {};
+  const combinedStyle = { ...variantStyle, ...style } as React.CSSProperties;
 
   const cardMotionVariants: Variants = {
     initial: {
@@ -79,7 +88,8 @@ export function LuxuryCard({
       whileTap="tap"
       style={{
         transformStyle: tilt ? 'preserve-3d' : 'flat',
-        perspective: tilt ? 1000 : 'none'
+        perspective: tilt ? 1000 : 'none',
+        ...combinedStyle,
       }}
       {...props}
     >
@@ -90,7 +100,10 @@ export function LuxuryCard({
       
       {/* Coastal Wave Border */}
       {variant === 'coastal' && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] animate-wave" />
+        <div
+          className="absolute top-0 left-0 right-0 h-1 animate-wave"
+          style={{ background: 'var(--smh-gradient)' }}
+        />
       )}
       
       {/* Glass Reflection */}

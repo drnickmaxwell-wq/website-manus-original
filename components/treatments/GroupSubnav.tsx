@@ -15,10 +15,7 @@ export default function GroupSubnav({ group }: { group: keyof typeof TREATMENT_G
           <li key={it.slug}>
             <Link
               href={`/treatments/${group}/${it.slug}`}
-              className="text-sm block px-3 py-2 rounded-md
-                bg-gradient-to-r from-[var(--smh-primary-magenta)]/0 to-[var(--smh-primary-teal)]/0
-                hover:from-[var(--smh-primary-magenta)]/10 hover:to-[var(--smh-primary-teal)]/10
-                hover:text-[var(--smh-primary-teal)]"
+              className="block rounded-md px-3 py-2 text-sm text-[color:var(--smh-text)] transition-colors duration-200 hover:bg-[color-mix(in_oklab,var(--smh-primary-magenta)_12%,var(--smh-primary-teal)_12%)] hover:text-[color:var(--smh-primary-teal)]"
             >
               {it.label}
             </Link>
