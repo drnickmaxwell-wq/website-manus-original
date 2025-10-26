@@ -50,6 +50,11 @@ export function Header() {
   const [mobileOpenSubGroup, setMobileOpenSubGroup] = useState<string | null>(null);
   const pathname = usePathname();
 
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname === href;
+  };
+
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
@@ -69,7 +74,7 @@ export function Header() {
   return (
     <>
       <motion.div
-        className="smh-gradient-bg text-white py-2 px-4 text-sm"
+        className="smh-gradient-bg text-white py-2 px-4 text-sm relative z-[60] pointer-events-auto"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -107,7 +112,7 @@ export function Header() {
       </motion.div>
 
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}
+        className={`sticky top-0 relative z-[60] pointer-events-auto transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}
         style={{ backgroundColor: isScrolled ? 'rgba(247, 247, 249, 0.95)' : 'transparent', backdropFilter: isScrolled ? 'blur(20px)' : 'none', boxShadow: isScrolled ? '0 4px 20px rgba(194, 24, 91, 0.1)' : 'none' }}
       >
         <div className="container-luxury">
@@ -125,13 +130,13 @@ export function Header() {
             <nav className="hidden lg:flex items-center space-x-8">
               {/* Render all items except Treatments using the existing logic */}
               {navigationItems.filter((item) => item.name !== 'Treatments').map((item) => {
-                const isActive = pathname === item.href;
+                const active = isActive(item.href);
                 return (
                   <div key={item.name} className="relative">
                     <Link
                       href={item.href}
                       className="text-brand-text hover:text-brand-magenta transition-colors duration-300 font-medium relative group px-2 py-1"
-                      aria-current={isActive ? 'page' : undefined}
+                      aria-current={active ? 'page' : undefined}
                     >
                       {item.name}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 smh-gradient-bg group-hover:w-full transition-all duration-300" />
@@ -239,14 +244,14 @@ export function Header() {
                         </div>
                       );
                     }
-                    const isActive = pathname === item.href;
+                    const active = isActive(item.href);
                     return (
                       <div key={item.name}>
                         <Link
                           href={item.href}
                           className="block py-3 text-lg font-medium text-brand-text hover:text-brand-magenta transition-colors border-b border-gray-100"
                           onClick={() => setIsMobileMenuOpen(false)}
-                          aria-current={isActive ? 'page' : undefined}
+                          aria-current={active ? 'page' : undefined}
                         >
                           {item.name}
                         </Link>
