@@ -1,10 +1,4 @@
 import React from "react";
-
-type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-
-type Props = { as?: HeadingTag; className?: string; children: React.ReactNode };
-
-export default function IridescentHeading({ as = "h1", className = "", children }: Props) {
-  const Tag = as;
-  return <Tag className={["smh-iridescent smh-heading", className].join(" ").trim()}>{children}</Tag>;
+export default function IridescentHeading({className="",children}:{className?:string;children:React.ReactNode;}){
+  return(<h1 className={["smh-heading tracking-wide [text-shadow:_0_1px_0_rgba(255,255,255,.35)]",className].join(" ")}>{children}</h1>);
 }

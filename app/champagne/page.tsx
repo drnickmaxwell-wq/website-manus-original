@@ -94,6 +94,11 @@ export default function Page() {
         </tbody>
       </table>
 
+      <div className="mt-6 p-4 rounded-lg border smh-gold-border">
+        <div className="text-sm opacity-80">Computed gradient:</div>
+        <div className="mt-2 h-10 rounded smh-gradient-bg" />
+      </div>
+
       <p className="mt-3 text-xs text-white/60">
         Missing variants will display the Canvas fallback until real uploads are available.
       </p>

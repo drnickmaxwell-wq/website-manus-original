@@ -10,7 +10,7 @@ const steps: Step[] = [
 
 export default function TechWorkflow(){
   return (
-    <section className="py-16">
+    <section id="workflow" className="py-16">
       <div className="container mx-auto px-6 max-w-6xl text-center">
         <h2 className="smh-heading text-3xl md:text-4xl">Our Digital Workflow</h2>
         <p className="smh-text-dim mt-2">Three steps to perfection</p>

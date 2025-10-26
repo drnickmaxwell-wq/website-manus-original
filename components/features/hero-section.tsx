@@ -11,7 +11,8 @@ import { ArrowRight, Sparkles, Award, Users, Clock } from 'lucide-react';
 import { CoastalWaves } from '@/components/effects/coastal-waves';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
-import BrandHeroGradient from '@/components/brand/BrandHeroGradient';
+import WaveHero from '@/components/brand/WaveHero';
+import IridescentHeading from '@/components/brand/IridescentHeading';
 
 const heroStats = [
   { icon: Users, value: '2,500+', label: 'Happy Patients' },
@@ -50,12 +51,7 @@ export function HeroSection() {
   };
 
   return (
-    <BrandHeroGradient
-      className="flex min-h-screen items-center justify-center py-20 md:py-28 text-smh-text"
-      backgroundImageSrc="/waves/smh-wave-hero-desktop.webp"
-      particles={["gold", "teal"]}
-      filmGrain
-    >
+    <WaveHero className="flex min-h-screen items-center justify-center py-20 md:py-28 text-smh-text" particles={["gold", "teal"]} filmGrain>
       {/* Main Content */}
       <motion.div
         className="relative z-20 container-luxury text-center text-balance"
@@ -84,16 +80,11 @@ export function HeroSection() {
           </motion.div>
 
           {/* Main Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-front-headline font-bold text-brand-text mb-6 leading-tight"
-          >
-            Experience Luxury{' '}
-            <span className="smh-gradient-bg bg-clip-text text-transparent">
-              Dental Care
-            </span>{' '}
-            by the Sea
-          </motion.h1>
+          <motion.div variants={itemVariants}>
+            <IridescentHeading className="text-front-headline font-bold text-brand-text mb-6 leading-tight">
+              Luxury Dentistry, Redefined by Technology
+            </IridescentHeading>
+          </motion.div>
 
           {/* Subtitle */}
           <motion.p
@@ -209,7 +200,7 @@ export function HeroSection() {
         variant="hero"
         animated={!shouldReduceMotion}
       />
-    </BrandHeroGradient>
+    </WaveHero>
   );
 }
 
