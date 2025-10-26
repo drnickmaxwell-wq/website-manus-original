@@ -2,13 +2,14 @@
   --smh-primary-magenta: #D94BC6;
   --smh-primary-teal: #00C2C7;
   --smh-accent-gold: #F9E8C3;
-  --smh-bg: #0B0E10;
-  --smh-text-muted: rgba(255,255,255,0.72);
+  --smh-bg: #ffffff;
+  --smh-bg-elev: color-mix(in oklab, var(--smh-bg) 85%, #0a0c0f);
+  --smh-text:#0f1215;
+  --smh-text-dim: color-mix(in oklab, var(--smh-text) 70%, transparent);
+  --smh-text-muted: color-mix(in oklab, var(--smh-text) 65%, transparent);
   --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
   --smh-gold:#F9E8C3;
   --smh-gold-600:#EAD9B3;
-  --smh-text:#1C1E21;
-  --smh-text-dim: color-mix(in_oklab,#1C1E21 70%, transparent);
   --smh-surface: color-mix(in_oklab, white 86%, transparent);
   --smh-surface-2: color-mix(in_oklab, white 72%, transparent);
 }
@@ -18,11 +19,12 @@
     --smh-primary-magenta: #EE66D1;
     --smh-primary-teal: #00D6DB;
     --smh-accent-gold: #F9E8C3;
-    --smh-bg: #080A0D;
-    --smh-text-muted: rgba(255,255,255,0.75);
+    --smh-bg: #0e1113;
+    --smh-bg-elev: color-mix(in oklab, var(--smh-bg) 75%, #ffffff);
+    --smh-text-muted: color-mix(in oklab, var(--smh-text) 65%, transparent);
     --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
-    --smh-text:#F2F5F7;
-    --smh-text-dim: color-mix(in_oklab,#F2F5F7 70%, transparent);
+    --smh-text:#e7eaee;
+    --smh-text-dim: color-mix(in oklab, var(--smh-text) 65%, transparent);
     --smh-surface: color-mix(in_oklab,#0B1020 65%, transparent);
     --smh-surface-2: color-mix(in_oklab,#0B1020 80%, transparent);
   }

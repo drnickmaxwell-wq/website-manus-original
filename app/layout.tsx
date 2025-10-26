@@ -2,7 +2,7 @@ import "./globals.css";
 import "@/styles/tokens/smh-champagne-tokens.css";
 import type { Metadata } from "next";
 import React from "react";
-import { Header } from "@/components/layout/header";
+import Header from "@/components/layout/header";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { Montserrat, Lora } from "next/font/google";
 

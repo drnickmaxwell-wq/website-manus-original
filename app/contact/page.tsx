@@ -1,1 +1,8 @@
-export default function Page(){return(<main className="p-10"><h1>Contact Us</h1><p>Placeholder page to validate navigation.</p></main>);}
+export default function Page() {
+  return (
+    <main className="container mx-auto px-6 py-16">
+      <h1 className="text-4xl font-bold">Contact</h1>
+      <p className="mt-4 smh-text-dim">Placeholder page—content coming.</p>
+    </main>
+  );
+}
