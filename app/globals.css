@@ -3,8 +3,6 @@
 @import "../styles/brand/champagne-textures.css";
 @import "../styles/champagne/overlays.css";
 @import "../styles/champagne/cta-hover.css";
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap");
-
 html{font-family:var(--font-lora), serif;}
 .smh-heading{font-family:var(--font-montserrat), sans-serif;}
 .smh-text-dim{color:var(--smh-text-dim);}

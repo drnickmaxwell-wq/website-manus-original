@@ -1,4 +1,9 @@
 :root{
+  --smh-primary-magenta: #D94BC6;
+  --smh-primary-teal: #00C2C7;
+  --smh-accent-gold: #F9E8C3;
+  --smh-bg: #0B0E10;
+  --smh-text-muted: rgba(255,255,255,0.72);
   --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
   --smh-gold:#F9E8C3;
   --smh-gold-600:#EAD9B3;
@@ -10,6 +15,11 @@
 
 @media (prefers-color-scheme: dark){
   :root{
+    --smh-primary-magenta: #EE66D1;
+    --smh-primary-teal: #00D6DB;
+    --smh-accent-gold: #F9E8C3;
+    --smh-bg: #080A0D;
+    --smh-text-muted: rgba(255,255,255,0.75);
     --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
     --smh-text:#F2F5F7;
     --smh-text-dim: color-mix(in_oklab,#F2F5F7 70%, transparent);
