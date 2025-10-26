@@ -135,12 +135,16 @@ export function Chatbot({
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className={`fixed ${positionClasses[position]} z-50 w-16 h-16 bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] rounded-full shadow-lg flex items-center justify-center text-white hover:shadow-xl transition-all duration-300 ${className}`}
+        className={`fixed ${positionClasses[position]} z-50 w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-white hover:shadow-xl transition-all duration-300 ${className}`}
+        style={{ background: "var(--smh-gradient)" }}
       >
         <MessageCircle className="w-8 h-8" />
-        
+
         {/* Pulse animation */}
-        <div className="absolute inset-0 rounded-full bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] animate-ping opacity-20" />
+        <div
+          className="absolute inset-0 rounded-full animate-ping opacity-20"
+          style={{ background: "var(--smh-gradient)" }}
+        />
       </motion.button>
     );
   }
@@ -157,7 +161,7 @@ export function Chatbot({
       } transition-all duration-300`}>
         
         {/* Header */}
-        <div className="bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] p-4 text-white">
+        <div className="p-4 text-white" style={{ background: "var(--smh-gradient)" }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -201,11 +205,12 @@ export function Chatbot({
                     animate={{ opacity: 1, y: 0 }}
                     className={`flex gap-3 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
                   >
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                      message.role === 'user' 
-                        ? 'bg-brand-turquoise text-white'
-                        : 'bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] text-white'
-                    }`}>
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        message.role === 'user' ? 'bg-brand-turquoise text-white' : 'text-white'
+                      }`}
+                      style={message.role === 'user' ? undefined : { background: 'var(--smh-gradient)' }}
+                    >
                       {message.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                     </div>
                     
@@ -239,7 +244,10 @@ export function Chatbot({
               
               {isLoading && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] flex items-center justify-center">
+                  <div
+                    className="w-8 h-8 rounded-full flex items-center justify-center"
+                    style={{ background: 'var(--smh-gradient)' }}
+                  >
                     <Bot className="w-4 h-4 text-white" />
                   </div>
                   <div className="bg-gray-100 rounded-2xl p-3">

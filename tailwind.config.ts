@@ -16,6 +16,7 @@ const config = {
           bg: "var(--smh-bg)",
           text: "var(--smh-text)",
           dim: "var(--smh-text-dim)",
+          surface: "var(--smh-surface)",
         },
       },
       boxShadow: {
