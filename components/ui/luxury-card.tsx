@@ -18,7 +18,7 @@ const cardVariants = {
   elevated: 'bg-white shadow-lg border border-gray-50',
   glass: 'bg-white/80 backdrop-blur-md border border-white/20 shadow-xl',
   coastal: 'bg-gradient-to-br from-white to-brand-background border border-brand-turquoise/20 shadow-lg',
-  gradient: 'bg-gradient-to-br from-brand-magenta/5 to-brand-turquoise/5 border border-brand-turquoise/20 shadow-lg',
+  gradient: 'bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] border border-brand-turquoise/20 shadow-lg',
 };
 
 export function LuxuryCard({
@@ -90,7 +90,7 @@ export function LuxuryCard({
       
       {/* Coastal Wave Border */}
       {variant === 'coastal' && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-turquoise via-brand-gold to-brand-turquoise animate-wave" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] animate-wave" />
       )}
       
       {/* Glass Reflection */}
