@@ -1,13 +1,8 @@
-"use client";
-import React from "react";
-import TreatmentLayout from "@/components/treatments/TreatmentLayout";
-
-export default function Page() {
+export default function Page(){
   return (
-    <TreatmentLayout title="Technology in Harmony">
-      <>
-        {/* technology-only content here; do not re-export /app/page */}
-      </>
-    </TreatmentLayout>
+    <section className="container mx-auto px-4 py-16">
+      <h1 className="smh-heading text-4xl mb-4">Technology in Harmony</h1>
+      <p className="smh-text-dim">This is the Technology page, not the homepage.</p>
+    </section>
   );
 }
