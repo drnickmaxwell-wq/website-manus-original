@@ -20,7 +20,7 @@ export default function Page(){
       <Swatch name="Teal"    varName="--smh-primary-teal" />
       <Swatch name="Gold"    varName="--smh-accent-gold" />
       <div className="rounded-xl p-6 border">
-        <div className="h-24 w-full rounded-lg smh-gradient-bg" />
+        <div className="h-24 w-full rounded-lg" style={{ background: "var(--smh-gradient)" }} />
         <div className="text-xs mt-3 text-neutral-600">Background above should show your 135° magenta→teal gradient with gold tail.</div>
       </div>
     </main>

@@ -17,8 +17,20 @@ const cardVariants = {
   default: 'bg-white border border-gray-100 shadow-sm',
   elevated: 'bg-white shadow-lg border border-gray-50',
   glass: 'bg-white/80 backdrop-blur-md border border-white/20 shadow-xl',
-  coastal: 'bg-gradient-to-br from-white to-brand-background border border-brand-turquoise/20 shadow-lg',
-  gradient: 'bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] border border-brand-turquoise/20 shadow-lg',
+  coastal: 'border border-brand-turquoise/20 shadow-lg',
+  gradient: 'border border-brand-turquoise/20 shadow-lg text-white',
+} as const;
+
+const variantStyles: Record<NonNullable<LuxuryCardProps['variant']>, React.CSSProperties | undefined> = {
+  default: undefined,
+  elevated: undefined,
+  glass: undefined,
+  coastal: {
+    background: 'linear-gradient(135deg,color-mix(in oklab,var(--smh-bg) 92%, transparent) 0%, color-mix(in oklab,var(--smh-primary-teal) 18%, var(--smh-bg) 82%) 100%)',
+  },
+  gradient: {
+    background: 'var(--smh-gradient)',
+  },
 };
 
 export function LuxuryCard({
@@ -29,7 +41,8 @@ export function LuxuryCard({
   shimmer = false,
   tilt = false,
   className,
-  ...props
+  style: inlineStyle,
+  ...rest
 }: LuxuryCardProps) {
   const baseClasses = cn(
     'relative overflow-hidden rounded-lg transition-all duration-300',
@@ -78,10 +91,12 @@ export function LuxuryCard({
       whileHover="hover"
       whileTap="tap"
       style={{
+        ...variantStyles[variant],
         transformStyle: tilt ? 'preserve-3d' : 'flat',
-        perspective: tilt ? 1000 : 'none'
+        perspective: tilt ? 1000 : 'none',
+        ...inlineStyle,
       }}
-      {...props}
+      {...rest}
     >
       {/* Shimmer Effect */}
       {shimmer && (
@@ -90,7 +105,10 @@ export function LuxuryCard({
       
       {/* Coastal Wave Border */}
       {variant === 'coastal' && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-primary-teal)_100%)] animate-wave" />
+        <div
+          className="absolute top-0 left-0 right-0 h-1 animate-wave"
+          style={{ background: 'var(--smh-gradient)' }}
+        />
       )}
       
       {/* Glass Reflection */}
