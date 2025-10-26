@@ -70,7 +70,7 @@ export function Header() {
   return (
     <>
       <motion.div
-        className="bg-gradient-to-r from-brand-magenta to-brand-turquoise text-white py-2 px-4 text-sm"
+        className="smh-gradient-bg text-white py-2 px-4 text-sm"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -112,7 +112,7 @@ export function Header() {
               <Link href="/" className="flex items-center gap-3">
                 <div className="relative">
                   <Image src="/logos/horizontal-title-turquoise-512.png" alt="St Mary's House Dental Care" width={200} height={100} className="h-12 w-auto animate-breathe" priority />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer" />
+                  <div className="absolute inset-0 smh-gradient-bg opacity-40 shimmer" />
                 </div>
               </Link>
             </motion.div>
@@ -124,7 +124,7 @@ export function Header() {
                 <div key={item.name} className="relative">
                   <Link href={item.href} className="text-brand-text hover:text-brand-magenta transition-colors duration-300 font-medium relative group px-2 py-1">
                     {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-magenta to-brand-turquoise group-hover:w-full transition-all duration-300" />
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 smh-gradient-bg group-hover:w-full transition-all duration-300" />
                   </Link>
                 </div>
               ))}
@@ -134,10 +134,10 @@ export function Header() {
 
             {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-4">
-              <Button variant="outline" className="btn-coastal border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white" asChild>
+              <Button variant="outline" className="btn-coastal border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-brand-turquoise hover:bg-brand-turquoise hover:text-white" asChild>
                 <Link href="/emergency">Emergency</Link>
               </Button>
-              <Button className="btn-coastal bg-gradient-to-r from-brand-magenta to-brand-turquoise text-white hover:shadow-lg glow-magenta" asChild>
+              <Button className="btn-coastal smh-gradient-bg text-white hover:shadow-lg glow-magenta" asChild>
                 <Link href="/booking">Book Consultation</Link>
               </Button>
             </div>
@@ -239,10 +239,10 @@ export function Header() {
                 </nav>
 
                 <div className="mt-8 space-y-4">
-                  <Button variant="outline" className="w-full btn-coastal border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white" asChild>
+                  <Button variant="outline" className="w-full btn-coastal border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-brand-turquoise hover:bg-brand-turquoise hover:text-white" asChild>
                     <Link href="/emergency">Emergency Dentist</Link>
                   </Button>
-                  <Button className="w-full btn-coastal bg-gradient-to-r from-brand-magenta to-brand-turquoise text-white hover:shadow-lg glow-magenta" asChild>
+                  <Button className="w-full btn-coastal smh-gradient-bg text-white hover:shadow-lg glow-magenta" asChild>
                     <Link href="/booking">Book Consultation</Link>
                   </Button>
                 </div>

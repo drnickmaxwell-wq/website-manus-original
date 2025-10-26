@@ -1,7 +1,6 @@
 /* Champagne overlays + helpers (safe to overwrite) */
 :root {
-  --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
-  --smh-gradient-dark: linear-gradient(135deg,#9b2fa1 0%,#0aa5a9 100%);
+  --smh-gradient: linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%);
   --film-grain-opacity: .10;
   --film-grain-opacity-dark: .085;
   --particles-opacity: .10;
@@ -18,10 +17,6 @@
   .smh-gradient-bg {
     animation: none;
   }
-}
-
-.dark .smh-gradient-bg {
-  background-image: var(--smh-gradient-dark);
 }
 
 .smh-gold-border {

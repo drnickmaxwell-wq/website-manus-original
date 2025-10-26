@@ -115,11 +115,11 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-brand-background to-white relative overflow-hidden">
+    <section className="py-20 smh-gradient-bg relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-brand-turquoise/5 to-transparent" />
-        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-brand-magenta/5 to-transparent" />
+        <div className="absolute top-0 left-0 w-1/3 h-full smh-gradient-bg opacity-20" />
+        <div className="absolute bottom-0 right-0 w-1/2 h-1/2 smh-gradient-bg opacity-20" />
       </div>
 
       <div className="container-luxury relative z-10">
@@ -131,14 +131,14 @@ export function TestimonialsSection() {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold/10 to-brand-turquoise/10 rounded-full px-6 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 smh-gradient-bg rounded-full px-6 py-2 mb-6 text-white">
               <Star className="w-4 h-4 text-brand-gold fill-current" />
-              <span className="text-brand-text font-medium">Patient Stories</span>
+              <span className="font-medium">Patient Stories</span>
             </div>
 
             <h2 className="text-content-headline font-bold text-brand-text mb-6">
               Real Smiles,{' '}
-              <span className="bg-gradient-to-r from-brand-magenta to-brand-turquoise bg-clip-text text-transparent">
+              <span className="smh-gradient-bg bg-clip-text text-transparent">
                 Real Stories
               </span>
             </h2>
@@ -219,7 +219,7 @@ export function TestimonialsSection() {
                           <LuxuryButton
                             variant="outline"
                             size="sm"
-                            className="border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                            className="border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
                             onClick={() => setShowVideo(true)}
                           >
                             <Play className="w-4 h-4" />
@@ -231,28 +231,28 @@ export function TestimonialsSection() {
 
                     {/* Patient Image/Before-After */}
                     <div className="relative">
-                      <div className="aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-brand-turquoise/10 to-brand-magenta/10 flex items-center justify-center">
+                      <div className="aspect-square rounded-lg overflow-hidden smh-gradient-bg flex items-center justify-center text-white">
                         {currentTestimonial.beforeAfter ? (
                           <div className="text-center p-8">
-                            <div className="w-16 h-16 bg-gradient-to-r from-brand-magenta to-brand-turquoise rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <div className="w-16 h-16 smh-gradient-bg rounded-full flex items-center justify-center mb-4 mx-auto">
                               <Star className="w-8 h-8 text-white" />
                             </div>
-                            <div className="text-brand-text font-semibold mb-2">
+                            <div className="font-semibold mb-2">
                               Before & After Available
                             </div>
-                            <div className="text-brand-muted text-sm">
+                            <div className="text-white/80 text-sm">
                               See the amazing transformation
                             </div>
                           </div>
                         ) : (
                           <div className="text-center p-8">
-                            <div className="w-16 h-16 bg-gradient-to-r from-brand-turquoise to-brand-gold rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <div className="w-16 h-16 smh-gradient-bg rounded-full flex items-center justify-center mb-4 mx-auto">
                               <Quote className="w-8 h-8 text-white" />
                             </div>
-                            <div className="text-brand-text font-semibold mb-2">
+                            <div className="font-semibold mb-2">
                               Patient Testimonial
                             </div>
-                            <div className="text-brand-muted text-sm">
+                            <div className="text-white/80 text-sm">
                               Real experience, real results
                             </div>
                           </div>
@@ -304,12 +304,12 @@ export function TestimonialsSection() {
 
           {/* CTA Section */}
           <motion.div variants={itemVariants} className="text-center">
-            <div className="bg-gradient-to-r from-brand-turquoise/10 to-brand-magenta/10 rounded-2xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-semibold text-brand-text mb-4">
+            <div className="smh-gradient-bg rounded-2xl p-8 max-w-2xl mx-auto text-white">
+              <h3 className="text-2xl font-semibold text-white mb-4">
                 Ready to Write Your Success Story?
               </h3>
-              <p className="text-brand-muted mb-6">
-                Join thousands of satisfied patients who have transformed their smiles 
+              <p className="text-white/85 mb-6">
+                Join thousands of satisfied patients who have transformed their smiles
                 with our advanced 3D dentistry and luxury care.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -325,7 +325,7 @@ export function TestimonialsSection() {
                 <LuxuryButton
                   variant="outline"
                   size="lg"
-                  className="border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                  className="border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
                 >
                   Read More Reviews
                 </LuxuryButton>
