@@ -133,18 +133,19 @@
   
   html {
     scroll-behavior: smooth;
+    font-family: var(--smh-font-body);
   }
-  
+
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-body), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: var(--smh-font-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading), "Playfair Display", "Times New Roman", serif;
+    font-family: var(--smh-font-heading);
     font-weight: 600;
     line-height: 1.2;
   }
@@ -153,35 +154,35 @@
   .text-front-headline {
     font-size: 4.5rem;
     font-weight: 700;
-    font-family: var(--font-heading), "Playfair Display", "Times New Roman", serif;
+    font-family: var(--smh-font-heading);
   }
 
   .text-front-subtitle {
     font-size: 2.25rem;
     font-weight: 500;
-    font-family: var(--font-body), 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: var(--smh-font-body);
   }
 
   .text-front-body {
     font-size: 1.5rem;
-    font-family: var(--font-body), 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: var(--smh-font-body);
   }
 
   .text-content-headline {
     font-size: 2.25rem;
     font-weight: 600;
-    font-family: var(--font-heading), "Playfair Display", "Times New Roman", serif;
+    font-family: var(--smh-font-heading);
   }
 
   .text-content-subtitle {
     font-size: 1.5rem;
     font-weight: 500;
-    font-family: var(--font-body), 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: var(--smh-font-body);
   }
 
   .text-content-body {
     font-size: 1.25rem;
-    font-family: var(--font-body), 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: var(--smh-font-body);
   }
   
   /* Mobile responsive typography */
@@ -189,15 +190,23 @@
     .text-front-headline {
       font-size: 3rem;
     }
-    
+
     .text-front-subtitle {
       font-size: 1.75rem;
     }
-    
+
     .text-content-headline {
       font-size: 1.875rem;
     }
   }
+}
+
+.smh-heading {
+  font-family: var(--smh-font-heading);
+}
+
+.smh-text-dim {
+  color: var(--smh-text-dim);
 }
 
 @layer components {
