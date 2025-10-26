@@ -35,34 +35,43 @@ export default function BrandHeroGradient({
       {backgroundImageSrc ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 -z-10 pointer-events-none"
           style={{
             backgroundImage: `url("${backgroundImageSrc}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.8
+            opacity: 0.8,
           }}
         />
       ) : null}
 
       {/* Particle overlays (subtle) */}
       {particles?.includes("gold") && (
-        <div aria-hidden="true" className="smh-particles-gold absolute inset-0 pointer-events-none mix-blend-soft-light" />
+        <div
+          aria-hidden="true"
+          className="smh-particles-gold absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light"
+        />
       )}
       {particles?.includes("teal") && (
-        <div aria-hidden="true" className="smh-particles-teal absolute inset-0 pointer-events-none mix-blend-soft-light" />
+        <div
+          aria-hidden="true"
+          className="smh-particles-teal absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light"
+        />
       )}
       {particles?.includes("magenta") && (
-        <div aria-hidden="true" className="smh-particles-magenta absolute inset-0 pointer-events-none mix-blend-soft-light" />
+        <div
+          aria-hidden="true"
+          className="smh-particles-magenta absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light"
+        />
       )}
 
       {/* Film grain overlay */}
       {filmGrain && (
-        <div aria-hidden="true" className="smh-film-grain absolute inset-0 pointer-events-none" />
+        <div aria-hidden="true" className="smh-film-grain absolute inset-0 -z-10 pointer-events-none" />
       )}
 
       {/* Content */}
-      <div className="relative isolate">{children}</div>
+      <div className="relative z-[10] isolate pointer-events-auto">{children}</div>
     </AnyTag>
   );
 }
