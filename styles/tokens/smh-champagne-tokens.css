@@ -37,3 +37,26 @@
 .smh-particles-gold{ background-image:url("/textures/particles-gold.webp"); opacity:.16; }
 .smh-particles-teal{ background-image:url("/textures/particles-teal.webp"); opacity:.14; }
 .smh-particles-magenta{ background-image:url("/textures/particles-magenta.webp"); opacity:.12; }
+:root{
+  /* Core brand (Champagne) */
+  --brand-magenta: #C2185B;
+  --brand-teal:    #40C4B4;
+  --brand-gold:    #D4AF37;
+
+  /* Global text/surfaces (tune if you have house neutrals) */
+  --smh-bg: #0f172a;
+  --smh-text: #ffffff;
+  --smh-text-dim: color-mix(in oklab,var(--smh-text) 80%, transparent);
+
+  /* Signature gradient at 135° per brand lock */
+  --champagne-gradient: linear-gradient(135deg,var(--brand-magenta) 0%, var(--brand-teal) 60%, var(--brand-gold) 100%);
+
+  /* Focus ring */
+  --focus-gold: var(--brand-gold);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    /* Slightly brighter in dark per lock */
+    --champagne-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
+  }
+}
