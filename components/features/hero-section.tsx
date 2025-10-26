@@ -51,10 +51,10 @@ export function HeroSection() {
   };
 
   return (
-    <WaveHero className="flex min-h-screen items-center justify-center py-20 md:py-28 text-smh-text" particles={["gold", "teal"]} filmGrain>
+    <WaveHero className="py-20 md:py-28" particles={["gold", "teal"]} filmGrain>
       {/* Main Content */}
       <motion.div
-        className="relative z-20 container-luxury text-center text-balance"
+        className="relative z-20 container-luxury text-center text-balance flex min-h-screen flex-col items-center justify-center text-smh-text"
         style={{ y: shouldReduceMotion ? 0 : y, opacity: shouldReduceMotion ? 1 : opacity }}
       >
         <motion.div
