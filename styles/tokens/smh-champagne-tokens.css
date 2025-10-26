@@ -1,10 +1,10 @@
-:root {
+:root{
   --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
-  --smh-gold: #F9E8C3;            /* champagne, NOT bright metallic */
-  --smh-gold-600: #EAD9B3;
+  --smh-gold: #F9E8C3;
+  --smh-gold-600:#EAD9B3;
   --smh-surface: color-mix(in_oklab, white 86%, transparent);
   --smh-surface-2: color-mix(in_oklab, white 72%, transparent);
-  --smh-text: #1C1E21;
+  --smh-text:#1C1E21;
   --smh-text-dim: color-mix(in_oklab,#1C1E21 70%, transparent);
   --smh-shadow-champagne: 0 8px 24px rgba(0,0,0,.18);
   --smh-radius-2xl: 1.25rem;
@@ -12,23 +12,20 @@
   --smh-font-body: "Lora", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+@media (prefers-color-scheme: dark){
+  :root{
     --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
-    --smh-gold: #F9E8C3;
-    --smh-gold-600: #EAD9B3;
     --smh-surface: color-mix(in_oklab,#0B1020 65%, transparent);
     --smh-surface-2: color-mix(in_oklab,#0B1020 80%, transparent);
-    --smh-text: #F2F5F7;
+    --smh-text:#F2F5F7;
     --smh-text-dim: color-mix(in_oklab,#F2F5F7 70%, transparent);
-    --smh-shadow-champagne: 0 8px 24px rgba(0,0,0,.28);
   }
 }
 
-.smh-gradient-bg { background: var(--smh-gradient); }
-.smh-wave-mask { mask-image: url("/textures/hero-wave-mask.webp"); mask-size: cover; mask-position: center; }
-.smh-film-grain { background-image: url("/textures/film-grain-desktop.webp"); opacity:.25; }
-@media (max-width: 768px) { .smh-film-grain { background-image: url("/textures/film-grain-mobile.webp"); } }
-.smh-particles-gold { background-image:url("/textures/particles-gold.webp"); opacity:.18; }
-.smh-particles-teal { background-image:url("/textures/particles-teal.webp"); opacity:.14; }
-.smh-particles-magenta { background-image:url("/textures/particles-magenta.webp"); opacity:.12; }
+.smh-gradient-bg{background:var(--smh-gradient);}
+.smh-wave-mask{mask-image:url("/textures/hero-wave-mask.webp");mask-size:cover;mask-position:center;}
+.smh-film-grain{background-image:url("/textures/film-grain-desktop.webp");opacity:.25;}
+@media (max-width:768px){.smh-film-grain{background-image:url("/textures/film-grain-mobile.webp");}}
+.smh-particles-gold{background-image:url("/textures/particles-gold.webp");opacity:.18;}
+.smh-particles-teal{background-image:url("/textures/particles-teal.webp");opacity:.14;}
+.smh-particles-magenta{background-image:url("/textures/particles-magenta.webp");opacity:.12;}

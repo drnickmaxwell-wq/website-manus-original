@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <TreatmentLayout title="Technology in Harmony">
       <>
-        {/* technology-only content goes here; no homepage imports */}
+        {/* technology-only content here; do not re-export /app/page */}
       </>
     </TreatmentLayout>
   );

@@ -13,58 +13,48 @@ export default function BrandHeroGradient({
   className = "",
   children,
   backgroundImageSrc,
-  particles = ["gold","teal","magenta"],
+  particles = ["gold", "teal", "magenta"],
   filmGrain = true,
   as: Tag = "section",
 }: Props) {
-  const Component = Tag as React.ElementType;
+  const Component = Tag as React.ComponentType<React.PropsWithChildren<{ className?: string }>>;
 
-  return React.createElement(
-    Component,
-    {
-      className: ["relative overflow-hidden smh-gradient-bg smh-wave-mask", className].join(" "),
-      "aria-label": "Champagne gradient hero",
-    },
-    backgroundImageSrc
-      ? React.createElement("div", {
-          "aria-hidden": "true",
-          className: "absolute inset-0 -z-10 pointer-events-none",
-          style: {
+  return (
+    <Component className={["relative overflow-hidden smh-gradient-bg smh-wave-mask", className].join(" ")}>
+      {backgroundImageSrc ? (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 pointer-events-none"
+          style={{
             backgroundImage: `url("${backgroundImageSrc}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: 0.8,
-          },
-        })
-      : null,
-    particles.includes("gold")
-      ? React.createElement("div", {
-          "aria-hidden": "true",
-          className: "smh-particles-gold absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light",
-        })
-      : null,
-    particles.includes("teal")
-      ? React.createElement("div", {
-          "aria-hidden": "true",
-          className: "smh-particles-teal absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light",
-        })
-      : null,
-    particles.includes("magenta")
-      ? React.createElement("div", {
-          "aria-hidden": "true",
-          className: "smh-particles-magenta absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light",
-        })
-      : null,
-    filmGrain
-      ? React.createElement("div", {
-          "aria-hidden": "true",
-          className: "smh-film-grain absolute inset-0 -z-10 pointer-events-none",
-        })
-      : null,
-    React.createElement(
-      "div",
-      { className: "relative z-[10] isolate pointer-events-auto" },
-      children,
-    ),
+          }}
+        />
+      ) : null}
+      {particles.includes("gold") ? (
+        <div
+          aria-hidden="true"
+          className="smh-particles-gold absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light"
+        />
+      ) : null}
+      {particles.includes("teal") ? (
+        <div
+          aria-hidden="true"
+          className="smh-particles-teal absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light"
+        />
+      ) : null}
+      {particles.includes("magenta") ? (
+        <div
+          aria-hidden="true"
+          className="smh-particles-magenta absolute inset-0 -z-10 pointer-events-none mix-blend-soft-light"
+        />
+      ) : null}
+      {filmGrain ? (
+        <div aria-hidden="true" className="smh-film-grain absolute inset-0 -z-10 pointer-events-none" />
+      ) : null}
+      <div className="relative z-[10] isolate pointer-events-auto">{children}</div>
+    </Component>
   );
 }
