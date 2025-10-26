@@ -52,7 +52,7 @@ export function HeroSection() {
 
   return (
     <BrandHeroGradient
-      className="relative overflow-hidden py-24 md:py-36"
+      className="relative overflow-hidden py-24 md:py-36 smh-gradient-bg"
       backgroundImageSrc="/waves/hero-waves-alone.webp"
       particles={["gold", "teal", "magenta"]}
       filmGrain={true}
