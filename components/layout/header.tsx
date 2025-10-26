@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import TreatmentsMenu from '@/components/nav/TreatmentsMenu';
-import { useBrandColors } from '@/components/providers/theme-provider';
 import { TREATMENT_GROUPS } from '@/components/treatments/groups';
 
 type NavItem = {
@@ -46,10 +46,9 @@ const contactInfo = {
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [desktopActiveSubmenu, setDesktopActiveSubmenu] = useState<string | null>(null);
   const [mobileTreatmentsOpen, setMobileTreatmentsOpen] = useState(false);
   const [mobileOpenSubGroup, setMobileOpenSubGroup] = useState<string | null>(null);
-  const colors = useBrandColors();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
@@ -125,14 +124,21 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
               {/* Render all items except Treatments using the existing logic */}
-              {navigationItems.filter((item) => item.name !== 'Treatments').map((item) => (
-                <div key={item.name} className="relative">
-                  <Link href={item.href} className="text-brand-text hover:text-brand-magenta transition-colors duration-300 font-medium relative group px-2 py-1">
-                    {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 smh-gradient-bg group-hover:w-full transition-all duration-300" />
-                  </Link>
-                </div>
-              ))}
+              {navigationItems.filter((item) => item.name !== 'Treatments').map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <div key={item.name} className="relative">
+                    <Link
+                      href={item.href}
+                      className="text-brand-text hover:text-brand-magenta transition-colors duration-300 font-medium relative group px-2 py-1"
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 smh-gradient-bg group-hover:w-full transition-all duration-300" />
+                    </Link>
+                  </div>
+                );
+              })}
               {/* Treatments uses our custom menu */}
               <TreatmentsMenu />
             </nav>
@@ -233,9 +239,15 @@ export function Header() {
                         </div>
                       );
                     }
+                    const isActive = pathname === item.href;
                     return (
                       <div key={item.name}>
-                        <Link href={item.href} className="block py-3 text-lg font-medium text-brand-text hover:text-brand-magenta transition-colors border-b border-gray-100" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Link
+                          href={item.href}
+                          className="block py-3 text-lg font-medium text-brand-text hover:text-brand-magenta transition-colors border-b border-gray-100"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          aria-current={isActive ? 'page' : undefined}
+                        >
                           {item.name}
                         </Link>
                       </div>

@@ -11,7 +11,7 @@ import { ArrowRight, Sparkles, Award, Users, Clock } from 'lucide-react';
 import { CoastalWaves } from '@/components/effects/coastal-waves';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
-import WaveHero from '@/components/brand/WaveHero';
+import BrandHeroGradient from '@/components/brand/BrandHeroGradient';
 import IridescentHeading from '@/components/brand/IridescentHeading';
 
 const heroStats = [
@@ -51,10 +51,11 @@ export function HeroSection() {
   };
 
   return (
-    <WaveHero
-      className="smh-gradient-bg smh-wave-mask relative overflow-hidden py-20 md:py-28"
-      particles={["gold", "teal"]}
-      filmGrain
+    <BrandHeroGradient
+      className="relative overflow-hidden py-24 md:py-36"
+      backgroundImageSrc="/waves/hero-waves-alone.webp"
+      particles={["gold", "teal", "magenta"]}
+      filmGrain={true}
     >
       {/* Main Content */}
       <motion.div
@@ -204,7 +205,7 @@ export function HeroSection() {
         variant="hero"
         animated={!shouldReduceMotion}
       />
-    </WaveHero>
+    </BrandHeroGradient>
   );
 }
 
