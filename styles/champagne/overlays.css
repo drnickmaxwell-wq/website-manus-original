@@ -7,17 +7,7 @@
   --particles-opacity-dark: .06;
 }
 
-.smh-gradient-bg {
-  background-image: var(--smh-gradient) !important;
-  background-size: 200% 200%;
-  animation: smhHueDrift 15s var(--motion-ease, cubic-bezier(0.645,0.045,0.355,1)) alternate infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .smh-gradient-bg {
-    animation: none;
-  }
-}
+.smh-gradient-bg{ background-image: var(--smh-gradient) !important; }
 
 .smh-gold-border {
   border: 1px solid color-mix(in oklab, var(--smh-gold) 85%, transparent);

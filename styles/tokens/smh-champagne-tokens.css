@@ -6,7 +6,7 @@
   --smh-surface: #FFFFFF;
   --smh-glass: color-mix(in_oklab,white 78%,transparent);
 }
-@media (prefers-color-scheme:dark){
+@media (prefers-color-scheme: dark){
   :root{
     --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
   }
