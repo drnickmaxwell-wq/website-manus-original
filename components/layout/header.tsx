@@ -18,7 +18,6 @@ type NavItem = {
 
 const navigationItems: NavItem[] = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
   {
     name: 'Treatments',
     href: '/treatments',
@@ -31,9 +30,8 @@ const navigationItems: NavItem[] = [
     ],
   },
   { name: 'Technology', href: '/treatments/technology' },
-  { name: 'Fees & Plans', href: '/fees' },
-  { name: 'Patient Info', href: '/patient-info' },
   { name: 'Contact', href: '/contact' },
+  { name: 'About', href: '/about' },
 ];
 
 const contactInfo = {
@@ -43,7 +41,7 @@ const contactInfo = {
   hours: 'Mon–Fri: 8:00–18:00, Sat: 9:00–15:00',
 };
 
-export function Header() {
+function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileTreatmentsOpen, setMobileTreatmentsOpen] = useState(false);
@@ -295,3 +293,5 @@ export function Header() {
     </>
   );
 }
+
+export default Header;
