@@ -3,9 +3,10 @@
 @import "../styles/brand/champagne-textures.css";
 @import "../styles/champagne/overlays.css";
 @import "../styles/champagne/cta-hover.css";
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap");
 
-html{font-family:var(--smh-font-body);}
-.smh-heading{font-family:var(--smh-font-heading);}
+html{font-family:var(--font-lora), serif;}
+.smh-heading{font-family:var(--font-montserrat), sans-serif;}
 .smh-text-dim{color:var(--smh-text-dim);}
 
 @custom-variant dark (&:is(.dark *));
@@ -64,6 +65,8 @@ html{font-family:var(--smh-font-body);}
 :root {
   /* St Mary's Luxury Light Theme */
   --radius: 18px;
+  --smh-font-heading: var(--font-montserrat), sans-serif;
+  --smh-font-body: var(--font-lora), serif;
   --background: #F7F7F9;
   --foreground: #1A1C1F;
   --card: #FFFFFF;
@@ -137,19 +140,19 @@ html{font-family:var(--smh-font-body);}
   
   html {
     scroll-behavior: smooth;
-    font-family: var(--smh-font-body);
+    font-family: var(--font-lora), serif;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--smh-font-body);
+    font-family: var(--font-lora), serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--smh-font-heading);
+    font-family: var(--font-montserrat), sans-serif;
     font-weight: 600;
     line-height: 1.2;
   }
@@ -158,35 +161,35 @@ html{font-family:var(--smh-font-body);}
   .text-front-headline {
     font-size: 4.5rem;
     font-weight: 700;
-    font-family: var(--smh-font-heading);
+    font-family: var(--font-montserrat), sans-serif;
   }
 
   .text-front-subtitle {
     font-size: 2.25rem;
     font-weight: 500;
-    font-family: var(--smh-font-body);
+    font-family: var(--font-lora), serif;
   }
 
   .text-front-body {
     font-size: 1.5rem;
-    font-family: var(--smh-font-body);
+    font-family: var(--font-lora), serif;
   }
 
   .text-content-headline {
     font-size: 2.25rem;
     font-weight: 600;
-    font-family: var(--smh-font-heading);
+    font-family: var(--font-montserrat), sans-serif;
   }
 
   .text-content-subtitle {
     font-size: 1.5rem;
     font-weight: 500;
-    font-family: var(--smh-font-body);
+    font-family: var(--font-lora), serif;
   }
 
   .text-content-body {
     font-size: 1.25rem;
-    font-family: var(--smh-font-body);
+    font-family: var(--font-lora), serif;
   }
   
   /* Mobile responsive typography */
@@ -206,7 +209,7 @@ html{font-family:var(--smh-font-body);}
 }
 
 .smh-heading {
-  font-family: var(--smh-font-heading);
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 .smh-text-dim {

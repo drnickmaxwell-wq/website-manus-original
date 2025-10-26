@@ -101,7 +101,7 @@ export function AboutSection() {
     <section className="relative py-16">
       <div className="container mx-auto">
         <div
-          className="rounded-2xl p-8 shadow-[var(--smh-shadow-champagne)]"
+          className="rounded-2xl p-8 shadow-[0_8px_24px_rgba(0,0,0,.18)]"
           style={{ background: "var(--smh-surface)" }}
         >
           <motion.div
