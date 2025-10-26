@@ -4,11 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { 
-  Award, 
-  Users, 
-  Heart, 
-  Sparkles, 
+import {
+  Award,
+  Users,
+  Heart,
   ArrowRight,
   MapPin,
   Clock,
@@ -16,6 +15,7 @@ import {
 } from 'lucide-react';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
+import BrandHeroGradient from '@/components/brand/BrandHeroGradient';
 
 const achievements = [
   {
@@ -99,14 +99,8 @@ export function AboutSection() {
   };
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-turquoise/5 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-brand-magenta/5 to-transparent" />
-      </div>
-
-      <div className="container-luxury relative z-10">
+    <BrandHeroGradient className="py-20 md:py-28" particles={["gold"]} filmGrain={false}>
+      <div className="container-luxury">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -116,16 +110,14 @@ export function AboutSection() {
           {/* Section Header */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-turquoise/10 to-brand-magenta/10 rounded-full px-6 py-2 mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full px-6 py-2 mb-6 smh-glass smh-gold-border">
                 <Heart className="w-4 h-4 text-brand-magenta" />
                 <span className="text-brand-text font-medium">About St Mary's House</span>
               </div>
 
               <h2 className="text-content-headline font-bold text-brand-text mb-6">
                 Where Coastal Tranquility Meets{' '}
-                <span className="bg-gradient-to-r from-brand-magenta to-brand-turquoise bg-clip-text text-transparent">
-                  Advanced Dentistry
-                </span>
+                <span className="text-brand-magenta">Advanced Dentistry</span>
               </h2>
 
               <p className="text-lg text-brand-muted mb-6 leading-relaxed">
@@ -179,8 +171,7 @@ export function AboutSection() {
                   height={400}
                   className="w-full h-auto object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-magenta/20 to-transparent" />
-                
+
                 {/* Floating Badge */}
                 <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg">
                   <div className="flex items-center gap-2">
@@ -205,8 +196,11 @@ export function AboutSection() {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-brand-gold/20 to-brand-turquoise/20 rounded-full blur-xl animate-pulse" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-brand-magenta/20 to-brand-gold/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full blur-xl animate-pulse smh-gradient-bg opacity-30" />
+              <div
+                className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full blur-xl animate-pulse smh-gradient-bg opacity-30"
+                style={{ animationDelay: '1s' }}
+              />
             </motion.div>
           </div>
 
@@ -226,8 +220,10 @@ export function AboutSection() {
                   >
                     <LuxuryCardContent className="py-8">
                       <div className="flex justify-center mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-brand-magenta/10 to-brand-turquoise/10 rounded-full flex items-center justify-center">
-                          <Icon className={`w-6 h-6 ${achievement.color}`} />
+                        <div className="w-12 h-12 rounded-full p-[1px] smh-gradient-bg">
+                          <div className="w-full h-full rounded-full flex items-center justify-center bg-white/80">
+                            <Icon className={`w-6 h-6 ${achievement.color}`} />
+                          </div>
                         </div>
                       </div>
                       <h3 className="font-semibold text-brand-text mb-2">
@@ -284,7 +280,7 @@ export function AboutSection() {
             variants={itemVariants}
             className="text-center mt-16"
           >
-            <div className="bg-gradient-to-r from-brand-magenta to-brand-turquoise rounded-2xl p-8 text-white max-w-3xl mx-auto">
+            <div className="smh-gradient-bg rounded-2xl p-8 text-white max-w-3xl mx-auto">
               <h3 className="text-2xl font-semibold mb-4">
                 Ready to Experience the St Mary's Difference?
               </h3>
@@ -315,7 +311,7 @@ export function AboutSection() {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </BrandHeroGradient>
   );
 }
 
