@@ -1,31 +1,31 @@
 "use client";
 
-import React from 'react';
-import { ArrowRight, Sparkles, Award, Users, Clock } from 'lucide-react';
-import { LayoutWrapper } from '@/components/layout/layout-wrapper';
-import WaveHero from '@/components/brand/WaveHero';
-import IridescentHeading from '@/components/brand/IridescentHeading';
-import { LuxuryButton } from '@/components/ui/luxury-button';
-import { LuxuryCard, LuxuryCardContent } from '@/components/ui/luxury-card';
-import { ServicesSection } from '@/components/features/services-section';
-import { AboutSection } from '@/components/features/about-section';
-import { TestimonialsSection } from '@/components/features/testimonials-section';
-import WaveDivider from '@/components/brand/WaveDivider';
-import { CTASection } from '@/components/features/cta-section';
-import useCursorVars from '@/components/brand/useCursorVars';
+import React from "react";
+import { ArrowRight, Sparkles, Award, Users, Clock } from "lucide-react";
+import WaveHero from "@/components/brand/WaveHero";
+import IridescentHeading from "@/components/brand/IridescentHeading";
+import { LuxuryButton } from "@/components/ui/luxury-button";
+import { LuxuryCard, LuxuryCardContent } from "@/components/ui/luxury-card";
+import { ServicesSection } from "@/components/features/services-section";
+import { AboutSection } from "@/components/features/about-section";
+import { TestimonialsSection } from "@/components/features/testimonials-section";
+import WaveDivider from "@/components/brand/WaveDivider";
+import { CTASection } from "@/components/features/cta-section";
+import useCursorVars from "@/components/brand/useCursorVars";
+import { LayoutWrapper } from "@/components/layout/layout-wrapper";
 
 const heroStats = [
-  { icon: Users, value: '2,500+', label: 'Happy Patients' },
-  { icon: Award, value: '15+', label: 'Years Experience' },
-  { icon: Sparkles, value: '98%', label: 'Satisfaction Rate' },
-  { icon: Clock, value: '24/7', label: 'Emergency Care' },
+  { icon: Users, value: "2,500+", label: "Happy Patients" },
+  { icon: Award, value: "15+", label: "Years Experience" },
+  { icon: Sparkles, value: "98%", label: "Satisfaction Rate" },
+  { icon: Clock, value: "24/7", label: "Emergency Care" },
 ];
 
-export default function Home() {
+export default function Page() {
   const onMove = useCursorVars();
 
   return (
-    <LayoutWrapper>
+    <main>
       <WaveHero className="py-20 md:py-28" particles={["gold", "teal"]} filmGrain>
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="flex flex-col items-center text-center text-balance gap-8">
@@ -58,7 +58,7 @@ export default function Home() {
                 <LuxuryCard key={label} variant="glass" hover glow className="text-center smh-gold-border">
                   <LuxuryCardContent className="py-6 smh-glass">
                     <div className="flex justify-center mb-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-brand-magenta to-brand-turquoise">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full smh-gradient-bg">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                     </div>
@@ -71,12 +71,14 @@ export default function Home() {
           </div>
         </div>
       </WaveHero>
-      <ServicesSection />
-      <AboutSection />
-      <TestimonialsSection />
-      <WaveDivider />
-      <CTASection />
-    </LayoutWrapper>
+
+      <LayoutWrapper>
+        <ServicesSection />
+        <AboutSection />
+        <TestimonialsSection />
+        <WaveDivider />
+        <CTASection />
+      </LayoutWrapper>
+    </main>
   );
 }
-
