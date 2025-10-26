@@ -99,7 +99,7 @@ export function AboutSection() {
 
   return (
     <section className="relative py-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div
           className="rounded-2xl p-8 shadow-[var(--smh-shadow-champagne)]"
           style={{ background: "var(--smh-surface)" }}

@@ -26,7 +26,6 @@ const config = {
       fontFamily: {
         heading: ['var(--smh-font-heading)'],
         body: ['var(--smh-font-body)'],
-        data: "var(--font-data)",
       },
     },
   },

@@ -109,7 +109,10 @@ export function Header() {
       </motion.div>
 
       <header
-        className={`relative z-[60] pointer-events-auto sticky top-0 transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}
+        className={[
+          'relative z-[60] pointer-events-auto sticky top-0 transition-all duration-300',
+          isScrolled ? 'py-2' : 'py-4',
+        ].join(' ')}
         style={{ backgroundColor: isScrolled ? 'rgba(247, 247, 249, 0.95)' : 'transparent', backdropFilter: isScrolled ? 'blur(20px)' : 'none', boxShadow: isScrolled ? '0 4px 20px rgba(194, 24, 91, 0.1)' : 'none' }}
       >
         <div className="container-luxury">
