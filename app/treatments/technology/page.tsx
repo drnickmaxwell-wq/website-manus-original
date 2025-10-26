@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import WaveHero from "@/components/brand/WaveHero";
 import IridescentHeading from "@/components/brand/IridescentHeading";
@@ -8,9 +7,8 @@ import TechEquipment from "@/components/technology/TechEquipment";
 import QuoteBand from "@/components/technology/QuoteBand";
 import TechTestimonials from "@/components/technology/TechTestimonials";
 import TechFinalCTA from "@/components/technology/TechFinalCTA";
-
 export default function Page(){
-  return (
+  return(
     <main>
       <WaveHero className="py-20 md:py-28" particles={["gold","teal"]} filmGrain>
         <div className="container mx-auto px-6 max-w-6xl">
@@ -21,12 +19,11 @@ export default function Page(){
           </div>
         </div>
       </WaveHero>
-
-      <div id="workflow"><TechWorkflow /></div>
-      <TechEquipment />
-      <QuoteBand />
-      <TechTestimonials />
-      <TechFinalCTA />
+      <TechWorkflow/>
+      <TechEquipment/>
+      <QuoteBand/>
+      <TechTestimonials/>
+      <TechFinalCTA/>
     </main>
   );
 }
