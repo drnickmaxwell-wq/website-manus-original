@@ -11,11 +11,14 @@
 
   /* light defaults */
   --smh-bg:          #FFFFFF;
+  --smh-surface:     #FFFFFF;
   --smh-text:        #1A1A1A;
-  --smh-text-muted:  #4C4C4C;
+  --smh-text-dim:    #4A4A4A;
+  --smh-text-muted:  var(--smh-text-dim);
+  --smh-glass:       color-mix(in_oklab, white 78%, transparent);
 
   /* gradients + motion */
-  --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
+  --smh-gradient: linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%);
   --motion-ease: cubic-bezier(0.645,0.045,0.355,1);
   --motion-hue-shift: 3deg;
   --motion-ripple-speed: 4s;
@@ -41,9 +44,11 @@
 /* Attribute-driven dark mode (JS toggles [data-theme]) */
 :root[data-theme="dark"] {
   --smh-bg:          #0D0E10;
+  --smh-surface:     #0D0E10;
   --smh-text:        #FFFFFF;
-  --smh-text-muted:  #D3D3D3;
-  --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
+  --smh-text-dim:    #D3D3D3;
+  --smh-text-muted:  var(--smh-text-dim);
+  --smh-gradient: linear-gradient(135deg, #EE66D1 0%, #00D6DB 100%);
   --shadow-elevate-dark: 0 4px 16px rgba(0,0,0,.40);
   --film-grain-opacity: .085;
   --particles-opacity:  .06;
@@ -51,11 +56,20 @@
 
 /* Respect user preference on first load if no attribute has been set */
 @media (prefers-color-scheme: dark) {
+  :root {
+    --smh-gradient: linear-gradient(135deg, #EE66D1 0%, #00D6DB 100%);
+  }
+
+  :root[data-theme="light"] {
+    --smh-gradient: linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%);
+  }
+
   :root:not([data-theme]) {
     --smh-bg:          #0D0E10;
+    --smh-surface:     #0D0E10;
     --smh-text:        #FFFFFF;
-    --smh-text-muted:  #D3D3D3;
-    --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
+    --smh-text-dim:    #D3D3D3;
+    --smh-text-muted:  var(--smh-text-dim);
     --shadow-elevate-dark: 0 4px 16px rgba(0,0,0,.40);
     --film-grain-opacity: .085;
     --particles-opacity:  .06;

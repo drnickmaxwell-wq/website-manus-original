@@ -89,7 +89,7 @@ export function HeroSection() {
             className="text-front-headline font-bold text-brand-text mb-6 leading-tight"
           >
             Experience Luxury{' '}
-            <span className="bg-gradient-to-r from-brand-magenta to-brand-turquoise bg-clip-text text-transparent">
+            <span className="smh-gradient-bg bg-clip-text text-transparent">
               Dental Care
             </span>{' '}
             by the Sea
@@ -143,7 +143,7 @@ export function HeroSection() {
                 >
                   <LuxuryCardContent className="py-6 smh-glass">
                     <div className="flex justify-center mb-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-brand-magenta to-brand-turquoise">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full smh-gradient-bg">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                     </div>
@@ -169,7 +169,7 @@ export function HeroSection() {
             <div className="flex flex-col items-center gap-2">
               <span className="text-brand-muted text-sm">Discover More</span>
               <motion.div
-                className="flex h-10 w-6 items-center justify-center rounded-full border-2 border-brand-turquoise"
+                className="flex h-10 w-6 items-center justify-center rounded-full border-2 border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)]"
                 animate={
                   shouldReduceMotion
                     ? { opacity: 1 }
@@ -201,8 +201,8 @@ export function HeroSection() {
       </motion.div>
 
       {/* Decorative Elements */}
-      <div className="pointer-events-none absolute top-20 left-10 h-20 w-20 rounded-full bg-gradient-to-r from-brand-gold/20 to-brand-turquoise/20 blur-xl" />
-      <div className="pointer-events-none absolute bottom-20 right-10 h-32 w-32 rounded-full bg-gradient-to-r from-brand-magenta/20 to-brand-gold/20 blur-2xl" />
+      <div className="pointer-events-none absolute top-20 left-10 h-20 w-20 rounded-full smh-gradient-bg opacity-20 blur-xl" />
+      <div className="pointer-events-none absolute bottom-20 right-10 h-32 w-32 rounded-full smh-gradient-bg opacity-20 blur-2xl" />
 
       <CoastalWaves
         className="absolute bottom-0 left-0 right-0 z-5 h-16"

@@ -113,10 +113,11 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-brand-surface to-brand-background border-t border-gray-100">
+    <footer className="relative smh-gradient-bg border-t border-gray-100">
+      <div className="absolute inset-0 bg-white/92 pointer-events-none -z-10" aria-hidden="true" />
       {/* Newsletter Section */}
-      <motion.div 
-        className="bg-gradient-to-r from-brand-magenta to-brand-turquoise py-12"
+      <motion.div
+        className="smh-gradient-bg py-12 text-white"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

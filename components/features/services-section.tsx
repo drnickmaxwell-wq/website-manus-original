@@ -26,7 +26,7 @@ const services = [
     description: 'Revolutionary same-day veneers crafted with precision 3D printing technology for perfect fit and natural aesthetics.',
     icon: Sparkles,
     features: ['Same-day treatment', 'Perfect fit guarantee', 'Natural appearance', '10-year warranty'],
-    color: 'from-brand-magenta to-brand-magenta-light',
+    color: 'smh-gradient-bg',
     href: '/treatments/veneers',
     badge: 'Most Popular'
   },
@@ -36,7 +36,7 @@ const services = [
     description: 'Advanced implant solutions using 3D imaging and surgical guides for precise placement and optimal outcomes.',
     icon: Shield,
     features: ['3D surgical planning', 'Minimally invasive', 'Faster healing', 'Lifetime support'],
-    color: 'from-brand-turquoise to-brand-turquoise-light',
+    color: 'smh-gradient-bg',
     href: '/treatments/implants',
     badge: 'Advanced Tech'
   },
@@ -46,7 +46,7 @@ const services = [
     description: 'See your perfect smile before treatment with our AI-powered digital twin technology and AR try-on.',
     icon: Eye,
     features: ['AI smile design', 'AR preview', 'Instant visualization', 'Treatment planning'],
-    color: 'from-brand-gold to-brand-gold-light',
+    color: 'smh-gradient-bg',
     href: '/digital-twin',
     badge: 'AI-Powered'
   },
@@ -56,7 +56,7 @@ const services = [
     description: '24/7 emergency dental care with same-day appointments and pain relief solutions.',
     icon: Zap,
     features: ['24/7 availability', 'Same-day treatment', 'Pain relief', 'Urgent care'],
-    color: 'from-red-500 to-red-600',
+    color: 'smh-gradient-bg',
     href: '/emergency',
     badge: '24/7 Care'
   },
@@ -66,7 +66,7 @@ const services = [
     description: 'Advanced teeth whitening treatments for a brighter, more confident smile in just one visit.',
     icon: Smile,
     features: ['Instant results', 'Safe & effective', 'Long-lasting', 'Custom trays'],
-    color: 'from-blue-500 to-blue-600',
+    color: 'smh-gradient-bg',
     href: '/treatments/whitening',
     badge: 'Quick Results'
   },
@@ -76,7 +76,7 @@ const services = [
     description: 'Comfortable dental care with sedation options and anxiety management for nervous patients.',
     icon: Heart,
     features: ['Sedation options', 'Comfort care', 'Gentle approach', 'Stress-free'],
-    color: 'from-purple-500 to-purple-600',
+    color: 'smh-gradient-bg',
     href: '/dental-anxiety',
     badge: 'Comfort Care'
   }
@@ -107,7 +107,7 @@ export function ServicesSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-brand-background relative overflow-hidden">
+    <section className="py-20 smh-gradient-bg relative overflow-hidden">
       {/* Background Decorations with Particle System */}
       <div className="absolute top-0 left-0 w-full h-full">
         <DustSystem 
@@ -123,10 +123,10 @@ export function ServicesSection() {
         <ScrollAnimation variant="fadeUp" className="text-center mb-16">
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-magenta/10 to-brand-turquoise/10 rounded-full px-6 py-2 mb-6"
+            className="inline-flex items-center gap-2 smh-gradient-bg rounded-full px-6 py-2 mb-6 text-white"
           >
-            <Sparkles className="w-4 h-4 text-brand-turquoise" />
-            <span className="text-brand-text font-medium">Our Services</span>
+            <Sparkles className="w-4 h-4 text-white" />
+            <span className="font-medium">Our Services</span>
           </motion.div>
 
           <motion.h2
@@ -134,7 +134,7 @@ export function ServicesSection() {
             className="text-content-headline font-bold text-brand-text mb-6"
           >
             Advanced 3D Dentistry &{' '}
-            <span className="bg-gradient-to-r from-brand-magenta to-brand-turquoise bg-clip-text text-transparent">
+            <span className="smh-gradient-bg bg-clip-text text-transparent">
               AI-Powered Care
             </span>
           </motion.h2>
@@ -173,19 +173,19 @@ export function ServicesSection() {
                   {/* Badge */}
                   {service.badge && (
                     <div className="absolute top-4 right-4 z-20">
-                      <span className="bg-gradient-to-r from-brand-gold to-brand-gold-light text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      <span className="smh-gradient-bg text-white text-xs font-semibold px-3 py-1 rounded-full">
                         {service.badge}
                       </span>
                     </div>
                   )}
 
                   {/* Gradient Background */}
-                  <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${service.color}`} />
+                  <div className={`absolute top-0 left-0 right-0 h-2 ${service.color}`} />
 
                   <LuxuryCardHeader>
                     <div className="flex items-center gap-4 mb-4">
                       <MicroInteraction variant="hover-glow">
-                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                           <Icon className="w-6 h-6 text-white" />
                         </div>
                       </MicroInteraction>
@@ -215,7 +215,7 @@ export function ServicesSection() {
                     <Link href={service.href} className="inline-flex w-full">
                       <LuxuryButton
                         variant="outline"
-                        className="w-full group border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                        className="w-full group border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
                       >
                         Learn More
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -224,7 +224,7 @@ export function ServicesSection() {
                   </LuxuryCardContent>
 
                   {/* Hover Effect Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-turquoise/5 to-brand-magenta/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 smh-gradient-bg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </LuxuryCard>
               </MicroInteraction>
             );
@@ -237,12 +237,12 @@ export function ServicesSection() {
           delay={0.5}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-brand-magenta/10 to-brand-turquoise/10 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold text-brand-text mb-4">
+          <div className="smh-gradient-bg rounded-2xl p-8 max-w-2xl mx-auto text-white">
+            <h3 className="text-2xl font-semibold text-white mb-4">
               Not Sure Which Treatment is Right for You?
             </h3>
-            <p className="text-brand-muted mb-6">
-              Book a free consultation with our expert team. We'll create a personalized 
+            <p className="text-white/85 mb-6">
+              Book a free consultation with our expert team. We'll create a personalized
               treatment plan using our advanced 3D imaging and AI diagnostics.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -262,7 +262,7 @@ export function ServicesSection() {
                   <LuxuryButton
                     variant="outline"
                     size="lg"
-                    className="border-brand-magenta text-brand-magenta hover:bg-brand-magenta hover:text-white"
+                    className="border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-brand-magenta hover:bg-brand-magenta hover:text-white"
                   >
                     Try AI Smile Quiz
                   </LuxuryButton>

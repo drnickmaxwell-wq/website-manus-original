@@ -25,7 +25,7 @@ const contactMethods = [
     description: 'Speak directly with our friendly team',
     action: 'Call 01273 453109',
     href: 'tel:01273453109',
-    color: 'from-brand-magenta to-brand-magenta-light',
+    color: 'smh-gradient-bg',
     badge: '24/7 Emergency',
   },
   {
@@ -34,7 +34,7 @@ const contactMethods = [
     description: 'Schedule your appointment instantly',
     action: 'Book Consultation',
     href: '/booking',
-    color: 'from-brand-turquoise to-brand-turquoise-light',
+    color: 'smh-gradient-bg',
     badge: 'Same Day Available',
   },
   {
@@ -43,7 +43,7 @@ const contactMethods = [
     description: 'Find us in beautiful Shoreham-by-Sea',
     action: 'Get Directions',
     href: '/contact',
-    color: 'from-brand-gold to-brand-gold-light',
+    color: 'smh-gradient-bg',
     badge: 'Coastal Location',
   },
 ];
@@ -114,7 +114,7 @@ export function CTASection({ champagneHover = false }: CTASectionProps = {}) {
 
             <h2 className="text-content-headline font-bold text-brand-text mb-6">
               Your Perfect Smile is Just{' '}
-              <span className="bg-gradient-to-r from-brand-magenta to-brand-turquoise bg-clip-text text-transparent">
+              <span className="smh-gradient-bg bg-clip-text text-transparent">
                 One Click Away
               </span>
             </h2>
@@ -146,7 +146,7 @@ export function CTASection({ champagneHover = false }: CTASectionProps = {}) {
                   variant="outline"
                   size="xl"
                   className={[
-                    "border-brand-turquoise px-12 text-lg text-brand-turquoise hover:bg-brand-turquoise hover:text-white",
+                    "border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] px-12 text-lg text-brand-turquoise hover:bg-brand-turquoise hover:text-white",
                     champagneHover ? "cta-champagne" : "",
                   ]
                     .filter(Boolean)
@@ -197,11 +197,11 @@ export function CTASection({ champagneHover = false }: CTASectionProps = {}) {
                         </span>
                       </div>
 
-                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${method.color}`} />
+                      <div className={`absolute top-0 left-0 right-0 h-1 ${method.color}`} />
 
                       <LuxuryCardContent className="relative py-8 text-center">
                         <div className="mb-6 flex justify-center">
-                          <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r ${method.color} transition-transform duration-300 group-hover:scale-110`}>
+                          <div className={`flex h-16 w-16 items-center justify-center rounded-full ${method.color} transition-transform duration-300 group-hover:scale-110`}>
                             <Icon className="h-8 w-8 text-white" />
                           </div>
                         </div>
@@ -211,7 +211,7 @@ export function CTASection({ champagneHover = false }: CTASectionProps = {}) {
 
                         <LuxuryButton
                           variant="outline"
-                          className="group w-full border-brand-turquoise text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
+                          className="group w-full border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-brand-turquoise hover:bg-brand-turquoise hover:text-white"
                         >
                           {method.action}
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -231,7 +231,7 @@ export function CTASection({ champagneHover = false }: CTASectionProps = {}) {
                 const Icon = guarantee.icon;
                 return (
                   <div key={guarantee.title} className="smh-glass smh-gold-border rounded-3xl p-6 text-left">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-brand-magenta to-brand-turquoise">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full smh-gradient-bg">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <h4 className="mb-2 text-lg font-semibold text-brand-text">{guarantee.title}</h4>
@@ -246,7 +246,7 @@ export function CTASection({ champagneHover = false }: CTASectionProps = {}) {
             <LuxuryCard variant="gradient" glow className="mx-auto max-w-2xl text-center smh-gold-border">
               <LuxuryCardContent className="py-8 smh-glass">
                 <div className="mb-4 flex justify-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-brand-magenta to-brand-turquoise">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full smh-gradient-bg">
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                 </div>
