@@ -1,10 +1,10 @@
 @media (prefers-reduced-motion: no-preference){
   .smh-gradient-bg::after{
-    content:""; position:absolute; inset:-8% -18%; z-index:-5; pointer-events:none;
+    content:""; position:absolute; inset:-6% -12%; z-index:-1; pointer-events:none;
     background:
-      radial-gradient(40% 30% at 20% 25%, rgba(255,255,255,.12), transparent 45%),
-      radial-gradient(35% 30% at 80% 70%, rgba(255,255,255,.08), transparent 50%);
-    animation: smhFloat 14s ease-in-out infinite;
+      radial-gradient(40% 28% at 20% 25%, rgba(255,255,255,.06), transparent 46%),
+      radial-gradient(34% 30% at 78% 70%, rgba(255,255,255,.04), transparent 52%);
+    animation: smhFloat 16s ease-in-out infinite;
   }
-  @keyframes smhFloat{ 0%{transform:translate3d(0,0,0)} 50%{transform:translate3d(0,-6px,0)} 100%{transform:translate3d(0,0,0)} }
+  @keyframes smhFloat{ 0%{transform:translate3d(0,0,0)} 50%{transform:translate3d(0,-5px,0)} 100%{transform:translate3d(0,0,0)} }
 }
