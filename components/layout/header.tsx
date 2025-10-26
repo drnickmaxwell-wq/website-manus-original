@@ -95,7 +95,12 @@ export function Header() {
               <Clock className="w-4 h-4" />
               <span>{contactInfo.hours}</span>
             </div>
-            <Button size="sm" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-magenta transition-all duration-300" asChild>
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)] text-white hover:bg-white hover:text-brand-magenta transition-all duration-300"
+              asChild
+            >
               <Link href="/booking">Book Now</Link>
             </Button>
           </div>

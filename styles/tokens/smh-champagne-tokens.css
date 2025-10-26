@@ -1,24 +1,24 @@
 /* SMH Champagne Design Tokens (v2.1, attribute-aware) */
 :root {
-  /* brand + base */
+  /* champagne palette */
+  --smh-gradient: linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%);
+  --smh-gold: #F9E8C3;
+  --smh-text: #1A1A1A;
+  --smh-text-dim: #4A4A4A;
+  --smh-surface: #FFFFFF;
+  --smh-glass: color-mix(in_oklab, white 78%, transparent);
+
+  /* extended brand tokens */
   --smh-primary-magenta: #C2185B;
-  --smh-primary-teal:    #40C4B4;
-  --smh-accent-gold:     var(--smh-gold);
+  --smh-primary-teal: #40C4B4;
+  --smh-accent-gold: var(--smh-gold);
 
   --smh-champagne: #F9E8C3;
-  --smh-gold:      #F9E8C3;
-  --smh-sand:      #F8F4EE;
+  --smh-sand: #F8F4EE;
 
   /* light defaults */
-  --smh-bg:          #FFFFFF;
-  --smh-surface:     #FFFFFF;
-  --smh-text:        #1A1A1A;
-  --smh-text-dim:    #4A4A4A;
-  --smh-text-muted:  var(--smh-text-dim);
-  --smh-glass:       color-mix(in_oklab, white 78%, transparent);
-
-  /* gradients + motion */
-  --smh-gradient: linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%);
+  --smh-bg: #FFFFFF;
+  --smh-text-muted: var(--smh-text-dim);
   --motion-ease: cubic-bezier(0.645,0.045,0.355,1);
   --motion-hue-shift: 3deg;
   --motion-ripple-speed: 4s;
@@ -87,13 +87,6 @@ html{color:var(--smh-text);background:var(--smh-bg);font-family:var(--font-body)
 /* --------------------------- */
 /* 4) Brand Utilities & FX     */
 /* --------------------------- */
-
-/* Animated gradient with subtle hue drift */
-.smh-gradient-bg{
-  background-image:var(--smh-gradient);
-  background-size:200% 200%;
-  animation:smhHueDrift 15s var(--motion-ease) infinite alternate;
-}
 
 .smh-hero-gradient{
   background-image:var(--smh-gradient);
