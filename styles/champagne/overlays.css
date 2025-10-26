@@ -10,7 +10,7 @@
 .smh-gradient-bg {
   background-image: var(--smh-gradient);
   background-size: 200% 200%;
-  animation: smhHueDrift 18s var(--motion-ease, cubic-bezier(0.645,0.045,0.355,1)) alternate infinite;
+  animation: smhHueDrift 15s var(--motion-ease, cubic-bezier(0.645,0.045,0.355,1)) alternate infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
