@@ -6,9 +6,10 @@ const TOKENS = [
   { name: "Primary Magenta", varName: "--smh-primary-magenta" },
   { name: "Primary Teal", varName: "--smh-primary-teal" },
   { name: "Accent Gold", varName: "--smh-accent-gold" },
+  { name: "Gradient", varName: "--smh-gradient" },
   { name: "Background", varName: "--smh-bg" },
   { name: "Text", varName: "--smh-text" },
-  { name: "Text Muted", varName: "--smh-text-dim" },
+  { name: "Text Muted", varName: "--smh-text-muted" },
 ];
 
 function useTokenValue(varName: string) {
@@ -54,10 +55,10 @@ function Swatch({ name, varName }: { name: string; varName: string }) {
         />
         <div>
           <div className="font-medium text-[color:var(--smh-text)]">{name}</div>
-          <div className="text-xs text-[color:var(--smh-text-dim)]">{varName}</div>
+          <div className="text-xs text-[color:var(--smh-text-muted)]">{varName}</div>
         </div>
       </div>
-      <div className="text-xs font-mono uppercase tracking-wide text-[color:var(--smh-text-dim)]">{value || "—"}</div>
+      <div className="text-xs font-mono uppercase tracking-wide text-[color:var(--smh-text-muted)]">{value || "—"}</div>
     </div>
   );
 }
@@ -66,9 +67,9 @@ export default function Page() {
   return (
     <main className="min-h-screen space-y-8 bg-[color:var(--smh-bg)] px-6 py-12 text-[color:var(--smh-text)]">
       <header className="space-y-2">
-        <p className="text-sm uppercase tracking-widest text-[color:var(--smh-text-dim)]">Development</p>
+        <p className="text-sm uppercase tracking-widest text-[color:var(--smh-text-muted)]">Development</p>
         <h1 className="text-3xl font-semibold">Champagne Brand Check</h1>
-        <p className="max-w-2xl text-sm text-[color:var(--smh-text-dim)]">
+        <p className="max-w-2xl text-sm text-[color:var(--smh-text-muted)]">
           Live CSS variables pulled from <code className="rounded bg-black/10 px-1 py-0.5 text-xs">styles/tokens/smh-champagne-tokens.css</code>.
           Toggle your OS appearance to confirm dark overrides.
         </p>
@@ -85,7 +86,7 @@ export default function Page() {
           className="h-32 w-full rounded-xl shadow-lg"
           style={{ background: "var(--smh-gradient)" }}
         />
-        <p className="mt-4 text-sm text-[color:var(--smh-text-dim)]">
+        <p className="mt-4 text-sm text-[color:var(--smh-text-muted)]">
           Gradient should render a 135° sweep from magenta (#D94BC6) to teal (#00C2C7) with the subtle gold lift at the rim.
         </p>
       </section>

@@ -50,85 +50,72 @@ export default function BrandHeroGradient({
   const goldOverlayOpacity = goldDensityOpacity[goldDensity];
 
   return (
-    <Component className={["relative overflow-hidden smh-gradient-bg smh-wave-mask", className].join(" ")}> 
+    <Component className={["relative overflow-hidden", className].join(" ")}>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-40 smh-wave-mask pointer-events-none"
+        style={{ background: "var(--smh-gradient)" }}
+      />
       {backgroundImageSrc ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 -z-35 smh-wave-mask pointer-events-none"
           style={{
             backgroundImage: `url("${backgroundImageSrc}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.8,
-            zIndex: -30,
+            mixBlendMode: "soft-light",
+            opacity: 0.85,
           }}
         />
       ) : null}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(120% 110% at 50% 0%, rgba(255, 255, 255, ${highlightOpacity}), rgba(255, 255, 255, 0))`,
-          mixBlendMode: "screen",
-          zIndex: -24,
-        }}
-      />
       {waveOverlayOpacity > 0 ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 -z-30 smh-wave-mask pointer-events-none"
           style={{
-            WebkitMaskImage: "url('/waves/smh-wave-mask.svg')",
-            maskImage: "url('/waves/smh-wave-mask.svg')",
-            WebkitMaskSize: "cover",
-            maskSize: "cover",
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            background: "radial-gradient(120% 120% at 50% 10%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0))",
+            background: `radial-gradient(120% 110% at 50% 0%, color-mix(in srgb, var(--smh-bg) ${highlightOpacity * 100}%, transparent), transparent)`,
             mixBlendMode: "screen",
             opacity: waveOverlayOpacity,
-            zIndex: -22,
           }}
         />
       ) : null}
       {goldRimEnabled ? (
         <div
           aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 -z-16 pointer-events-none"
           style={{
             border: "1px solid color-mix(in oklab, var(--smh-accent-gold) 45%, transparent)",
             mixBlendMode: "screen",
             opacity: 0.9,
-            zIndex: -16,
           }}
         />
       ) : null}
       {showGoldParticles ? (
         <div
           aria-hidden="true"
-          className="smh-particles-gold absolute inset-0 pointer-events-none mix-blend-soft-light"
-          style={{ opacity: goldOverlayOpacity, zIndex: -20 }}
+          className="smh-particles-gold absolute inset-0 -z-20 pointer-events-none mix-blend-soft-light"
+          style={{ opacity: goldOverlayOpacity }}
         />
       ) : null}
       {particles.includes("teal") ? (
         <div
           aria-hidden="true"
-          className="smh-particles-teal absolute inset-0 pointer-events-none mix-blend-soft-light"
-          style={{ opacity: 0.16, zIndex: -19 }}
+          className="smh-particles-teal absolute inset-0 -z-19 pointer-events-none mix-blend-soft-light"
+          style={{ opacity: 0.16 }}
         />
       ) : null}
       {particles.includes("magenta") ? (
         <div
           aria-hidden="true"
-          className="smh-particles-magenta absolute inset-0 pointer-events-none mix-blend-soft-light"
-          style={{ opacity: 0.14, zIndex: -18 }}
+          className="smh-particles-magenta absolute inset-0 -z-18 pointer-events-none mix-blend-soft-light"
+          style={{ opacity: 0.14 }}
         />
       ) : null}
       {filmGrain ? (
         <div
           aria-hidden="true"
-          className="smh-film-grain absolute inset-0 pointer-events-none"
-          style={{ zIndex: -17 }}
+          className="smh-film-grain absolute inset-0 -z-17 pointer-events-none"
         />
       ) : null}
       <div className="relative z-[10] isolate pointer-events-auto">{children}</div>
