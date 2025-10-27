@@ -16,9 +16,9 @@ export default function HeroFX({ title, subtitle, eyebrow, theme = 'default', ch
       <div
         className={clsx(
           'absolute inset-0 smh-wave-mask smh-gradient-base',
-          theme === 'magenta-gold' && 'bg-[linear-gradient(135deg,#C2185B_0%,#D4AF37_100%)]',
-          theme === 'teal-gold' && 'bg-[linear-gradient(135deg,#40C4B4_0%,#D4AF37_100%)]',
-          theme === 'teal-magenta' && 'bg-[linear-gradient(135deg,#40C4B4_0%,#C2185B_100%)]'
+          theme === 'magenta-gold' && 'bg-[linear-gradient(135deg,var(--smh-primary-magenta)_0%,var(--smh-accent-gold)_100%)]',
+          theme === 'teal-gold' && 'bg-[linear-gradient(135deg,var(--smh-primary-teal)_0%,var(--smh-accent-gold)_100%)]',
+          theme === 'teal-magenta' && 'bg-[var(--smh-gradient)]'
         )}
       />
 

@@ -19,7 +19,7 @@ export function ExactFloatingActions() {
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] rounded-xl shadow-lg p-4 text-center min-w-[220px] cursor-pointer"
+        className="bg-brand-gradient rounded-xl shadow-lg p-4 text-center min-w-[220px] cursor-pointer"
       >
         <div className="text-white text-2xl mb-2">⚡</div>
         <div className="text-base font-semibold text-white">Quick Actions</div>

@@ -78,7 +78,7 @@ export function ExactPerfectWaveSystem() {
 
     // Enhanced scattered dots pattern with more variety
     const createEnhancedDots = () => {
-      const colors = ['#C2185B', '#40C4B4', '#D4AF37', '#8B1538', '#2D7D7A', '#B8860B'];
+      const colors = ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)', '#8B1538', '#2D7D7A', '#B8860B'];
       
       // Left side scattered dots - INCREASED DENSITY
       for (let i = 0; i < 120; i++) { // Increased from 80
@@ -181,7 +181,7 @@ export function ExactPerfectWaveSystem() {
           style={{
             width: Math.random() * 60 + 20,
             height: Math.random() * 60 + 20,
-            background: `radial-gradient(circle, ${['#C2185B', '#40C4B4', '#D4AF37'][Math.floor(Math.random() * 3)]}, transparent)`,
+            background: `radial-gradient(circle, ${['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)'][Math.floor(Math.random() * 3)]}, transparent)`,
             borderRadius: '50%',
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,

@@ -43,7 +43,7 @@
 
 ## Design & Brand Conformance
 - **Champagne design traits present:**
-  - Gradient tokens (`linear-gradient(135deg,#D94BC6→#00C2C7`), gold accent shadows, glass utilities, wave masks, film grain, particles, and glow classes defined and used in treatment hero, overlays, and CTA sections.【F:styles/tokens/smh-champagne-tokens.css†L16-L167】【F:styles/champagne/overlays.css†L1-L85】【F:components/treatments/TreatmentLayout.tsx†L13-L41】【F:components/features/cta-section.tsx†L1-L200】
+- Gradient tokens (`var(--smh-gradient)`), gold accent shadows, glass utilities, wave masks, film grain, particles, and glow classes defined and used in treatment hero, overlays, and CTA sections.【F:styles/tokens/smh-champagne-tokens.css†L16-L167】【F:styles/champagne/overlays.css†L1-L85】【F:components/treatments/TreatmentLayout.tsx†L13-L41】【F:components/features/cta-section.tsx†L1-L200】
   - Glassmorphism & shimmer via luxury cards/buttons with motion interactions and gradient trims.【F:components/ui/luxury-card.tsx†L16-L114】【F:components/ui/luxury-button.tsx†L23-L171】
   - Particle systems and floating elements supply ambient motion (Sparkle/Dust/Wave presets).【F:components/effects/particle-system.tsx†L1-L239】【F:components/features/hero-section.tsx†L77-L200】【F:components/features/services-section.tsx†L106-L200】
 

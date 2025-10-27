@@ -7,6 +7,6 @@
 5. **Film Grain** – Verify `.smh-film-grain` opacity matches tokens and respects `prefers-reduced-motion` (no jitter when disabled).
 6. **Parallax Guardrails** – Scroll-test hero content to confirm vertical shift never exceeds 6px and is disabled when reduced motion is on.
 7. **Easing Consistency** – Inspect framer-motion transitions to ensure the cubic-bezier `[0.65, 0.05, 0.36, 1]` easing is applied to fades/movements.
-8. **Gold Treatments** – Review `.smh-gold-border` + `.smh-glass` surfaces for consistent colour (#F9E8C3) and blur across cards/badges.
+8. **Gold Treatments** – Review `.smh-gold-border` + `.smh-glass` surfaces for consistent colour (`var(--smh-gold)`) and blur across cards/badges.
 9. **CTA Interactivity** – Hover buttons & cards to confirm gradient/gold focus states remain legible and accessible (sufficient contrast).
 10. **Docs & Scripts** – Confirm `npm run format` is available, `node_modules` is ignored, and new documentation is present under `/docs`.

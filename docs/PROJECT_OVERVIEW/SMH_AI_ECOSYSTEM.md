@@ -21,14 +21,14 @@ The Champagne Intelligence System ensures every visual element, every AI process
 ```svg
 <svg width="960" height="620" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .node{fill:#fffafc;stroke:#d4af37;stroke-width:1.4;}
+    .node{fill:#fffafc;stroke:var(--smh-accent-gold);stroke-width:1.4;}
     .title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:600;fill:#b20e6b;}
     .sub{font-family:'Lora',serif;font-size:12px;fill:#333;}
-    .arrow{stroke:#40c4b4;stroke-width:2;marker-end:url(#arrow);}
+    .arrow{stroke:var(--smh-primary-teal);stroke-width:2;marker-end:url(#arrow);}
   </style>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L9,3 z" fill="#40c4b4"/>
+      <path d="M0,0 L0,6 L9,3 z" fill="var(--smh-primary-teal)"/>
     </marker>
   </defs>
   <!-- Website -->

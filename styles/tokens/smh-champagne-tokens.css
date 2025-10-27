@@ -1,17 +1,57 @@
 :root {
+  /* Core brand colors */
   --smh-primary-magenta: #C2185B;
   --smh-primary-teal: #40C4B4;
   --smh-accent-gold: #D4AF37;
-  --smh-bg: #FFFFFF;
+  --smh-gold: #F9E8C3;
+
+  /* Base surfaces */
+  --smh-bg: #ffffff;
   --smh-text: #1A1A1A;
   --smh-text-muted: #4C4C4C;
-  --smh-gradient: linear-gradient(135deg,#D94BC6 0%,#00C2C7 100%);
+
+  /* Signature gradients */
+  --smh-gradient: linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%);
+  --smh-gradient-cta: linear-gradient(135deg, #C2185B 0%, #F9E8C3 100%);
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --smh-bg: #0D0E10;
     --smh-text: #FFFFFF;
     --smh-text-muted: #D3D3D3;
-    --smh-gradient: linear-gradient(135deg,#EE66D1 0%,#00D6DB 100%);
+    --smh-gradient: linear-gradient(135deg, #EE66D1 0%, #00D6DB 100%);
+    --smh-gradient-cta: linear-gradient(135deg, #C2185B 0%, #F9E8C3 100%);
+  }
+}
+
+:root {
+  /* Utility fallbacks */
+  --smh-gradient-surface: color-mix(in srgb, var(--smh-bg) 60%, transparent);
+  --smh-gold-soft: color-mix(in srgb, var(--smh-gold) 70%, var(--smh-bg) 30%);
+}
+
+@layer base {
+  .smh-gradient-bg {
+    background: var(--smh-gradient);
+  }
+
+  .smh-gradient-cta {
+    background: var(--smh-gradient-cta);
+  }
+
+  .smh-gradient-text {
+    background: var(--smh-gradient);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .smh-gold-text {
+    color: var(--smh-gold);
+  }
+
+  .smh-gold-border {
+    border-color: var(--smh-gold);
   }
 }

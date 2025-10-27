@@ -110,8 +110,8 @@ export function LoadingSpinner({
         />
         <defs>
           <linearGradient id="dental-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#C2185B" />
-            <stop offset="100%" stopColor="#40C4B4" />
+            <stop offset="0%" stopColor="var(--smh-primary-magenta)" />
+            <stop offset="100%" stopColor="var(--smh-primary-teal)" />
           </linearGradient>
         </defs>
       </svg>
@@ -312,8 +312,8 @@ export function ProgressBar({
           />
           <defs>
             <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#C2185B" />
-              <stop offset="100%" stopColor="#40C4B4" />
+              <stop offset="0%" stopColor="var(--smh-primary-magenta)" />
+              <stop offset="100%" stopColor="var(--smh-primary-teal)" />
             </linearGradient>
           </defs>
         </svg>

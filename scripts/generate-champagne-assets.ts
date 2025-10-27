@@ -8,15 +8,32 @@ const PUB = (p: string) => path.join(ROOT, "public", p);
 
 function ensureDir(p: string){ fs.mkdirSync(p, { recursive: true }); }
 
+const tokensPath = path.join(ROOT, "styles", "tokens", "smh-champagne.tokens.json");
+const tokens = JSON.parse(fs.readFileSync(tokensPath, "utf8")) as {
+  brand: {
+    colors: {
+      primary: { magenta: string; teal: string; };
+      accent: { gold: string; champagne: string; };
+    };
+    gradients: {
+      coreStops: [string, string];
+      coreDarkStops: [string, string];
+    };
+  };
+};
+
+const palette = tokens.brand.colors;
+const gradientStops = tokens.brand.gradients;
+
 const SIZES = {
   desktop: { w: 1920, h: 1080 },
   mobile:  { w: 1080, h: 1920 }
 };
 
 const COLORS = {
-  gold: "#D4AF37",
-  teal: "#40C4B4",
-  magenta: "#C2185B"
+  gold: palette.accent.gold,
+  teal: palette.primary.teal,
+  magenta: palette.primary.magenta
 };
 
 const OUT = {
@@ -97,8 +114,7 @@ async function makeGlow(file:string,w:number,h:number,dark:boolean){
 }
 
 async function makeGradient(file:string,w:number,h:number,dark:boolean){
-  const g1 = dark? "#EE66D1":"#D94BC6";
-  const g2 = dark? "#00D6DB":"#00C2C7";
+  const [g1, g2] = dark ? gradientStops.coreDarkStops : gradientStops.coreStops;
   const svg = Buffer.from(`
   <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
     <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -110,11 +126,12 @@ async function makeGradient(file:string,w:number,h:number,dark:boolean){
 }
 
 function waveMask(colored=false){
+  const [start] = gradientStops.coreStops;
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="540" viewBox="0 0 1920 540" preserveAspectRatio="none">
   <defs>
     ${colored? `<linearGradient id="fill" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#D94BC6"/><stop offset="60%" stop-color="#40C4B4"/><stop offset="100%" stop-color="#D4AF37"/>
+      <stop offset="0%" stop-color="${start}"/><stop offset="60%" stop-color="${COLORS.teal}"/><stop offset="100%" stop-color="${COLORS.gold}"/>
     </linearGradient>` : ``}
   </defs>
   <path d="M0,120 C420,40 720,220 960,160 C1200,100 1480,20 1920,140 L1920,540 L0,540 Z" fill="${colored? "url(#fill)":"#ffffff"}"/>

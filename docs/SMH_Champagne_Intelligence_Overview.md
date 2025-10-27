@@ -1,8 +1,8 @@
 # SMH Champagne Intelligence Overview
 
 ## Brand Foundations
-- **Signature Gradient:** Linear 135° magenta → turquoise (`#D94BC6` → `#00C2C7`).
-- **Accent Gold:** Champagne gold `#F9E8C3` for borders, glows, and metallic cues.
+- **Signature Gradient:** Linear 135° magenta → turquoise (`var(--smh-gradient)`).
+- **Accent Gold:** Champagne gold token `var(--smh-gold)` for borders, glows, and metallic cues.
 - **Typography:** Playfair Display (headings) and Inter (body/data) distributed via `next/font` and surfaced with Tailwind aliases (`font-heading`, `font-body`).
 - **Tone:** Cinematic luxury that balances spa-like calm with coastal energy; avoid neon blues/purples in favour of champagne, slate, and soft teal highlights.
 

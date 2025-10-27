@@ -6,7 +6,7 @@ export function ExactHeader() {
   return (
     <>
       {/* Emergency Bar */}
-      <div className="bg-[#C2185B] text-white px-4 py-2 text-xs font-medium flex justify-between items-center">
+      <div className="bg-[var(--smh-primary-magenta)] text-white px-4 py-2 text-xs font-medium flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <span className="flex items-center">📞 Emergency: 01273 453109</span>
           <span className="flex items-center">📍 Shoreham-by-Sea, West Sussex</span>
@@ -19,7 +19,7 @@ export function ExactHeader() {
         <div className="max-w-screen-2xl mx-auto px-6">
           <div className="flex justify-between items-center py-3">
             <div className="flex items-center space-x-3">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#D4AF37] to-[#40C4B4] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <div className="w-14 h-14 bg-gradient-to-br from-[var(--smh-accent-gold)] to-[var(--smh-primary-teal)] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
                 SMH
               </div>
               <div>
@@ -29,13 +29,13 @@ export function ExactHeader() {
             </div>
             
             <nav className="hidden md:flex items-center space-x-6 text-base font-medium text-gray-700">
-              <a href="#" className="hover:text-[#C2185B] transition-colors">Home</a>
-              <a href="#" className="hover:text-[#C2185B] transition-colors flex items-center">About ▼</a>
-              <a href="#" className="hover:text-[#C2185B] transition-colors flex items-center">Treatments ▼</a>
-              <a href="#" className="hover:text-[#C2185B] transition-colors">Team</a>
-              <a href="#" className="hover:text-[#C2185B] transition-colors">Patient Stories</a>
-              <a href="#" className="hover:text-[#C2185B] transition-colors">Blog</a>
-              <a href="#" className="hover:text-[#C2185B] transition-colors">Contact</a>
+              <a href="#" className="hover:text-[var(--smh-primary-magenta)] transition-colors">Home</a>
+              <a href="#" className="hover:text-[var(--smh-primary-magenta)] transition-colors flex items-center">About ▼</a>
+              <a href="#" className="hover:text-[var(--smh-primary-magenta)] transition-colors flex items-center">Treatments ▼</a>
+              <a href="#" className="hover:text-[var(--smh-primary-magenta)] transition-colors">Team</a>
+              <a href="#" className="hover:text-[var(--smh-primary-magenta)] transition-colors">Patient Stories</a>
+              <a href="#" className="hover:text-[var(--smh-primary-magenta)] transition-colors">Blog</a>
+              <a href="#" className="hover:text-[var(--smh-primary-magenta)] transition-colors">Contact</a>
             </nav>
 
             <div className="flex items-center space-x-3">
@@ -50,7 +50,7 @@ export function ExactHeader() {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] text-white px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all text-sm flex items-center space-x-2"
+                className="bg-brand-gradient text-white px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all text-sm flex items-center space-x-2"
               >
                 <span>📅</span>
                 <span>Book Free Consultation</span>

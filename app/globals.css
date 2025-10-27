@@ -396,3 +396,45 @@ html {
 
 @import "../styles/champagne/iridescence.css";
 @import "../styles/brand/home-hero.css";
+
+@layer utilities {
+  .bg-brand-magenta {
+    background-color: var(--smh-primary-magenta);
+  }
+
+  .bg-brand-teal {
+    background-color: var(--smh-primary-teal);
+  }
+
+  .bg-brand-gold {
+    background-color: var(--smh-accent-gold);
+  }
+
+  .bg-brand-gradient {
+    background: var(--smh-gradient);
+  }
+
+  .bg-brand-gradient-cta {
+    background: var(--smh-gradient-cta);
+  }
+
+  .text-brand-magenta {
+    color: var(--smh-primary-magenta);
+  }
+
+  .text-brand-teal {
+    color: var(--smh-primary-teal);
+  }
+
+  .text-brand-gold {
+    color: var(--smh-accent-gold);
+  }
+
+  .text-brand-champagne {
+    color: var(--smh-gold);
+  }
+
+  .border-brand-gold {
+    border-color: var(--smh-accent-gold);
+  }
+}

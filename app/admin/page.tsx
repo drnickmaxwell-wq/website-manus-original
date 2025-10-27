@@ -17,6 +17,11 @@ import {
 import { LuxuryCard } from '@/components/ui/luxury-card';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
+import tokens from '@/styles/tokens/smh-champagne.tokens.json';
+
+const BRAND_MAGENTA = tokens.brand.colors.primary.magenta;
+const BRAND_TEAL = tokens.brand.colors.primary.teal;
+const BRAND_GOLD = tokens.brand.colors.accent.gold;
 
 // Mock data for dashboard
 const todayStats = [
@@ -37,9 +42,9 @@ const weeklyRevenue = [
 ];
 
 const treatmentTypes = [
-  { name: 'Consultations', value: 35, color: '#C2185B' },
-  { name: 'Cleanings', value: 25, color: '#40C4B4' },
-  { name: 'Veneers', value: 20, color: '#D4AF37' },
+  { name: 'Consultations', value: 35, color: BRAND_MAGENTA },
+  { name: 'Cleanings', value: 25, color: BRAND_TEAL },
+  { name: 'Veneers', value: 20, color: BRAND_GOLD },
   { name: 'Implants', value: 15, color: '#9C27B0' },
   { name: 'Emergency', value: 5, color: '#FF5722' },
 ];
@@ -125,9 +130,9 @@ export default function AdminDashboard() {
               <Line 
                 type="monotone" 
                 dataKey="revenue" 
-                stroke="#40C4B4" 
+                stroke="var(--smh-primary-teal)" 
                 strokeWidth={3}
-                dot={{ fill: '#40C4B4', strokeWidth: 2, r: 4 }}
+                dot={{ fill: 'var(--smh-primary-teal)', strokeWidth: 2, r: 4 }}
               />
             </LineChart>
           </ResponsiveContainer>

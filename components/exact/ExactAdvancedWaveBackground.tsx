@@ -30,7 +30,7 @@ export function ExactAdvancedWaveBackground() {
       frequency: Math.random() * 0.02 + 0.005,
       phase: Math.random() * Math.PI * 2,
       speed: Math.random() * 0.01 + 0.002,
-      color: ['#C2185B', '#40C4B4', '#D4AF37', '#8B1538', '#2D7D7A', '#B8860B'][Math.floor(Math.random() * 6)],
+      color: ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)', '#8B1538', '#2D7D7A', '#B8860B'][Math.floor(Math.random() * 6)],
       opacity: Math.random() * 0.6 + 0.2,
       lineWidth: Math.random() * 2 + 0.5,
       direction: Math.random() * Math.PI * 2,
@@ -42,7 +42,7 @@ export function ExactAdvancedWaveBackground() {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 8 + 2,
-      color: ['#C2185B', '#40C4B4', '#D4AF37', '#FF6B9D', '#4ECDC4', '#45B7D1'][Math.floor(Math.random() * 6)],
+      color: ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)', '#FF6B9D', '#4ECDC4', '#45B7D1'][Math.floor(Math.random() * 6)],
       opacity: Math.random() * 0.8 + 0.2,
       velocityX: (Math.random() - 0.5) * 0.5,
       velocityY: (Math.random() - 0.5) * 0.5,
@@ -149,7 +149,7 @@ export function ExactAdvancedWaveBackground() {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[#40C4B4] opacity-85" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[var(--smh-primary-teal)] opacity-85" />
 
       {/* Advanced Canvas Animation */}
       <canvas 
@@ -167,7 +167,7 @@ export function ExactAdvancedWaveBackground() {
             height: Math.random() * 100 + 50,
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            background: `linear-gradient(45deg, ${['#C2185B', '#40C4B4', '#D4AF37'][Math.floor(Math.random() * 3)]}, transparent)`,
+            background: `linear-gradient(45deg, ${['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)'][Math.floor(Math.random() * 3)]}, transparent)`,
             borderRadius: Math.random() > 0.5 ? '50%' : '20%',
           }}
           animate={{

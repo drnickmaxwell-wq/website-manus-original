@@ -71,7 +71,7 @@ export function ExactScreenshotWaves() {
 
     // Scattered dots pattern from screenshot (left side)
     const createScatteredDots = () => {
-      const colors = ['#C2185B', '#40C4B4', '#D4AF37', '#8B1538'];
+      const colors = ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)', '#8B1538'];
       
       // Left side scattered dots as seen in screenshot
       for (let i = 0; i < 80; i++) {

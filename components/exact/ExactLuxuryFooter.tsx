@@ -53,7 +53,7 @@ export function ExactLuxuryFooter() {
             className="lg:col-span-2"
           >
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#C2185B] to-[#40C4B4] rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-[var(--smh-primary-magenta)] to-[var(--smh-primary-teal)] rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">SMH</span>
               </div>
               <div>
@@ -80,7 +80,7 @@ export function ExactLuxuryFooter() {
               </div>
               
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-[#40C4B4] rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-[var(--smh-primary-teal)] rounded-lg flex items-center justify-center">
                   <span className="text-white text-sm">📍</span>
                 </div>
                 <div>
@@ -103,7 +103,7 @@ export function ExactLuxuryFooter() {
                 <li key={link}>
                   <motion.a
                     href="#"
-                    className="text-gray-300 hover:text-[#40C4B4] transition-colors duration-200"
+                    className="text-gray-300 hover:text-[var(--smh-primary-teal)] transition-colors duration-200"
                     whileHover={{ x: 5 }}
                   >
                     {link}
@@ -132,7 +132,7 @@ export function ExactLuxuryFooter() {
                 <li key={treatment}>
                   <motion.a
                     href="#"
-                    className="text-gray-300 hover:text-[#C2185B] transition-colors duration-200"
+                    className="text-gray-300 hover:text-[var(--smh-primary-magenta)] transition-colors duration-200"
                     whileHover={{ x: 5 }}
                   >
                     {treatment}
@@ -177,13 +177,13 @@ export function ExactLuxuryFooter() {
             </div>
             
             <div className="flex items-center space-x-6">
-              <a href="#" className="text-gray-400 hover:text-[#40C4B4] transition-colors">
+              <a href="#" className="text-gray-400 hover:text-[var(--smh-primary-teal)] transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#40C4B4] transition-colors">
+              <a href="#" className="text-gray-400 hover:text-[var(--smh-primary-teal)] transition-colors">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#40C4B4] transition-colors">
+              <a href="#" className="text-gray-400 hover:text-[var(--smh-primary-teal)] transition-colors">
                 Cookie Policy
               </a>
             </div>

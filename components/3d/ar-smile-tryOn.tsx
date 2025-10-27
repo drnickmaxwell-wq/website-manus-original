@@ -5,6 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, Smile, Sparkles, RotateCcw, Download, Share2 } from 'lucide-react';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LuxuryCard, LuxuryCardContent, LuxuryCardHeader, LuxuryCardTitle } from '@/components/ui/luxury-card';
+import tokens from '@/styles/tokens/smh-champagne.tokens.json';
+
+const BRAND_TEAL = tokens.brand.colors.primary.teal;
+
+const withAlpha = (hex: string, alpha: number) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
 
 interface SmileOption {
   id: string;
@@ -123,11 +133,11 @@ export function ARSmileTryOn({
       if (selectedSmile) {
         // This would integrate with actual AR/ML smile detection
         // For now, we'll add a simple overlay
-        ctx.fillStyle = 'rgba(64, 196, 180, 0.1)';
+        ctx.fillStyle = withAlpha(BRAND_TEAL, 0.1);
         ctx.fillRect(0, canvas.height * 0.6, canvas.width, canvas.height * 0.3);
-        
+
         ctx.font = '24px Arial';
-        ctx.fillStyle = '#40C4B4';
+        ctx.fillStyle = BRAND_TEAL;
         ctx.textAlign = 'center';
         ctx.fillText(selectedSmile.name, canvas.width / 2, canvas.height * 0.9);
       }

@@ -39,7 +39,7 @@ export function ExactChatbot() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-[#C2185B] to-[#40C4B4] rounded-full shadow-lg flex items-center justify-center text-white text-2xl z-50"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-brand-gradient rounded-full shadow-lg flex items-center justify-center text-white text-2xl z-50"
       >
         {isOpen ? '✕' : '💬'}
       </motion.button>
@@ -54,7 +54,7 @@ export function ExactChatbot() {
             className="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] p-4 text-white">
+            <div className="bg-brand-gradient p-4 text-white">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                   🦷
@@ -78,7 +78,7 @@ export function ExactChatbot() {
                   <div
                     className={`max-w-xs p-3 rounded-lg text-sm ${
                       message.type === 'user'
-                        ? 'bg-gradient-to-r from-[#C2185B] to-[#40C4B4] text-white'
+                        ? 'bg-brand-gradient text-white'
                         : 'bg-gray-100 text-gray-800'
                     }`}
                   >
@@ -120,13 +120,13 @@ export function ExactChatbot() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Type your message..."
-                  className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#C2185B]"
+                  className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--smh-primary-magenta)]"
                 />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSendMessage}
-                  className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] text-white px-4 py-2 rounded-lg text-sm"
+                  className="bg-brand-gradient text-white px-4 py-2 rounded-lg text-sm"
                 >
                   Send
                 </motion.button>
