@@ -55,3 +55,19 @@
     border-color: var(--smh-gold);
   }
 }
+
+/* === Canonical aliases for legacy callers === */
+:root {
+  /* legacy aliases used in components/effects */
+  --magenta: var(--smh-primary-magenta);
+  --turquoise: var(--smh-primary-teal);
+  --gold: var(--smh-accent-gold);
+
+  /* CTA gradient (magenta -> champagne gold) */
+  --cta-gradient: linear-gradient(135deg, var(--smh-primary-magenta) 0%, var(--smh-accent-gold) 100%);
+}
+
+/* optional utility class so Tailwind arbitrary bg-[var(--cta-gradient)] isn't required */
+.cta-gradient {
+  background-image: var(--cta-gradient);
+}

@@ -1,7 +1,7 @@
 /* Champagne Iridescence & Wave Drift — Phase-1A */
 @layer utilities {
-  :root {
-    /* gradient baseline */
+  /* opt-in only; DO NOT override global tokens */
+  .iridescent-theme {
     --smh-grad-magenta: var(--smh-primary-magenta);
     --smh-grad-teal:    var(--smh-primary-teal);
     --smh-grad-gold:    var(--smh-accent-gold);
