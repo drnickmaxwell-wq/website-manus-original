@@ -3,7 +3,6 @@ import "@/styles/tokens/smh-champagne-tokens.css";
 import type { Metadata } from "next";
 import React from "react";
 import PerformanceOptimizedLayout from "@/components/layout/performance-optimized-layout";
-import Header from "@/components/layout/header";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { Montserrat, Lora } from "next/font/google";
 
@@ -19,7 +18,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${montserrat.variable} ${lora.variable}`}>
       <body className="min-h-screen bg-[color:var(--smh-bg)] text-[color:var(--smh-text)]">
-        <Header />
         <main>
           <PerformanceOptimizedLayout>{children}</PerformanceOptimizedLayout>
         </main>

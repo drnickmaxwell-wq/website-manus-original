@@ -1,5 +1,5 @@
 /* Champagne overlays + helpers (safe to overwrite) */
-:root {
+.iridescent-theme {
   --smh-gradient: linear-gradient(135deg, var(--smh-primary-magenta) 0%, var(--smh-primary-teal) 100%);
   --film-grain-opacity: .10;
   --film-grain-opacity-dark: .085;
