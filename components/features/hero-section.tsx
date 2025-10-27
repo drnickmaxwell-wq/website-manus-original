@@ -52,10 +52,10 @@ export function HeroSection() {
 
   return (
     <BrandHeroGradient
-      className="relative overflow-hidden py-24 md:py-36 smh-gradient-bg"
+      className="relative overflow-hidden py-24 md:py-36"
       backgroundImageSrc="/waves/hero-waves-alone.webp"
       particles={["gold", "teal", "magenta"]}
-      filmGrain={true}
+      filmGrain
     >
       {/* Main Content */}
       <motion.div
@@ -139,7 +139,10 @@ export function HeroSection() {
                 >
                   <LuxuryCardContent className="py-6 smh-glass">
                     <div className="flex justify-center mb-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full smh-gradient-bg">
+                      <div
+                        className="flex h-12 w-12 items-center justify-center rounded-full"
+                        style={{ background: "var(--smh-gradient)" }}
+                      >
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                     </div>
@@ -157,7 +160,7 @@ export function HeroSection() {
 
           {/* Scroll Indicator */}
           <motion.div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: shouldReduceMotion ? 0 : 1.2, ease: easeInOutCubic }}
@@ -165,7 +168,7 @@ export function HeroSection() {
             <div className="flex flex-col items-center gap-2">
               <span className="text-brand-muted text-sm">Discover More</span>
               <motion.div
-                className="flex h-10 w-6 items-center justify-center rounded-full border-2 border-[color:color-mix(in_oklab,var(--smh-gold)_85%,white)]"
+                className="flex h-10 w-6 items-center justify-center rounded-full border-2 border-[color:color-mix(in_oklab,var(--smh-accent-gold)_85%,white)]"
                 animate={
                   shouldReduceMotion
                     ? { opacity: 1 }
@@ -197,9 +200,6 @@ export function HeroSection() {
       </motion.div>
 
       {/* Decorative Elements */}
-      <div className="pointer-events-none absolute top-20 left-10 h-20 w-20 rounded-full smh-gradient-bg opacity-20 blur-xl" />
-      <div className="pointer-events-none absolute bottom-20 right-10 h-32 w-32 rounded-full smh-gradient-bg opacity-20 blur-2xl" />
-
       <CoastalWaves
         className="absolute bottom-0 left-0 right-0 z-5 h-16"
         variant="hero"

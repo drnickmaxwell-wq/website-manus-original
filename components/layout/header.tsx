@@ -29,9 +29,8 @@ const navigationItems: NavItem[] = [
       { name: 'Implants', href: '/treatments/implants' },
     ],
   },
-  { name: 'Technology', href: '/treatments/technology' },
+  { name: 'Technology', href: '/technology' },
   { name: 'Contact', href: '/contact' },
-  { name: 'About', href: '/about' },
 ];
 
 const contactInfo = {
