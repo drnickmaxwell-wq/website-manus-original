@@ -28,7 +28,7 @@ export function ExactTrueTypography() {
           >
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #C2185B 0%, rgba(194, 24, 91, 0.9) 30%, #40C4B4 70%, rgba(64, 196, 180, 0.9) 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-magenta) 0%, rgba(194, 24, 91, 0.9) 30%, var(--smh-primary-teal) 70%, rgba(64, 196, 180, 0.9) 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -40,7 +40,7 @@ export function ExactTrueTypography() {
             </span>
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #40C4B4 0%, rgba(64, 196, 180, 0.9) 40%, #D4AF37 80%, rgba(212, 175, 55, 0.9) 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, rgba(64, 196, 180, 0.9) 40%, var(--smh-accent-gold) 80%, rgba(212, 175, 55, 0.9) 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -87,7 +87,7 @@ export function ExactTrueTypography() {
             Your Perfect Smile is Just{' '}
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #40C4B4 0%, rgba(64, 196, 180, 0.9) 25%, #D4AF37 60%, rgba(212, 175, 55, 0.9) 85%, #C2185B 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, rgba(64, 196, 180, 0.9) 25%, var(--smh-accent-gold) 60%, rgba(212, 175, 55, 0.9) 85%, var(--smh-primary-magenta) 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -121,7 +121,7 @@ export function ExactTrueTypography() {
               whileTap={{ scale: 0.95 }}
               className="text-white px-10 py-5 rounded-2xl font-bold shadow-2xl flex items-center space-x-4"
               style={{
-                background: 'linear-gradient(135deg, #C2185B 0%, rgba(194, 24, 91, 0.9) 50%, rgba(139, 21, 56, 0.9) 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-magenta) 0%, rgba(194, 24, 91, 0.9) 50%, rgba(139, 21, 56, 0.9) 100%)',
                 fontSize: '1.4rem',
                 minWidth: '320px',
                 boxShadow: '0 15px 40px rgba(194, 24, 91, 0.5)',
@@ -138,7 +138,7 @@ export function ExactTrueTypography() {
               whileTap={{ scale: 0.95 }}
               className="text-white px-10 py-5 rounded-2xl font-bold shadow-2xl flex items-center space-x-4"
               style={{
-                background: 'linear-gradient(135deg, #40C4B4 0%, rgba(64, 196, 180, 0.9) 50%, rgba(45, 125, 122, 0.9) 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, rgba(64, 196, 180, 0.9) 50%, rgba(45, 125, 122, 0.9) 100%)',
                 fontSize: '1.4rem',
                 minWidth: '320px',
                 boxShadow: '0 15px 40px rgba(64, 196, 180, 0.5)',
@@ -183,7 +183,7 @@ export function ExactTrueTypography() {
             }}
           >
             <div className="text-4xl mb-4">📅</div>
-            <div className="text-2xl font-black text-[#40C4B4] mb-2">Same-Day Appointments</div>
+            <div className="text-2xl font-black text-[var(--smh-primary-teal)] mb-2">Same-Day Appointments</div>
             <div className="text-lg opacity-90 font-medium">Same Day Available</div>
           </motion.div>
           
@@ -197,7 +197,7 @@ export function ExactTrueTypography() {
             }}
           >
             <div className="text-4xl mb-4">📍</div>
-            <div className="text-2xl font-black text-[#D4AF37] mb-2">98% Patient Satisfaction</div>
+            <div className="text-2xl font-black text-[var(--smh-accent-gold)] mb-2">98% Patient Satisfaction</div>
             <div className="text-lg opacity-90 font-medium">Coastal Location</div>
           </motion.div>
         </motion.div>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export function ExactLoadingScreen() {
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[#40C4B4] z-[100] flex items-center justify-center">
+    <div className="fixed inset-0 bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[var(--smh-primary-teal)] z-[100] flex items-center justify-center">
       <div className="text-center">
         <motion.div
           animate={{ rotate: 360 }}

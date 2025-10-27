@@ -3,11 +3,15 @@
  * Luxury light theme with coastal-inspired colors
  */
 
+import tokens from "@/styles/tokens/smh-champagne.tokens.json";
+
+const palette = tokens.brand.colors;
+
 export const brandColors = {
   // Primary brand colors
-  magenta: '#C2185B',
-  turquoise: '#40C4B4', 
-  gold: '#D4AF37',
+  magenta: palette.primary.magenta,
+  turquoise: palette.primary.teal,
+  gold: palette.accent.gold,
   
   // Base colors (light luxury theme)
   background: '#F7F7F9',

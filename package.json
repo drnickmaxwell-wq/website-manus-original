@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack && next-sitemap",
+    "build": "pnpm run brand:check && next build --turbopack && next-sitemap",
     "start": "next start",
     "lint": "eslint",
+    "brand:check": "node scripts/brand-guard.mjs",
+    "typecheck": "tsc --noEmit",
     "format": "prettier -w \"**/*.{ts,tsx,js,jsx,css,md}\"",
     "clone:mobile": "node scripts/clone-mobile-assets.mjs",
     "gen:champagne": "ts-node --transpile-only scripts/generate-champagne-assets.ts",

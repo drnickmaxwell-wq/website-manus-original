@@ -34,10 +34,10 @@ export function ExactTrueWaveRecreation() {
         // EXACT colors from your tokens.json and screenshot analysis
         const progress = i / 200;
         if (progress < 0.3) {
-          // Turquoise lines (your primary turquoise #40C4B4)
+          // Turquoise lines (your primary turquoise var(--smh-primary-teal))
           ctx.strokeStyle = `rgba(64, 196, 180, ${0.9 - progress * 1.5})`;
         } else if (progress < 0.6) {
-          // Transition to pink (your primary pink #C2185B)
+          // Transition to pink (your primary pink var(--smh-primary-magenta))
           ctx.strokeStyle = `rgba(194, 24, 91, ${0.8 - progress * 0.8})`;
         } else {
           // Deep pink/magenta
@@ -80,7 +80,7 @@ export function ExactTrueWaveRecreation() {
     // EXACT scattered dots pattern from your screenshot
     const createExactDotPattern = () => {
       // Using your exact brand colors from tokens.json
-      const colors = ['#C2185B', '#40C4B4', '#D4AF37'];
+      const colors = ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)'];
       
       // Left side dots exactly as in screenshot
       for (let i = 0; i < 100; i++) {
@@ -146,10 +146,10 @@ export function ExactTrueWaveRecreation() {
         className="absolute inset-0" 
         style={{
           background: `linear-gradient(135deg, 
-            #C2185B 0%, 
+            var(--smh-primary-magenta) 0%, 
             rgba(194, 24, 91, 0.9) 25%, 
             rgba(139, 21, 56, 0.8) 50%, 
-            #40C4B4 75%, 
+            var(--smh-primary-teal) 75%, 
             rgba(64, 196, 180, 0.85) 100%)`
         }}
       />

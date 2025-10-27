@@ -87,7 +87,7 @@ export default function Page() {
           style={{ background: "var(--smh-gradient)" }}
         />
         <p className="mt-4 text-sm text-[color:var(--smh-text-muted)]">
-          Gradient should render a 135° sweep from magenta (#D94BC6) to teal (#00C2C7) with the subtle gold lift at the rim.
+          Gradient should render a 135° sweep from magenta to teal (`var(--smh-gradient)`) with the subtle gold lift at the rim.
         </p>
       </section>
     </main>

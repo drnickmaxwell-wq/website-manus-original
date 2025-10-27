@@ -1,5 +1,5 @@
 /* merge the following into your globals if you prefer
-.lux-gradient{background:linear-gradient(90deg,#C2185B 0%,#40C4B4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.lux-gradient{background:linear-gradient(90deg,var(--smh-primary-magenta) 0%,var(--smh-primary-teal) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .lux-gold-sparkle{position:relative;}
 .lux-gold-sparkle::after{content:"";position:absolute;inset:0;pointer-events:none;background:
 radial-gradient(12px 12px at 15% 40%, rgba(212,175,55,.9), rgba(212,175,55,0) 60%),

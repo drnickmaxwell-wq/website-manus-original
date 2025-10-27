@@ -8,21 +8,21 @@ const treatments = [
     description: "Experience the future with our cutting-edge 3D scanning and treatment planning.",
     buttonText: "Explore 3D Tech",
     icon: "🦷",
-    gradient: "from-[#40C4B4] to-[#8B1538]",
+    gradient: "from-[var(--smh-primary-teal)] to-[#8B1538]",
   },
   {
     title: "Porcelain Veneers",
     description: "Transform your smile with our luxury porcelain veneers and cosmetic treatments.",
     buttonText: "Perfect Your Smile",
     icon: "✨",
-    gradient: "from-[#40C4B4] to-[#D4AF37]",
+    gradient: "from-[var(--smh-primary-teal)] to-[var(--smh-accent-gold)]",
   },
   {
     title: "Dental Implants",
     description: "Restore your confidence with our premium dental implant solutions.",
     buttonText: "Restore Your Smile",
     icon: "🦷",
-    gradient: "from-[#FF6B9D] to-[#C2185B]",
+    gradient: "from-[#FF6B9D] to-[var(--smh-primary-magenta)]",
   },
 ];
 
@@ -37,7 +37,7 @@ export function ExactTreatments() {
           className="text-center mb-20"
         >
           <h2 
-            className="text-6xl md:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#C2185B] via-[#40C4B4] to-[#D4AF37]" 
+            className="text-6xl md:text-8xl font-bold mb-4 smh-gradient-text"
             style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
           >
             Luxury Coastal Dentistry

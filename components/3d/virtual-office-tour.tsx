@@ -14,18 +14,23 @@ import {
 } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
-import { 
-  MapPin, 
-  Info, 
-  Play, 
-  Pause, 
-  RotateCcw, 
+import {
+  MapPin,
+  Info,
+  Play,
+  Pause,
+  RotateCcw,
   Maximize2,
   Navigation,
   Eye
 } from 'lucide-react';
 import { LuxuryButton } from '@/components/ui/luxury-button';
 import { LoadingSpinner } from '@/components/effects/loading-animations';
+import tokens from '@/styles/tokens/smh-champagne.tokens.json';
+
+const BRAND_MAGENTA = tokens.brand.colors.primary.magenta;
+const BRAND_TEAL = tokens.brand.colors.primary.teal;
+const BRAND_GOLD = tokens.brand.colors.accent.gold;
 
 interface TourPoint {
   id: string;
@@ -116,13 +121,13 @@ function OfficeEnvironment() {
 
       {/* Reception Desk */}
       <Box args={[4, 1, 2]} position={[0, 0.5, 6]}>
-        <meshStandardMaterial color="#40C4B4" />
+        <meshStandardMaterial color={BRAND_TEAL} />
       </Box>
 
       {/* Consultation Room */}
       <group position={[-5, 0, 3]}>
         <Box args={[2, 0.8, 1]} position={[0, 0.4, 0]}>
-          <meshStandardMaterial color="#C2185B" />
+          <meshStandardMaterial color={BRAND_MAGENTA} />
         </Box>
         <Box args={[1, 1.5, 0.1]} position={[1, 0.75, 0]}>
           <meshStandardMaterial color="#333" />
@@ -132,7 +137,7 @@ function OfficeEnvironment() {
       {/* Treatment Suite */}
       <group position={[5, 0, 3]}>
         <Box args={[3, 0.6, 1.5]} position={[0, 0.3, 0]}>
-          <meshStandardMaterial color="#D4AF37" />
+          <meshStandardMaterial color={BRAND_GOLD} />
         </Box>
         <Sphere args={[0.3]} position={[0, 2, 0]}>
           <meshStandardMaterial color="#ffffff" />
@@ -145,10 +150,10 @@ function OfficeEnvironment() {
           <meshStandardMaterial color="#666" />
         </Box>
         <Box args={[0.5, 0.5, 0.5]} position={[-0.5, 1.25, 0]}>
-          <meshStandardMaterial color="#40C4B4" />
+          <meshStandardMaterial color={BRAND_TEAL} />
         </Box>
         <Box args={[0.5, 0.5, 0.5]} position={[0.5, 1.25, 0]}>
-          <meshStandardMaterial color="#C2185B" />
+          <meshStandardMaterial color={BRAND_MAGENTA} />
         </Box>
       </group>
 
@@ -158,7 +163,7 @@ function OfficeEnvironment() {
           color="#87CEEB" 
           transparent 
           opacity={0.7}
-          emissive="#40C4B4"
+          emissive={BRAND_TEAL}
           emissiveIntensity={0.1}
         />
       </Plane>
@@ -203,8 +208,8 @@ function TourPointMarker({
     >
       <Sphere args={[0.2]}>
         <meshStandardMaterial
-          color={isActive ? "#C2185B" : "#40C4B4"}
-          emissive={isActive ? "#C2185B" : "#40C4B4"}
+          color={isActive ? BRAND_MAGENTA : BRAND_TEAL}
+          emissive={isActive ? BRAND_MAGENTA : BRAND_TEAL}
           emissiveIntensity={0.3}
         />
       </Sphere>

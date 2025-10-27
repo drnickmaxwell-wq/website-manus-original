@@ -105,7 +105,7 @@ export function ExactPixelPerfectFloatingActions() {
               whileTap={{ scale: 0.9 }}
               className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
               style={{
-                background: 'linear-gradient(135deg, #40C4B4 0%, #2D7D7A 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, #2D7D7A 100%)',
                 color: 'white',
               }}
             >

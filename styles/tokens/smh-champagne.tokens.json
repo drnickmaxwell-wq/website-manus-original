@@ -1,0 +1,27 @@
+{
+  "brand": {
+    "colors": {
+      "primary": {
+        "magenta": "#C2185B",
+        "teal": "#40C4B4"
+      },
+      "accent": {
+        "gold": "#D4AF37",
+        "champagne": "#F9E8C3"
+      },
+      "surface": {
+        "background": "#FFFFFF",
+        "text": "#1A1A1A",
+        "textMuted": "#4C4C4C"
+      }
+    },
+    "gradients": {
+      "core": "linear-gradient(135deg, #D94BC6 0%, #00C2C7 100%)",
+      "coreStops": ["#D94BC6", "#00C2C7"],
+      "cta": "linear-gradient(135deg, #C2185B 0%, #F9E8C3 100%)",
+      "ctaStops": ["#C2185B", "#F9E8C3"],
+      "coreDark": "linear-gradient(135deg, #EE66D1 0%, #00D6DB 100%)",
+      "coreDarkStops": ["#EE66D1", "#00D6DB"]
+    }
+  }
+}

@@ -27,7 +27,7 @@ export function ExactScreenshotTypography() {
           >
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #C2185B 0%, #8B1538 25%, #40C4B4 75%, #2D7D7A 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-magenta) 0%, #8B1538 25%, var(--smh-primary-teal) 75%, #2D7D7A 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -39,7 +39,7 @@ export function ExactScreenshotTypography() {
             </span>
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #40C4B4 0%, #2D7D7A 50%, #D4AF37 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, #2D7D7A 50%, var(--smh-accent-gold) 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -84,7 +84,7 @@ export function ExactScreenshotTypography() {
             Your Perfect Smile is Just{' '}
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #40C4B4 0%, #2D7D7A 30%, #D4AF37 70%, #B8860B 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, #2D7D7A 30%, var(--smh-accent-gold) 70%, #B8860B 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -117,7 +117,7 @@ export function ExactScreenshotTypography() {
               whileTap={{ scale: 0.95 }}
               className="text-white px-8 py-4 rounded-2xl font-bold shadow-2xl flex items-center space-x-3"
               style={{
-                background: 'linear-gradient(135deg, #C2185B 0%, #8B1538 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-magenta) 0%, #8B1538 100%)',
                 fontSize: '1.25rem',
                 minWidth: '280px',
                 boxShadow: '0 10px 30px rgba(194, 24, 91, 0.4)'
@@ -133,7 +133,7 @@ export function ExactScreenshotTypography() {
               whileTap={{ scale: 0.95 }}
               className="text-white px-8 py-4 rounded-2xl font-bold shadow-2xl flex items-center space-x-3"
               style={{
-                background: 'linear-gradient(135deg, #40C4B4 0%, #2D7D7A 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, #2D7D7A 100%)',
                 fontSize: '1.25rem',
                 minWidth: '280px',
                 boxShadow: '0 10px 30px rgba(64, 196, 180, 0.4)'
@@ -175,7 +175,7 @@ export function ExactScreenshotTypography() {
             }}
           >
             <div className="text-3xl mb-3">📅</div>
-            <div className="text-xl font-bold text-[#40C4B4] mb-1">Same-Day Appointments</div>
+            <div className="text-xl font-bold text-[var(--smh-primary-teal)] mb-1">Same-Day Appointments</div>
             <div className="text-sm opacity-90 font-medium">Same Day Available</div>
           </motion.div>
           
@@ -188,7 +188,7 @@ export function ExactScreenshotTypography() {
             }}
           >
             <div className="text-3xl mb-3">📍</div>
-            <div className="text-xl font-bold text-[#D4AF37] mb-1">98% Patient Satisfaction</div>
+            <div className="text-xl font-bold text-[var(--smh-accent-gold)] mb-1">98% Patient Satisfaction</div>
             <div className="text-sm opacity-90 font-medium">Coastal Location</div>
           </motion.div>
         </motion.div>

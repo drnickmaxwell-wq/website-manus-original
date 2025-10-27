@@ -7,8 +7,8 @@ const treatments = [
     id: 1,
     title: "3D Digital Dentistry",
     description: "Experience the future with our cutting-edge 3D scanning and treatment planning.",
-    iconGradient: "linear-gradient(135deg, #40C4B4 0%, #8B1538 100%)",
-    buttonGradient: "linear-gradient(135deg, #E91E63 0%, #40C4B4 100%)",
+    iconGradient: "linear-gradient(135deg, var(--smh-primary-teal) 0%, #8B1538 100%)",
+    buttonGradient: "linear-gradient(135deg, #E91E63 0%, var(--smh-primary-teal) 100%)",
     buttonText: "Explore 3D Tech",
     shadowColor: "rgba(64, 196, 180, 0.3)"
   },
@@ -16,8 +16,8 @@ const treatments = [
     id: 2,
     title: "Porcelain Veneers",
     description: "Transform your smile with our luxury porcelain veneers and cosmetic treatments.",
-    iconGradient: "linear-gradient(135deg, #40C4B4 0%, #D4AF37 100%)",
-    buttonGradient: "linear-gradient(135deg, #40C4B4 0%, #D4AF37 100%)",
+    iconGradient: "linear-gradient(135deg, var(--smh-primary-teal) 0%, var(--smh-accent-gold) 100%)",
+    buttonGradient: "linear-gradient(135deg, var(--smh-primary-teal) 0%, var(--smh-accent-gold) 100%)",
     buttonText: "Perfect Your Smile",
     shadowColor: "rgba(212, 175, 55, 0.3)"
   },
@@ -26,7 +26,7 @@ const treatments = [
     title: "Dental Implants",
     description: "Restore your confidence with our premium dental implant solutions.",
     iconGradient: "linear-gradient(135deg, #FF9800 0%, #E91E63 100%)",
-    buttonGradient: "linear-gradient(135deg, #D4AF37 0%, #FF9800 100%)",
+    buttonGradient: "linear-gradient(135deg, var(--smh-accent-gold) 0%, #FF9800 100%)",
     buttonText: "Restore Your Smile",
     shadowColor: "rgba(255, 152, 0, 0.3)"
   }
@@ -45,7 +45,7 @@ export function ExactPixelPerfectTreatmentCards() {
             style={{
               width: Math.random() * 12 + 6,
               height: Math.random() * 12 + 6,
-              background: ['#E91E63', '#40C4B4', '#D4AF37', '#FF9800'][Math.floor(Math.random() * 4)],
+              background: ['#E91E63', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)', '#FF9800'][Math.floor(Math.random() * 4)],
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               opacity: 0.3,
@@ -71,7 +71,7 @@ export function ExactPixelPerfectTreatmentCards() {
             style={{
               width: Math.random() * 80 + 40,
               height: Math.random() * 80 + 40,
-              background: `linear-gradient(45deg, ${['#E91E63', '#40C4B4', '#D4AF37'][Math.floor(Math.random() * 3)]}, transparent)`,
+              background: `linear-gradient(45deg, ${['#E91E63', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)'][Math.floor(Math.random() * 3)]}, transparent)`,
               borderRadius: Math.random() > 0.5 ? '50%' : '20%',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -108,7 +108,7 @@ export function ExactPixelPerfectTreatmentCards() {
           >
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #C2185B 0%, #8B1538 25%, #40C4B4 75%, #2D7D7A 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-magenta) 0%, #8B1538 25%, var(--smh-primary-teal) 75%, #2D7D7A 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -118,7 +118,7 @@ export function ExactPixelPerfectTreatmentCards() {
             </span>
             <span 
               style={{ 
-                background: 'linear-gradient(135deg, #40C4B4 0%, #2D7D7A 50%, #D4AF37 100%)',
+                background: 'linear-gradient(135deg, var(--smh-primary-teal) 0%, #2D7D7A 50%, var(--smh-accent-gold) 100%)',
                 WebkitBackgroundClip: 'text', 
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',

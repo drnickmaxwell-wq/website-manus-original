@@ -2,9 +2,9 @@
 @layer utilities {
   :root {
     /* gradient baseline */
-    --smh-grad-magenta: #C2185B;
-    --smh-grad-teal:    #40C4B4;
-    --smh-grad-gold:    #D4AF37;
+    --smh-grad-magenta: var(--smh-primary-magenta);
+    --smh-grad-teal:    var(--smh-primary-teal);
+    --smh-grad-gold:    var(--smh-accent-gold);
     --smh-gradient: linear-gradient(135deg, var(--smh-grad-magenta) 0%, var(--smh-grad-teal) 60%, var(--smh-grad-gold) 100%);
   }
 
@@ -12,12 +12,12 @@
   .smh-iridescent {
     background-image: linear-gradient(
       135deg,
-      #C2185B 0%,
+      var(--smh-primary-magenta) 0%,
       #E91E63 15%,
       #9C27B0 30%,
-      #40C4B4 50%,
+      var(--smh-primary-teal) 50%,
       #4DD0C0 65%,
-      #D4AF37 85%,
+      var(--smh-accent-gold) 85%,
       #FFD700 100%
     );
     background-size: 200% 200%;

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export function ExactFooter() {
   return (
-    <footer className="bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[#40C4B4] text-white py-16 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[var(--smh-primary-teal)] text-white py-16 relative overflow-hidden">
       {/* Background particles */}
       <div className="absolute inset-0">
         {Array.from({ length: 50 }, (_, i) => (
@@ -14,7 +14,7 @@ export function ExactFooter() {
             style={{
               width: Math.random() * 8 + 4,
               height: Math.random() * 8 + 4,
-              backgroundColor: ['#C2185B', '#40C4B4', '#D4AF37'][Math.floor(Math.random() * 3)],
+              backgroundColor: ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)'][Math.floor(Math.random() * 3)],
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
@@ -36,7 +36,7 @@ export function ExactFooter() {
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#C2185B] font-bold text-sm mr-3">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[var(--smh-primary-magenta)] font-bold text-sm mr-3">
                 SMH
               </div>
               <div>

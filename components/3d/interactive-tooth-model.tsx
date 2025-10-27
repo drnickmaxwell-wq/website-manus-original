@@ -7,8 +7,13 @@ import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, RotateCcw, ZoomIn, ZoomOut, Info, Sparkles } from 'lucide-react';
 import * as THREE from 'three';
+import tokens from '@/styles/tokens/smh-champagne.tokens.json';
 
-// Brand Colors: Magenta #C2185B, Turquoise #40C4B4, Gold #D4AF37
+const BRAND_MAGENTA = tokens.brand.colors.primary.magenta;
+const BRAND_TEAL = tokens.brand.colors.primary.teal;
+const BRAND_GOLD = tokens.brand.colors.accent.gold;
+
+// Brand colors supplied via Champagne token JSON
 // Fonts: Montserrat headings, Lora body text
 
 interface ToothModelProps {
@@ -69,8 +74,8 @@ function ToothModel({ treatmentType, beforeColor = '#F5F5DC', afterColor = '#FFF
       
       {/* Glow effect */}
       <mesh geometry={geometry} position={[0, 0, 0]} scale={1.05}>
-        <meshBasicMaterial
-          color={showAfter ? '#40C4B4' : '#C2185B'}
+          <meshBasicMaterial
+          color={showAfter ? BRAND_TEAL : BRAND_MAGENTA}
           transparent
           opacity={0.2}
         />
@@ -88,7 +93,7 @@ function ToothModel({ treatmentType, beforeColor = '#F5F5DC', afterColor = '#FFF
         >
           <sphereGeometry args={[0.02]} />
           <meshBasicMaterial
-            color={i % 3 === 0 ? '#C2185B' : i % 3 === 1 ? '#40C4B4' : '#D4AF37'}
+            color={i % 3 === 0 ? BRAND_MAGENTA : i % 3 === 1 ? BRAND_TEAL : BRAND_GOLD}
             transparent
             opacity={0.8}
           />
@@ -265,8 +270,8 @@ export default function InteractiveToothModel({
             
             <ambientLight intensity={0.4} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
-            <pointLight position={[-10, -10, -5]} intensity={0.5} color="#40C4B4" />
-            <pointLight position={[10, -10, -5]} intensity={0.5} color="#C2185B" />
+            <pointLight position={[-10, -10, -5]} intensity={0.5} color={BRAND_TEAL} />
+            <pointLight position={[10, -10, -5]} intensity={0.5} color={BRAND_MAGENTA} />
             
             <Suspense fallback={null}>
               <ToothModel 

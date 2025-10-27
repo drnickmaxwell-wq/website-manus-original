@@ -38,7 +38,7 @@ export function ExactReviews() {
             style={{
               width: Math.random() * 6 + 2,
               height: Math.random() * 6 + 2,
-              backgroundColor: ['#C2185B', '#40C4B4', '#D4AF37'][Math.floor(Math.random() * 3)],
+              backgroundColor: ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)'][Math.floor(Math.random() * 3)],
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
@@ -70,15 +70,15 @@ export function ExactReviews() {
           {/* Stats */}
           <div className="flex justify-center items-center space-x-8 mt-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#C2185B]">98%</div>
+              <div className="text-3xl font-bold text-[var(--smh-primary-magenta)]">98%</div>
               <div className="text-sm text-gray-600">Patient Satisfaction</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#40C4B4]">CQC</div>
+              <div className="text-3xl font-bold text-[var(--smh-primary-teal)]">CQC</div>
               <div className="text-sm text-gray-600">Outstanding Rating</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-[#D4AF37]">24/7</div>
+              <div className="text-3xl font-bold text-[var(--smh-accent-gold)]">24/7</div>
               <div className="text-sm text-gray-600">Emergency Care</div>
             </div>
           </div>
@@ -95,7 +95,7 @@ export function ExactReviews() {
               className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
             >
               {/* Decorative gradient */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#C2185B] to-[#40C4B4]" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-brand-gradient" />
               
               {/* Rating stars */}
               <div className="flex items-center mb-6">
@@ -118,13 +118,13 @@ export function ExactReviews() {
               {/* Patient info */}
               <div className="border-t border-gray-100 pt-6">
                 <h4 className="font-semibold text-gray-900 text-lg">{review.name}</h4>
-                <p className="text-sm text-[#C2185B] font-medium">{review.treatment}</p>
+                <p className="text-sm text-[var(--smh-primary-magenta)] font-medium">{review.treatment}</p>
                 <p className="text-xs text-gray-500">{review.location}</p>
               </div>
               
               {/* Treatment badge */}
               <div className="absolute top-4 right-4">
-                <span className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] text-white text-xs px-3 py-1 rounded-full">
+                <span className="bg-brand-gradient text-white text-xs px-3 py-1 rounded-full">
                   Verified Patient
                 </span>
               </div>
@@ -143,7 +143,7 @@ export function ExactReviews() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
+            className="bg-brand-gradient text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
           >
             Book Your Free Consultation
           </motion.button>

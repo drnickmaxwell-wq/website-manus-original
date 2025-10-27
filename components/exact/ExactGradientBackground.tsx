@@ -22,7 +22,7 @@ export function ExactGradientBackground() {
       amplitude: Math.random() * 40 + 5,
       frequency: Math.random() * 0.015 + 0.005,
       phase: Math.random() * Math.PI * 2,
-      color: ['#C2185B', '#40C4B4', '#D4AF37', '#8B1538', '#2D7D7A'][Math.floor(Math.random() * 5)],
+      color: ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)', '#8B1538', '#2D7D7A'][Math.floor(Math.random() * 5)],
       opacity: Math.random() * 0.5 + 0.1,
       lineWidth: Math.random() * 1.5 + 0.5,
     }));
@@ -70,7 +70,7 @@ export function ExactGradientBackground() {
   const particles = Array.from({ length: 150 }, (_, i) => ({
     id: i,
     size: Math.random() * 12 + 2,
-    color: ['#C2185B', '#40C4B4', '#D4AF37', '#FF6B9D', '#4ECDC4', '#45B7D1'][Math.floor(Math.random() * 6)],
+    color: ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)', '#FF6B9D', '#4ECDC4', '#45B7D1'][Math.floor(Math.random() * 6)],
     initialX: Math.random() * 100,
     initialY: Math.random() * 100,
     duration: Math.random() * 25 + 15,
@@ -78,7 +78,7 @@ export function ExactGradientBackground() {
   }));
 
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[#40C4B4] overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#8B1538] via-[#A0306E] to-[var(--smh-primary-teal)] overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 opacity-30 mix-blend-soft-light" />
       {particles.map((particle) => (
         <motion.div

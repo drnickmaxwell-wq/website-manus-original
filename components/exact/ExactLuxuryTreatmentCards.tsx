@@ -8,8 +8,8 @@ const treatments = [
     title: "3D Digital Dentistry",
     description: "Experience the future with our cutting-edge 3D scanning and treatment planning.",
     icon: "🦷",
-    gradient: "from-[#40C4B4] via-[#2D7D7A] to-[#1A5F5A]",
-    buttonGradient: "from-[#40C4B4] to-[#2D7D7A]",
+    gradient: "from-[var(--smh-primary-teal)] via-[#2D7D7A] to-[#1A5F5A]",
+    buttonGradient: "from-[var(--smh-primary-teal)] to-[#2D7D7A]",
     buttonText: "Explore 3D Tech",
     shadowColor: "rgba(64, 196, 180, 0.3)"
   },
@@ -18,8 +18,8 @@ const treatments = [
     title: "Porcelain Veneers",
     description: "Transform your smile with our luxury porcelain veneers and cosmetic treatments.",
     icon: "✨",
-    gradient: "from-[#D4AF37] via-[#B8860B] to-[#8B6914]",
-    buttonGradient: "from-[#D4AF37] to-[#B8860B]",
+    gradient: "from-[var(--smh-accent-gold)] via-[#B8860B] to-[#8B6914]",
+    buttonGradient: "from-[var(--smh-accent-gold)] to-[#B8860B]",
     buttonText: "Perfect Your Smile",
     shadowColor: "rgba(212, 175, 55, 0.3)"
   },
@@ -28,8 +28,8 @@ const treatments = [
     title: "Dental Implants",
     description: "Restore your confidence with our premium dental implant solutions.",
     icon: "🦷",
-    gradient: "from-[#C2185B] via-[#8B1538] to-[#5D0E25]",
-    buttonGradient: "from-[#C2185B] to-[#8B1538]",
+    gradient: "from-[var(--smh-primary-magenta)] via-[#8B1538] to-[#5D0E25]",
+    buttonGradient: "from-[var(--smh-primary-magenta)] to-[#8B1538]",
     buttonText: "Restore Your Smile",
     shadowColor: "rgba(194, 24, 91, 0.3)"
   }
@@ -47,7 +47,7 @@ export function ExactLuxuryTreatmentCards() {
             style={{
               width: Math.random() * 8 + 4,
               height: Math.random() * 8 + 4,
-              backgroundColor: ['#C2185B', '#40C4B4', '#D4AF37'][Math.floor(Math.random() * 3)],
+              backgroundColor: ['var(--smh-primary-magenta)', 'var(--smh-primary-teal)', 'var(--smh-accent-gold)'][Math.floor(Math.random() * 3)],
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
@@ -75,7 +75,7 @@ export function ExactLuxuryTreatmentCards() {
         >
           <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-6 leading-none">
             <span 
-              className="bg-gradient-to-r from-[#C2185B] via-[#8B1538] to-[#40C4B4] bg-clip-text text-transparent"
+              className="smh-gradient-text"
               style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
             >
               Luxury Coastal

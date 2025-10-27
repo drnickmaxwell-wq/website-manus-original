@@ -28,7 +28,7 @@ export function ExactHeroSection() {
         >
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-4">
             <span 
-              className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] bg-clip-text text-transparent"
+              className="bg-brand-gradient bg-clip-text text-transparent"
               style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
             >
               Luxury Coastal
@@ -49,7 +49,7 @@ export function ExactHeroSection() {
           <h3 className="text-4xl md:text-6xl font-bold mb-6">
             Your Perfect Smile is Just{' '}
             <span 
-              className="bg-gradient-to-r from-[#40C4B4] to-[#D4AF37] bg-clip-text text-transparent"
+              className="bg-brand-gradient-cta bg-clip-text text-transparent"
               style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
             >
               One Click Away
@@ -67,7 +67,7 @@ export function ExactHeroSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#C2185B] to-[#40C4B4] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
+              className="bg-brand-gradient text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
             >
               <span>📅</span>
               <span>Book Free Consultation</span>
@@ -76,7 +76,7 @@ export function ExactHeroSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#40C4B4] to-[#D4AF37] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
+              className="bg-brand-gradient-cta text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
             >
               <span>🤖</span>
               <span>Try AI Smile Quiz</span>
@@ -99,13 +99,13 @@ export function ExactHeroSection() {
           
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center">
             <div className="text-3xl mb-2">📅</div>
-            <div className="text-2xl font-bold text-[#40C4B4]">Same-Day Appointments</div>
+            <div className="text-2xl font-bold text-[var(--smh-primary-teal)]">Same-Day Appointments</div>
             <div className="text-sm opacity-90">Same Day Available</div>
           </div>
           
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center">
             <div className="text-3xl mb-2">📍</div>
-            <div className="text-2xl font-bold text-[#D4AF37]">98% Patient Satisfaction</div>
+            <div className="text-2xl font-bold text-[var(--smh-accent-gold)]">98% Patient Satisfaction</div>
             <div className="text-sm opacity-90">Coastal Location</div>
           </div>
         </motion.div>

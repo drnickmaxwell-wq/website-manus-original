@@ -35,6 +35,12 @@ This repository contains the source code for the St Mary's House Dental Care web
    pnpm dev
    ```
 
+4. Verify the Champagne palette lock before opening a pull request:
+   ```bash
+   pnpm brand:check
+   ```
+   Brand Guard must pass locally and in CI before merge.
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deployment
